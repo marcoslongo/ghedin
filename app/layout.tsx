@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
+import UrqlProvider from "./components/UrqlProvider";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -16,14 +17,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-br">
       <body className={`${montserrat.variable} antialiased`}>
-        <Header />
-        {children}
+        <UrqlProvider>
+          <Header />
+          {children}
+        </UrqlProvider>
       </body>
     </html>
   );

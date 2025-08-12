@@ -1,0 +1,30 @@
+query getImoveis {
+  imoveis {
+    nodes {
+      title
+      content
+      slug
+      acfImoveis {
+        areaConstruida
+        areaTotal
+        bairro
+        banheiros
+        caracteristicas
+        cep
+        cidade
+        condominio
+        destaque
+        endereco
+        iptu
+        preco
+        quartos
+        statusImovel
+        suites
+        tipoImovel
+        tipoNegocio
+        vagasGaragem
+        videoYoutube
+      }
+    }
+  }
+}
