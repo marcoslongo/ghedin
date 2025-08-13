@@ -23,7 +23,7 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1">
+      <main className="flex-1 pt-40">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Coluna Principal */}

@@ -44,7 +44,7 @@ export default function ImoveisPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1">
+      <main className="flex-1 pt-40">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Todos os Imóveis</h1>

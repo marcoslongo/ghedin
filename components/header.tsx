@@ -7,28 +7,17 @@ import Image from "next/image"
 import { FaWhatsapp } from "react-icons/fa";
 
 export function Header() {
-  const [isSticky, setIsSticky] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 0)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <header
-      className={`w-full absolute top-0 z-50 bg-transparent transition-all duration-300 ${isSticky ? "sticky bg-white shadow-md" : ""
+      className={`w-full absolute top-0 z-50 bg-transparent transition-all duration-300
         }`}
     >
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           <Link href="/">
             <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${isSticky ? "w-[100px] h-[75px]" : "w-[160px] h-[120px]"
-                }`}
+              className={`overflow-hidden transition-all duration-500 ease-in-out w-[125px] h-[100px]`}
             >
               <Image
                 src={"assets/images/ghedin.webp"}
