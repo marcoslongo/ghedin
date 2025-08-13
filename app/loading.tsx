@@ -1,11 +1,8 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Loading() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Skeleton */}
@@ -40,7 +37,6 @@ export default function Loading() {
           </section>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

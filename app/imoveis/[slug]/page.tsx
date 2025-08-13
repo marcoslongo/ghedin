@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import { getImovelBySlug, formatarPreco } from "@/lib/wordpress"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,7 +23,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -245,7 +242,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

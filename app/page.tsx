@@ -1,9 +1,6 @@
 import { getImoveis } from "@/lib/wordpress"
 import { ImovelCard } from "@/components/imovel-card"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Search} from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -12,7 +9,6 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-1">
         <section className="bg-gradient-to-r text-white py-48 relative">
           <div className="container mx-auto px-4 text-center relative z-10">
@@ -35,7 +31,7 @@ export default async function HomePage() {
             </div>
           </div>
           <Image
-            src={"bg-banner.webp"}
+            src={"/assets/images/bg-banner.webp"}
             alt=""
             fill
             className="object-cover"
@@ -76,7 +72,6 @@ export default async function HomePage() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   )
 }

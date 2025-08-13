@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { ImovelCard } from "@/components/imovel-card"
 import { FiltrosImoveis } from "@/components/filtros-imoveis"
 import { getImoveis, getImoveisFiltrados, type Imovel } from "@/lib/wordpress"
@@ -46,7 +44,6 @@ export default function ImoveisPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8">
@@ -97,7 +94,6 @@ export default function ImoveisPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

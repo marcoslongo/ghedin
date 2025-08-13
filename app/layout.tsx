@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
-// Fonte única - moderna e elegante
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
@@ -42,9 +43,11 @@ export default function RootLayout({
           }
         `}</style>
       </head>
+      <Header />
       <body className="antialiased">
         {children}
       </body>
+      <Footer />
     </html>
   )
 }

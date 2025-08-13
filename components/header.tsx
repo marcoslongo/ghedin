@@ -31,7 +31,7 @@ export function Header() {
                 }`}
             >
               <Image
-                src={"ghedin.webp"}
+                src={"assets/images/ghedin.webp"}
                 width={160}
                 height={120}
                 alt="Ghedin imóveis"
