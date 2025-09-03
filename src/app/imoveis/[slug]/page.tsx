@@ -16,13 +16,11 @@ interface ImovelPageProps {
 export default async function ImovelPage({ params }: ImovelPageProps) {
   const response = await getImovelBySlug(params.slug);
 
-  // Extrai o imóvel
   const imovel = response?.imovelBy;
   if (!imovel) notFound();
 
   const { acfImoveis: acf } = imovel;
 
-  // Helper para transformar arrays em string
   const arrayToString = (value: any) => {
     if (Array.isArray(value)) return value.join(", ");
     return value || "";
@@ -33,9 +31,7 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
       <main className="flex-1 pt-40">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Coluna Principal */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Imagem Principal */}
               <div className="relative aspect-[16/10] rounded-lg overflow-hidden">
                 {imovel.featuredImage?.node ? (
                   <Image
@@ -50,7 +46,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                   </div>
                 )}
 
-                {/* Badges */}
                 <div className="absolute top-4 left-4 flex gap-2">
                   {acf?.destaque && <Badge variant="destructive">Destaque</Badge>}
                   <Badge variant="secondary" className="capitalize">
@@ -59,8 +54,7 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                 </div>
               </div>
 
-              {/* Informações Principais */}
-              <Card>
+              <Card className="pt-6">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>
@@ -68,7 +62,16 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <MapPin className="h-4 w-4" />
                         <span>
-                          {acf?.endereco}, {acf?.bairro}, {acf?.cidade} - CEP: {acf?.cep || "-"}
+                          {acf?.endereco && (
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: acf.endereco.replace(/\n/g, ' '),
+                              }}
+                            />
+                          )}
+                          {acf?.bairro && ` ${acf.bairro}`}
+                          {acf?.cidade && `, ${acf.cidade}`}
+                          {acf?.cep && ` CEP: ${acf.cep}`}
                         </span>
                       </div>
                     </div>
@@ -81,7 +84,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  {/* Características */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     {acf?.quartos! > 0 && (
                       <div className="flex items-center gap-2">
@@ -111,8 +113,7 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                 </CardContent>
               </Card>
 
-              {/* Detalhes Técnicos */}
-              <Card>
+              <Card className="pt-6">
                 <CardHeader>
                   <CardTitle>Detalhes do Imóvel</CardTitle>
                 </CardHeader>
@@ -153,9 +154,8 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
               </Card>
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              <Card>
+              <Card className="pt-6">
                 <CardHeader>
                   <CardTitle>Interessado?</CardTitle>
                 </CardHeader>
