@@ -1,4 +1,4 @@
-query GetImoveis($first: Int = 10) {
+query GetImoveis($first: Int = 6) {
     imoveis(first: $first) {
       nodes {
         id

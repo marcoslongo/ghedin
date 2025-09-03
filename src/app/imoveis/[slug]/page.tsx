@@ -119,30 +119,30 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {acf?.areaConstruida! > 0 && (
-                      <div className="flex justify-between">
+                      <div className="flex">
                         <span className="text-muted-foreground">Área Construída:</span>
                         <span className="font-medium">{acf?.areaConstruida}m²</span>
                       </div>
                     )}
                     {acf?.suites! > 0 && (
-                      <div className="flex justify-between">
+                      <div className="flex">
                         <span className="text-muted-foreground">Suítes:</span>
                         <span className="font-medium">{acf?.suites}</span>
                       </div>
                     )}
                     {acf?.condominio && (
-                      <div className="flex justify-between">
+                      <div className="flex">
                         <span className="text-muted-foreground">Condomínio:</span>
                         <span className="font-medium">{formatarPreco(acf?.condominio)}</span>
                       </div>
                     )}
                     {acf?.iptu && (
-                      <div className="flex justify-between">
+                      <div className="flex">
                         <span className="text-muted-foreground">IPTU:</span>
                         <span className="font-medium">{formatarPreco(acf?.iptu)}</span>
                       </div>
                     )}
-                    <div className="flex justify-between">
+                    <div className="flex">
                       <span className="text-muted-foreground">Status:</span>
                       <Badge variant="outline" className="capitalize">
                         {arrayToString(acf?.statusImovel)}
