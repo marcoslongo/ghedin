@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
-import { formatarPreco } from "@/src/lib/wordpress"
 import { MapPin, Bed, Bath, Car, Maximize, Home, Phone, Mail, Share2, Heart } from "lucide-react"
 import { Badge } from "@/src/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
 import { getImovelBySlug } from "@/src/services/GetImovelBySlug"
+import { formatPrice } from "@/src/utils/formatPrice"
 
 interface ImovelPageProps {
   params: {
@@ -76,7 +76,7 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-primary">{formatarPreco(acf?.preco!)}</div>
+                      <div className="text-3xl font-bold text-primary">{formatPrice(acf?.preco!)}</div>
                       <div className="text-sm text-muted-foreground capitalize">
                         {arrayToString(acf?.tipoImovel)} para {arrayToString(acf?.tipoNegocio)}
                       </div>
@@ -134,13 +134,13 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                     {acf?.condominio && (
                       <div className="flex">
                         <span className="text-muted-foreground">Condomínio:</span>
-                        <span className="font-medium">{formatarPreco(acf?.condominio)}</span>
+                        <span className="font-medium">{formatPrice(acf?.condominio)}</span>
                       </div>
                     )}
                     {acf?.iptu && (
                       <div className="flex">
                         <span className="text-muted-foreground">IPTU:</span>
-                        <span className="font-medium">{formatarPreco(acf?.iptu)}</span>
+                        <span className="font-medium">{formatPrice(acf?.iptu)}</span>
                       </div>
                     )}
                     <div className="flex">

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { MapPin, Bed, Bath, Car, Maximize } from "lucide-react";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { formatarPreco } from "@/src/lib/wordpress";
 import { GetImoveisQuery } from "@/src/generated/graphql";
+import { formatPrice } from "../utils/formatPrice";
 
 interface ImovelCardProps {
   imovel: NonNullable<GetImoveisQuery["imoveis"]>["nodes"][number];
@@ -40,7 +40,7 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
         {/* Preço */}
         <div className="absolute bottom-3 left-3">
           <div className="bg-[#483b35] text-white px-3 py-1 rounded-md font-semibold">
-            {formatarPreco(acf.preco!)}
+            {formatPrice(acf.preco!)}
           </div>
         </div>
       </div>
