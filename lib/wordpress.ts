@@ -1,5 +1,5 @@
 // GraphQL client para WordPress headless - Apenas Imóveis
-const WORDPRESS_API_URL = "http://ghedin.com.test/graphql"
+const WORDPRESS_API_URL = "https://cms.ghedinimoveis.com.br/graphql"
 
 interface GraphQLResponse<T> {
   data: T
@@ -35,7 +35,6 @@ export async function fetchGraphQL<T>(query: string, variables?: Record<string, 
 export interface Page {
   id: string
   title: string
-  content: string
   slug: string
   date: string
   featuredImage?: {
@@ -71,7 +70,6 @@ export interface AcfImoveis {
 export interface Imovel {
   id: string
   title: string
-  content: string
   slug: string
   acfImoveis: AcfImoveis
   featuredImage?: {
@@ -89,7 +87,6 @@ export const GET_PAGES_QUERY = `
       nodes {
         id
         title
-        content
         slug
         date
         featuredImage {
@@ -109,7 +106,6 @@ export const GET_IMOVEIS_QUERY = `
       nodes {
         id
         title
-        content
         slug
         featuredImage {
           node {
@@ -148,7 +144,6 @@ export const GET_IMOVEL_BY_SLUG_QUERY = `
     imovelBy(slug: $slug) {
       id
       title
-      content
       slug
       featuredImage {
         node {

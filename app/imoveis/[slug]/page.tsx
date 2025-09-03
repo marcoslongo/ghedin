@@ -107,11 +107,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                       </div>
                     )}
                   </div>
-
-                  {/* Descrição */}
-                  {imovel.content && (
-                    <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: imovel.content }} />
-                  )}
                 </CardContent>
               </Card>
 
@@ -183,40 +178,6 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                       Compartilhar
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
-
-              {/* Simulador */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calculator className="h-5 w-5" />
-                    Simular Financiamento
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                      <span>Valor do imóvel:</span>
-                      <span className="font-medium">{formatarPreco(acf.preco)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Entrada (20%):</span>
-                      <span className="font-medium">{formatarPreco(acf.preco * 0.2)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Financiamento:</span>
-                      <span className="font-medium">{formatarPreco(acf.preco * 0.8)}</span>
-                    </div>
-                    <hr />
-                    <div className="flex justify-between font-medium">
-                      <span>Parcela estimada (360x):</span>
-                      <span>{formatarPreco((acf.preco * 0.8) / 360)}</span>
-                    </div>
-                  </div>
-                  <Button variant="outline" className="w-full mt-4 bg-transparent">
-                    Simular Detalhado
-                  </Button>
                 </CardContent>
               </Card>
 
