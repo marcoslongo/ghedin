@@ -29,7 +29,6 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           </div>
         )}
 
-        {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2">
           {acf.destaque && <Badge variant="destructive">Destaque</Badge>}
           <Badge variant="secondary" className="capitalize">
@@ -37,7 +36,6 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           </Badge>
         </div>
 
-        {/* Preço */}
         <div className="absolute bottom-3 left-3">
           <div className="bg-[#483b35] text-white px-3 py-1 rounded-md font-semibold">
             {formatPrice(acf.preco!)}
@@ -60,7 +58,6 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           {imovel.title}
         </h3>
 
-        {/* Características principais */}
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
           {acf.quartos! > 0 && (
             <div className="flex items-center gap-1">
