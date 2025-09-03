@@ -1,5 +1,5 @@
-import gql from 'graphql-tag';
-import * as Urql from 'urql';
+/* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -7,7 +7,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -10604,93 +10603,5 @@ export type GetImoveisQueryVariables = Exact<{
 
 export type GetImoveisQuery = { __typename?: 'RootQuery', imoveis?: { __typename?: 'RootQueryToImovelConnection', nodes: Array<{ __typename?: 'Imovel', id: string, title?: string | null, slug?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, acfImoveis?: { __typename?: 'AcfImoveis', areaConstruida?: number | null, areaTotal?: number | null, bairro?: string | null, banheiros?: number | null, caracteristicas?: Array<string | null> | null, cep?: string | null, cidade?: string | null, condominio?: number | null, destaque?: boolean | null, endereco?: string | null, iptu?: number | null, preco?: number | null, quartos?: number | null, statusImovel?: Array<string | null> | null, suites?: number | null, tipoImovel?: Array<string | null> | null, tipoNegocio?: Array<string | null> | null, vagasGaragem?: number | null, videoYoutube?: string | null } | null }> } | null };
 
-export type GetImovelBySlugQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
-}>;
 
-
-export type GetImovelBySlugQuery = { __typename?: 'RootQuery', imovelBy?: { __typename?: 'Imovel', id: string, title?: string | null, slug?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, acfImoveis?: { __typename?: 'AcfImoveis', areaConstruida?: number | null, areaTotal?: number | null, bairro?: string | null, banheiros?: number | null, caracteristicas?: Array<string | null> | null, cep?: string | null, cidade?: string | null, condominio?: number | null, destaque?: boolean | null, endereco?: string | null, iptu?: number | null, preco?: number | null, quartos?: number | null, statusImovel?: Array<string | null> | null, suites?: number | null, tipoImovel?: Array<string | null> | null, tipoNegocio?: Array<string | null> | null, vagasGaragem?: number | null, videoYoutube?: string | null } | null } | null };
-
-
-export const GetImoveisDocument = gql`
-    query GetImoveis($first: Int = 10) {
-  imoveis(first: $first) {
-    nodes {
-      id
-      title
-      slug
-      featuredImage {
-        node {
-          sourceUrl
-          altText
-        }
-      }
-      acfImoveis {
-        areaConstruida
-        areaTotal
-        bairro
-        banheiros
-        caracteristicas
-        cep
-        cidade
-        condominio
-        destaque
-        endereco
-        iptu
-        preco
-        quartos
-        statusImovel
-        suites
-        tipoImovel
-        tipoNegocio
-        vagasGaragem
-        videoYoutube
-      }
-    }
-  }
-}
-    `;
-
-export function useGetImoveisQuery(options?: Omit<Urql.UseQueryArgs<GetImoveisQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetImoveisQuery, GetImoveisQueryVariables>({ query: GetImoveisDocument, ...options });
-};
-export const GetImovelBySlugDocument = gql`
-    query GetImovelBySlug($slug: String!) {
-  imovelBy(slug: $slug) {
-    id
-    title
-    slug
-    featuredImage {
-      node {
-        sourceUrl
-        altText
-      }
-    }
-    acfImoveis {
-      areaConstruida
-      areaTotal
-      bairro
-      banheiros
-      caracteristicas
-      cep
-      cidade
-      condominio
-      destaque
-      endereco
-      iptu
-      preco
-      quartos
-      statusImovel
-      suites
-      tipoImovel
-      tipoNegocio
-      vagasGaragem
-      videoYoutube
-    }
-  }
-}
-    `;
-
-export function useGetImovelBySlugQuery(options: Omit<Urql.UseQueryArgs<GetImovelBySlugQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetImovelBySlugQuery, GetImovelBySlugQueryVariables>({ query: GetImovelBySlugDocument, ...options });
-};
+export const GetImoveisDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetImoveis"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"10"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imoveis"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acfImoveis"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"areaConstruida"}},{"kind":"Field","name":{"kind":"Name","value":"areaTotal"}},{"kind":"Field","name":{"kind":"Name","value":"bairro"}},{"kind":"Field","name":{"kind":"Name","value":"banheiros"}},{"kind":"Field","name":{"kind":"Name","value":"caracteristicas"}},{"kind":"Field","name":{"kind":"Name","value":"cep"}},{"kind":"Field","name":{"kind":"Name","value":"cidade"}},{"kind":"Field","name":{"kind":"Name","value":"condominio"}},{"kind":"Field","name":{"kind":"Name","value":"destaque"}},{"kind":"Field","name":{"kind":"Name","value":"endereco"}},{"kind":"Field","name":{"kind":"Name","value":"iptu"}},{"kind":"Field","name":{"kind":"Name","value":"preco"}},{"kind":"Field","name":{"kind":"Name","value":"quartos"}},{"kind":"Field","name":{"kind":"Name","value":"statusImovel"}},{"kind":"Field","name":{"kind":"Name","value":"suites"}},{"kind":"Field","name":{"kind":"Name","value":"tipoImovel"}},{"kind":"Field","name":{"kind":"Name","value":"tipoNegocio"}},{"kind":"Field","name":{"kind":"Name","value":"vagasGaragem"}},{"kind":"Field","name":{"kind":"Name","value":"videoYoutube"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetImoveisQuery, GetImoveisQueryVariables>;
