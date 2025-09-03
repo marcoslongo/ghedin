@@ -13,6 +13,11 @@ export const query = graphql(`query GetImovelBySlug($slug: String!) {
       }
     }
     acfImoveis {
+      galeriaFotos {
+        nodes {
+          mediaItemUrl
+        }
+      }
       areaConstruida
       areaTotal
       bairro

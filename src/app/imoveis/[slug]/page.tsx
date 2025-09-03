@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation"
-import Image from "next/image"
 import { MapPin, Bed, Bath, Car, Maximize, Home, Phone, Mail, Share2, Heart } from "lucide-react"
 import { Badge } from "@/src/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Button } from "@/src/components/ui/button"
 import { getImovelBySlug } from "@/src/services/GetImovelBySlug"
 import { formatPrice } from "@/src/utils/formatPrice"
-
+import GalleryContent from "@/src/components/layout/imoveis/GaleriaContent"
+import { Button } from "@/src/components/ui/button"
 interface ImovelPageProps {
   params: {
     slug: string
@@ -14,17 +13,19 @@ interface ImovelPageProps {
 }
 
 export default async function ImovelPage({ params }: ImovelPageProps) {
-  const response = await getImovelBySlug(params.slug);
+  const response = await getImovelBySlug(params.slug)
 
-  const imovel = response?.imovelBy;
-  if (!imovel) notFound();
+  const imovel = response?.imovelBy
+  if (!imovel) notFound()
 
-  const { acfImoveis: acf } = imovel;
+  const galery = imovel.acfImoveis?.galeriaFotos
+
+  const { acfImoveis: acf } = imovel
 
   const arrayToString = (value: any) => {
-    if (Array.isArray(value)) return value.join(", ");
-    return value || "";
-  };
+    if (Array.isArray(value)) return value.join(", ")
+    return value || ""
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -32,21 +33,10 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              <div className="relative aspect-[16/10] rounded-lg overflow-hidden">
-                {imovel.featuredImage?.node ? (
-                  <Image
-                    src={imovel.featuredImage.node.sourceUrl!}
-                    alt={''}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-muted flex items-center justify-center">
-                    <Home className="h-16 w-16 text-muted-foreground" />
-                  </div>
-                )}
-
-                <div className="absolute top-4 left-4 flex gap-2">
+              <div className="relative rounded-lg overflow-hidden">
+                <GalleryContent images={galery?.nodes || []} />
+                
+                <div className="absolute top-4 left-4 z-10 flex gap-2">
                   {acf?.destaque && <Badge variant="destructive">Destaque</Badge>}
                   <Badge variant="secondary" className="capitalize">
                     {arrayToString(acf?.tipoNegocio)}
@@ -199,5 +189,5 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
         </div>
       </main>
     </div>
-  );
+  )
 }
