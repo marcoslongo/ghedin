@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
-import { getImovelBySlug, formatarPreco } from "@/src/lib/wordpress"
-import { MapPin, Bed, Bath, Car, Maximize, Home, Phone, Mail, Share2, Heart, Calculator } from "lucide-react"
+import { formatarPreco } from "@/src/lib/wordpress"
+import { MapPin, Bed, Bath, Car, Maximize, Home, Phone, Mail, Share2, Heart } from "lucide-react"
 import { Badge } from "@/src/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
+import { getImovelBySlug } from "@/src/services/GetImovelBySlug"
 
 interface ImovelPageProps {
   params: {
@@ -13,13 +14,19 @@ interface ImovelPageProps {
 }
 
 export default async function ImovelPage({ params }: ImovelPageProps) {
-  const imovel = await getImovelBySlug(params.slug)
+  const response = await getImovelBySlug(params.slug);
 
-  if (!imovel) {
-    notFound()
-  }
+  // Extrai o imóvel
+  const imovel = response?.imovelBy;
+  if (!imovel) notFound();
 
-  const { acfImoveis: acf } = imovel
+  const { acfImoveis: acf } = imovel;
+
+  // Helper para transformar arrays em string
+  const arrayToString = (value: any) => {
+    if (Array.isArray(value)) return value.join(", ");
+    return value || "";
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -32,8 +39,8 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
               <div className="relative aspect-[16/10] rounded-lg overflow-hidden">
                 {imovel.featuredImage?.node ? (
                   <Image
-                    src={imovel.featuredImage.node.sourceUrl || "/placeholder.svg"}
-                    alt={imovel.featuredImage.node.altText || imovel.title}
+                    src={imovel.featuredImage.node.sourceUrl!}
+                    alt={''}
                     fill
                     className="object-cover"
                   />
@@ -43,11 +50,11 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                   </div>
                 )}
 
-                {/* Badges sobrepostos */}
+                {/* Badges */}
                 <div className="absolute top-4 left-4 flex gap-2">
-                  {acf.destaque && <Badge variant="destructive">Destaque</Badge>}
+                  {acf?.destaque && <Badge variant="destructive">Destaque</Badge>}
                   <Badge variant="secondary" className="capitalize">
-                    {acf.tipoNegocio}
+                    {arrayToString(acf?.tipoNegocio)}
                   </Badge>
                 </div>
               </div>
@@ -61,14 +68,14 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <MapPin className="h-4 w-4" />
                         <span>
-                          {acf.endereco}, {acf.bairro}, {acf.cidade} - CEP: {acf.cep}
+                          {acf?.endereco}, {acf?.bairro}, {acf?.cidade} - CEP: {acf?.cep || "-"}
                         </span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-primary">{formatarPreco(acf.preco)}</div>
+                      <div className="text-3xl font-bold text-primary">{formatarPreco(acf?.preco!)}</div>
                       <div className="text-sm text-muted-foreground capitalize">
-                        {acf.tipoImovel} para {acf.tipoNegocio}
+                        {arrayToString(acf?.tipoImovel)} para {arrayToString(acf?.tipoNegocio)}
                       </div>
                     </div>
                   </div>
@@ -76,34 +83,28 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                 <CardContent>
                   {/* Características */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    {acf.quartos > 0 && (
+                    {acf?.quartos! > 0 && (
                       <div className="flex items-center gap-2">
                         <Bed className="h-5 w-5 text-muted-foreground" />
-                        <span>
-                          {acf.quartos} quarto{acf.quartos > 1 ? "s" : ""}
-                        </span>
+                        <span>{acf?.quartos} quarto{acf?.quartos! > 1 ? "s" : ""}</span>
                       </div>
                     )}
-                    {acf.banheiros > 0 && (
+                    {acf?.banheiros! > 0 && (
                       <div className="flex items-center gap-2">
                         <Bath className="h-5 w-5 text-muted-foreground" />
-                        <span>
-                          {acf.banheiros} banheiro{acf.banheiros > 1 ? "s" : ""}
-                        </span>
+                        <span>{acf?.banheiros} banheiro{acf?.banheiros! > 1 ? "s" : ""}</span>
                       </div>
                     )}
-                    {acf.vagasGaragem > 0 && (
+                    {acf?.vagasGaragem! > 0 && (
                       <div className="flex items-center gap-2">
                         <Car className="h-5 w-5 text-muted-foreground" />
-                        <span>
-                          {acf.vagasGaragem} vaga{acf.vagasGaragem > 1 ? "s" : ""}
-                        </span>
+                        <span>{acf?.vagasGaragem} vaga{acf?.vagasGaragem! > 1 ? "s" : ""}</span>
                       </div>
                     )}
-                    {acf.areaTotal > 0 && (
+                    {acf?.areaTotal! > 0 && (
                       <div className="flex items-center gap-2">
                         <Maximize className="h-5 w-5 text-muted-foreground" />
-                        <span>{acf.areaTotal}m² total</span>
+                        <span>{acf?.areaTotal}m² total</span>
                       </div>
                     )}
                   </div>
@@ -117,34 +118,34 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {acf.areaConstruida > 0 && (
+                    {acf?.areaConstruida! > 0 && (
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Área Construída:</span>
-                        <span className="font-medium">{acf.areaConstruida}m²</span>
+                        <span className="font-medium">{acf?.areaConstruida}m²</span>
                       </div>
                     )}
-                    {acf.suites > 0 && (
+                    {acf?.suites! > 0 && (
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Suítes:</span>
-                        <span className="font-medium">{acf.suites}</span>
+                        <span className="font-medium">{acf?.suites}</span>
                       </div>
                     )}
-                    {acf.condominio > 0 && (
+                    {acf?.condominio && (
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Condomínio:</span>
-                        <span className="font-medium">{formatarPreco(acf.condominio)}</span>
+                        <span className="font-medium">{formatarPreco(acf?.condominio)}</span>
                       </div>
                     )}
-                    {acf.iptu > 0 && (
+                    {acf?.iptu && (
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">IPTU:</span>
-                        <span className="font-medium">{formatarPreco(acf.iptu)}</span>
+                        <span className="font-medium">{formatarPreco(acf?.iptu)}</span>
                       </div>
                     )}
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Status:</span>
                       <Badge variant="outline" className="capitalize">
-                        {acf.statusImovel}
+                        {arrayToString(acf?.statusImovel)}
                       </Badge>
                     </div>
                   </div>
@@ -154,42 +155,36 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Ações */}
               <Card>
                 <CardHeader>
                   <CardTitle>Interessado?</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <Button className="w-full" size="lg">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Ligar Agora
+                    <Phone className="h-4 w-4 mr-2" /> Ligar Agora
                   </Button>
                   <Button variant="outline" className="w-full bg-transparent" size="lg">
-                    <Mail className="h-4 w-4 mr-2" />
-                    Enviar Email
+                    <Mail className="h-4 w-4 mr-2" /> Enviar Email
                   </Button>
                   <div className="flex gap-2">
                     <Button variant="outline" className="flex-1 bg-transparent">
-                      <Heart className="h-4 w-4 mr-2" />
-                      Favoritar
+                      <Heart className="h-4 w-4 mr-2" /> Favoritar
                     </Button>
                     <Button variant="outline" className="flex-1 bg-transparent">
-                      <Share2 className="h-4 w-4 mr-2" />
-                      Compartilhar
+                      <Share2 className="h-4 w-4 mr-2" /> Compartilhar
                     </Button>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Características */}
-              {acf.caracteristicas && acf.caracteristicas.length > 0 && (
+              {acf?.caracteristicas && acf?.caracteristicas.length > 0 && (
                 <Card>
                   <CardHeader>
                     <CardTitle>Características</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      {acf.caracteristicas.map((caracteristica, index) => (
+                      {acf?.caracteristicas.map((caracteristica, index) => (
                         <div key={index} className="flex items-center gap-2">
                           <div className="w-2 h-2 bg-primary rounded-full" />
                           <span className="text-sm">{caracteristica}</span>
@@ -204,5 +199,5 @@ export default async function ImovelPage({ params }: ImovelPageProps) {
         </div>
       </main>
     </div>
-  )
+  );
 }

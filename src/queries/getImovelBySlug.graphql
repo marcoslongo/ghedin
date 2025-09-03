@@ -1,6 +1,5 @@
-query GetImoveis($first: Int = 6) {
-  imoveis(first: $first) {
-    nodes {
+query GetImovelBySlug($slug: String!) {
+    imovelBy(slug: $slug) {
       id
       title
       slug
@@ -33,4 +32,3 @@ query GetImoveis($first: Int = 6) {
       }
     }
   }
-}

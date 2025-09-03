@@ -1,7 +1,7 @@
 import { graphql } from "../generated";
 import { urqlClient } from "../lib/urql-client";
 
-export const query = graphql(`query GetImoveis($first: Int = 6) {
+export const query = graphql(`query GetImoveis($first: Int = 10) {
   imoveis(first: $first) {
     nodes {
       id
@@ -14,6 +14,11 @@ export const query = graphql(`query GetImoveis($first: Int = 6) {
         }
       }
       acfImoveis {
+        galeriaFotos {
+          nodes {
+            mediaItemUrl
+          }
+        }
         areaConstruida
         areaTotal
         bairro

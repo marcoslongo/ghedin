@@ -1,0 +1,41 @@
+query GetImoveis($first: Int = 10) {
+    imoveis(first: $first) {
+      nodes {
+        id
+        title
+        slug
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+          }
+        }
+        acfImoveis {
+          galeriaFotos {
+            nodes {
+              mediaItemUrl
+            }
+          }
+          areaConstruida
+          areaTotal
+          bairro
+          banheiros
+          caracteristicas
+          cep
+          cidade
+          condominio
+          destaque
+          endereco
+          iptu
+          preco
+          quartos
+          statusImovel
+          suites
+          tipoImovel
+          tipoNegocio
+          vagasGaragem
+          videoYoutube
+        }
+      }
+    }
+  }
