@@ -1,7 +1,7 @@
 import { graphql } from "../generated";
 import { urqlClient } from "../lib/urql-client";
 
-export const query = graphql(`query GetImoveis($first: Int = 10) {
+export const query = graphql(`query GetImoveis($first: Int = 6) {
   imoveis(first: $first) {
     nodes {
       id

@@ -1,13 +1,15 @@
 schema: "https://cms.ghedinimoveis.com.br/graphql"
-documents: 
-  - "src/**/*.{ts,tsx}"
+
+documents:
   - "src/queries/**/*.graphql"
+
 generates:
   src/generated/:
     preset: client
     plugins: []
     presetConfig:
       gqlTagName: graphql
+
   src/generated/introspection.json:
     plugins:
       - "introspection"

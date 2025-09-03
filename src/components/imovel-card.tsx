@@ -1,16 +1,17 @@
-import Image from "next/image"
-import Link from "next/link"
-import { MapPin, Bed, Bath, Car, Maximize } from "lucide-react"
-import { type Imovel, formatarPreco } from "@/src/lib/wordpress"
-import { Card, CardContent, CardFooter } from "./ui/card"
-import { Badge } from "./ui/badge"
+import Image from "next/image";
+import Link from "next/link";
+import { MapPin, Bed, Bath, Car, Maximize } from "lucide-react";
+import { Card, CardContent, CardFooter } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { formatarPreco } from "@/src/lib/wordpress";
+import { GetImoveisQuery } from "@/src/generated/graphql";
 
 interface ImovelCardProps {
-  imovel: Imovel
+  imovel: NonNullable<GetImoveisQuery["imoveis"]>["nodes"][number];
 }
 
 export function ImovelCard({ imovel }: ImovelCardProps) {
-  const { acfImoveis: acf } = imovel
+  const acf = imovel.acfImoveis!;
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -18,7 +19,7 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
         {imovel.featuredImage?.node ? (
           <Image
             src={imovel.featuredImage.node.sourceUrl || "/placeholder.svg"}
-            alt={imovel.featuredImage.node.altText || imovel.title}
+            alt={imovel.featuredImage.node.altText || imovel.title || ""}
             fill
             className="object-cover"
           />
@@ -28,7 +29,7 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           </div>
         )}
 
-        {/* Badges de destaque e tipo de negócio */}
+        {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2">
           {acf.destaque && <Badge variant="destructive">Destaque</Badge>}
           <Badge variant="secondary" className="capitalize">
@@ -38,7 +39,9 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
 
         {/* Preço */}
         <div className="absolute bottom-3 left-3">
-          <div className="bg-[#483b35] text-white px-3 py-1 rounded-md font-semibold">{formatarPreco(acf.preco)}</div>
+          <div className="bg-[#483b35] text-white px-3 py-1 rounded-md font-semibold">
+            {formatarPreco(acf.preco!)}
+          </div>
         </div>
       </div>
 
@@ -53,29 +56,31 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           </div>
         </div>
 
-        <h3 className="font-semibold text-lg mb-3 line-clamp-2">{imovel.title}</h3>
+        <h3 className="font-semibold text-lg mb-3 line-clamp-2">
+          {imovel.title}
+        </h3>
 
         {/* Características principais */}
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          {acf.quartos > 0 && (
+          {acf.quartos! > 0 && (
             <div className="flex items-center gap-1">
               <Bed className="h-4 w-4" />
               <span>{acf.quartos}</span>
             </div>
           )}
-          {acf.banheiros > 0 && (
+          {acf.banheiros! > 0 && (
             <div className="flex items-center gap-1">
               <Bath className="h-4 w-4" />
               <span>{acf.banheiros}</span>
             </div>
           )}
-          {acf.vagasGaragem > 0 && (
+          {acf.vagasGaragem! > 0 && (
             <div className="flex items-center gap-1">
               <Car className="h-4 w-4" />
               <span>{acf.vagasGaragem}</span>
             </div>
           )}
-          {acf.areaTotal > 0 && (
+          {acf.areaTotal! > 0 && (
             <div className="flex items-center gap-1">
               <Maximize className="h-4 w-4" />
               <span>{acf.areaTotal}m²</span>
@@ -93,5 +98,5 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
         </Link>
       </CardFooter>
     </Card>
-  )
+  );
 }
