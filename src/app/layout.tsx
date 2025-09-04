@@ -5,6 +5,7 @@ import { Header } from "../components/header"
 import { Footer } from "../components/footer"
 import { FavoritesProvider } from "../context/FavoritesContext"
 import { Toaster } from "../components/ui/sonner"
+import { TooltipProvider } from "../components/ui/tooltip"
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -28,10 +29,12 @@ export default function RootLayout({
     <html lang="pt-BR" className={plusJakarta.variable}>
       <body className="antialiased flex flex-col min-h-screen font-sans">
         <FavoritesProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <Toaster position="top-center" />
+          <TooltipProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <Toaster position="top-center" />
+          </TooltipProvider>
         </FavoritesProvider>
       </body>
     </html>

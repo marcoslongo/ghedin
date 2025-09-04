@@ -23,7 +23,7 @@ export function FavoritoButton({ imovel }: FavoritoButtonProps) {
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     toggleFavorite({
       id: imovel.id,
       title: imovel.title,
@@ -33,28 +33,17 @@ export function FavoritoButton({ imovel }: FavoritoButtonProps) {
   };
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            onClick={handleToggleFavorite}
-            className={`flex absolute z-10 rounded-full w-10 h-10 border border-transparent cursor-pointer right-3 top-3 transition-all duration-200 ${
-              isCurrentFavorite
-                ? "bg-[#9a8167] text-white hover:bg-[#9a8167]"
-                : "bg-white text-[#483b35] hover:bg-[#9a8167] hover:border-[#9a8167] hover:text-white"
+      <Button
+        onClick={handleToggleFavorite}
+        className={`flex absolute z-10 rounded-full w-10 h-10 border border-transparent cursor-pointer right-3 top-3 transition-all duration-200 ${isCurrentFavorite
+          ? "bg-[#9a8167] text-white hover:bg-[#9a8167]"
+          : "bg-white text-[#483b35] hover:bg-[#9a8167] hover:border-[#9a8167] hover:text-white"
+          }`}
+      >
+        <Heart
+          className={`w-5 h-5 transition-all duration-200 ${isCurrentFavorite ? "fill-current" : ""
             }`}
-          >
-            <Heart 
-              className={`w-5 h-5 transition-all duration-200 ${
-                isCurrentFavorite ? "fill-current" : ""
-              }`} 
-            />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent side="top">
-          {isCurrentFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+        />
+      </Button>
   );
 }
