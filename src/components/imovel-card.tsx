@@ -30,15 +30,17 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
         )}
 
         <div className="absolute top-3 left-3 flex gap-2">
-          {acf.destaque && <Badge variant="destructive">Destaque</Badge>}
-          <Badge variant="secondary" className="capitalize">
-            {acf.tipoNegocio}
-          </Badge>
+          {acf?.destaque && <Badge variant="destructive">Destaque</Badge>}
+          {acf?.tipoNegocio && (
+            <Badge variant="secondary" className="capitalize">
+              {acf?.tipoNegocio}
+            </Badge>
+          )}
         </div>
 
         <div className="absolute bottom-3 left-3">
           <div className="bg-[#483b35] text-white px-3 py-1 rounded-md font-semibold">
-            {formatPrice(acf.preco!)}
+            {formatPrice(acf?.preco!)}
           </div>
         </div>
       </div>
@@ -48,9 +50,9 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
           <div className="text-sm text-muted-foreground">
             <div>
-              {acf.bairro}, {acf.cidade}
+              {acf?.bairro!}, {acf?.cidade!}
             </div>
-            <div className="capitalize text-xs">{acf.tipoImovel}</div>
+            <div className="capitalize text-xs">{acf?.tipoImovel!}</div>
           </div>
         </div>
 
@@ -59,28 +61,28 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
         </h3>
 
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          {acf.quartos! > 0 && (
+          {acf?.quartos! > 0 && (
             <div className="flex items-center gap-1">
               <Bed className="h-4 w-4" />
-              <span>{acf.quartos}</span>
+              <span>{acf?.quartos}</span>
             </div>
           )}
-          {acf.banheiros! > 0 && (
+          {acf?.banheiros! > 0 && (
             <div className="flex items-center gap-1">
               <Bath className="h-4 w-4" />
-              <span>{acf.banheiros}</span>
+              <span>{acf?.banheiros}</span>
             </div>
           )}
-          {acf.vagasGaragem! > 0 && (
+          {acf?.vagasGaragem! > 0 && (
             <div className="flex items-center gap-1">
               <Car className="h-4 w-4" />
-              <span>{acf.vagasGaragem}</span>
+              <span>{acf?.vagasGaragem}</span>
             </div>
           )}
-          {acf.areaTotal! > 0 && (
+          {acf?.areaTotal! > 0 && (
             <div className="flex items-center gap-1">
               <Maximize className="h-4 w-4" />
-              <span>{acf.areaTotal}m²</span>
+              <span>{acf?.areaTotal}m²</span>
             </div>
           )}
         </div>

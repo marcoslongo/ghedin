@@ -21,30 +21,38 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("favorites");
-    if (stored) setFavorites(JSON.parse(stored));
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("favorites");
+      if (stored) setFavorites(JSON.parse(stored));
+      setIsLoaded(true);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    if (isLoaded) {
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  }, [favorites, isLoaded]);
 
   const toggleFavorite = (fav: Favorite) => {
-    const exists = favorites.some((f) => f.id === fav.id);
+    setFavorites((prev) => {
+      const exists = prev.some((f) => f.id === fav.id);
 
-    if (exists) {
-      setFavorites((prev) => prev.filter((f) => f.id !== fav.id));
-      toast.error("Removido dos favoritos", {
-        description: `"${fav.title}" foi removido da sua lista.`,
-      });
-    } else {
-      setFavorites((prev) => [...prev, fav]);
+      if (exists) {
+        toast.error("Removido dos favoritos", {
+          description: `"${fav.title}" foi removido da sua lista.`,
+        });
+        return prev.filter((f) => f.id !== fav.id);
+      }
+
       toast.success("Adicionado aos favoritos", {
         description: `"${fav.title}" foi adicionado à sua lista.`,
       });
-    }
+      return [...prev, fav];
+    });
   };
 
   const isFavorite = (id: string) => favorites.some((f) => f.id === id);
