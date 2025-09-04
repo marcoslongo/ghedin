@@ -102,7 +102,7 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                   <div className="flex gap-2">
                     <Button
                       variant={favorited ? "default" : "outline"}
-                      className={`flex-1 ${favorited ? "bg-red-500 text-white" : "bg-transparent"}`}
+                      className={`flex-1 cursor-pointer hover:bg-[#9a8167] hover:text-white ${favorited ? "bg-[#9a8167] text-white" : "bg-transparent"}`}
                       onClick={() =>
                         toggleFavorite({
                           id: imovel.id,

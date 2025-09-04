@@ -31,7 +31,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <Toaster position="bottom-right" />
+          <Toaster position="top-center" />
         </FavoritesProvider>
       </body>
     </html>
