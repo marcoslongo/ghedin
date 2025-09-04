@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import { Header } from "../components/header"
 import { Footer } from "../components/footer"
+import { FavoritesProvider } from "../context/FavoritesContext"
+import { Toaster } from "../components/ui/sonner"
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={plusJakarta.variable}>
       <body className="antialiased flex flex-col min-h-screen font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <FavoritesProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster position="bottom-right" />
+        </FavoritesProvider>
       </body>
     </html>
   )
