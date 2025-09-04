@@ -1,10 +1,13 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Bed, Bath, Car, Maximize } from "lucide-react";
-import { Card, CardContent, CardFooter } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { GetImoveisQuery } from "@/src/generated/graphql";
 import { formatPrice } from "../utils/formatPrice";
+import { FavoritoButton } from "./button-favorito";
 
 interface ImovelCardProps {
   imovel: NonNullable<GetImoveisQuery["imoveis"]>["nodes"][number];
@@ -14,7 +17,15 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
   const acf = imovel.acfImoveis!;
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow relative">
+      <FavoritoButton 
+        imovel={{
+          id: imovel.id!,
+          title: imovel.title!,
+          slug: imovel.slug!,
+          featuredImage: imovel.featuredImage,
+        }}
+      />
       <Link
         href={`/imoveis/${imovel.slug}`}
         title={imovel.title!}
@@ -92,6 +103,6 @@ export function ImovelCard({ imovel }: ImovelCardProps) {
           </div>
         </CardContent>
       </Link>
-    </Card >
+    </Card>
   );
 }

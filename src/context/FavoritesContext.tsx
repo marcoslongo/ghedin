@@ -1,72 +1,52 @@
 "use client";
-import React, { createContext, useContext, useEffect, useState } from "react";
+
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import { toast } from "sonner";
 
-type Favorite = {
+interface FavoriteItem {
   id: string;
   title: string;
   slug: string;
   image?: string;
-};
+}
 
-type FavoritesContextType = {
-  favorites: Favorite[];
-  toggleFavorite: (fav: Favorite) => void;
+interface FavoritesContextType {
+  favorites: FavoriteItem[];
+  toggleFavorite: (item: FavoriteItem) => void;
   isFavorite: (id: string) => boolean;
-};
+}
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(
-  undefined
-);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
-export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [favorites, setFavorites] = useState<Favorite[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
+  const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("favorites");
-      if (stored) setFavorites(JSON.parse(stored));
-      setIsLoaded(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-    }
-  }, [favorites, isLoaded]);
-
-  const toggleFavorite = (fav: Favorite) => {
+  const toggleFavorite = (item: FavoriteItem) => {
     setFavorites((prev) => {
-      const exists = prev.some((f) => f.id === fav.id);
-
+      const exists = prev.some((fav) => fav.id === item.id);
       if (exists) {
-        toast.error("Removido dos favoritos", {
-          description: `"${fav.title}" foi removido da sua lista.`,
-        });
-        return prev.filter((f) => f.id !== fav.id);
+        toast.error(`Removido de favoritos: ${item.title}`);
+        return prev.filter((fav) => fav.id !== item.id);
+      } else {
+        toast.success(`Adicionado aos favoritos: ${item.title}`);
+        return [...prev, item];
       }
-
-      toast.success("Adicionado aos favoritos", {
-        description: `"${fav.title}" foi adicionado à sua lista.`,
-      });
-      return [...prev, fav];
     });
   };
 
-  const isFavorite = (id: string) => favorites.some((f) => f.id === id);
+  const isFavorite = (id: string) => favorites.some((fav) => fav.id === id);
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );
-}
+};
 
-export function useFavorites() {
+export const useFavorites = () => {
   const context = useContext(FavoritesContext);
-  if (!context)
-    throw new Error("useFavorites must be used within FavoritesProvider");
+  if (!context) {
+    throw new Error("useFavorites must be used within a FavoritesProvider");
+  }
   return context;
-}
+};
