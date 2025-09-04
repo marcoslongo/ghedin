@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 interface FavoriteItem {
   id: string;
@@ -24,11 +25,19 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const toggleFavorite = (item: FavoriteItem) => {
     setFavorites((prev) => {
       const exists = prev.some((fav) => fav.id === item.id);
+
       if (exists) {
         toast.error(`Removido de favoritos: ${item.title}`);
         return prev.filter((fav) => fav.id !== item.id);
       } else {
-        toast.success(`Adicionado aos favoritos: ${item.title}`);
+        toast.success(
+          <span>
+            Adicionado aos favoritos: <strong>{item.title}</strong>.{" "}
+            <Link href="/favoritos" className="underline font-medium">
+              Ver favoritos
+            </Link>
+          </span>
+        );
         return [...prev, item];
       }
     });
