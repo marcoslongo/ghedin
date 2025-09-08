@@ -237,9 +237,550 @@ export enum AvatarRatingEnum {
   X = 'X'
 }
 
+/** Edge between a Node and a connected Bairro_imovel */
+export type BairroImovelConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected Bairro_imovel Node */
+  node: Bairro_Imovel;
+};
+
+/** The Bairro_imovel type */
+export type Bairro_Imovel = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
+  __typename?: 'Bairro_imovel';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
+  /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+  ancestors?: Maybe<Bairro_ImovelToAncestorsBairro_ImovelConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  bairro_imovelId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the Bairro_imovel type and its children Bairro_imovels. */
+  children?: Maybe<Bairro_ImovelToBairro_ImovelConnection>;
+  /** Connection between the Bairro_imovel type and the ContentNode type */
+  contentNodes?: Maybe<Bairro_ImovelToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Connection between the Bairro_imovel type and the Imovel type */
+  imoveis?: Maybe<Bairro_ImovelToImovelConnection>;
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Bairro_imovel type and its parent Bairro_imovel. */
+  parent?: Maybe<Bairro_ImovelToParentBairro_ImovelConnectionEdge>;
+  /** Database id of the parent node */
+  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** The globally unique identifier of the parent node. */
+  parentId?: Maybe<Scalars['ID']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Bairro_imovel type and the Taxonomy type */
+  taxonomy?: Maybe<Bairro_ImovelToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Bairro_ImovelToBairro_ImovelConnectionWhereArgs>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Bairro_ImovelToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Bairro_imovel type */
+export type Bairro_ImovelImoveisArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Bairro_ImovelToImovelConnectionWhereArgs>;
+};
+
+/** Page Info on the connected BairroImovelConnectionEdge */
+export type Bairro_ImovelConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum Bairro_ImovelIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the Bairro_imovel type and the Bairro_imovel type */
+export type Bairro_ImovelToAncestorsBairro_ImovelConnection = Connection & {
+  __typename?: 'Bairro_imovelToAncestorsBairro_imovelConnection';
+  /** Edges for the Bairro_imovelToAncestorsBairro_imovelConnection connection */
+  edges: Array<Bairro_ImovelToAncestorsBairro_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Bairro_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Bairro_ImovelToAncestorsBairro_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Bairro_ImovelToAncestorsBairro_ImovelConnectionEdge = BairroImovelConnectionEdge & Edge & {
+  __typename?: 'Bairro_imovelToAncestorsBairro_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Bairro_Imovel;
+};
+
+/** Page Info on the &quot;Bairro_imovelToAncestorsBairro_imovelConnection&quot; */
+export type Bairro_ImovelToAncestorsBairro_ImovelConnectionPageInfo = Bairro_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Bairro_imovelToAncestorsBairro_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the Bairro_imovel type and the Bairro_imovel type */
+export type Bairro_ImovelToBairro_ImovelConnection = Connection & {
+  __typename?: 'Bairro_imovelToBairro_imovelConnection';
+  /** Edges for the Bairro_imovelToBairro_imovelConnection connection */
+  edges: Array<Bairro_ImovelToBairro_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Bairro_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Bairro_ImovelToBairro_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Bairro_ImovelToBairro_ImovelConnectionEdge = BairroImovelConnectionEdge & Edge & {
+  __typename?: 'Bairro_imovelToBairro_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Bairro_Imovel;
+};
+
+/** Page Info on the &quot;Bairro_imovelToBairro_imovelConnection&quot; */
+export type Bairro_ImovelToBairro_ImovelConnectionPageInfo = Bairro_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Bairro_imovelToBairro_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Bairro_imovelToBairro_imovelConnection connection */
+export type Bairro_ImovelToBairro_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Bairro_imovel type and the ContentNode type */
+export type Bairro_ImovelToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'Bairro_imovelToContentNodeConnection';
+  /** Edges for the Bairro_imovelToContentNodeConnection connection */
+  edges: Array<Bairro_ImovelToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: Bairro_ImovelToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Bairro_ImovelToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'Bairro_imovelToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;Bairro_imovelToContentNodeConnection&quot; */
+export type Bairro_ImovelToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Bairro_imovelToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Bairro_imovelToContentNodeConnection connection */
+export type Bairro_ImovelToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfBairroImovelEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Bairro_ImovelToContentNodeConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Bairro_ImovelToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Bairro_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Bairro_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Bairro_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Bairro_ImovelToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Bairro_ImovelToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Bairro_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Bairro_imovel type and the Imovel type */
+export type Bairro_ImovelToImovelConnection = Connection & ImovelConnection & {
+  __typename?: 'Bairro_imovelToImovelConnection';
+  /** Edges for the Bairro_imovelToImovelConnection connection */
+  edges: Array<Bairro_ImovelToImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Bairro_ImovelToImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Bairro_ImovelToImovelConnectionEdge = Edge & ImovelConnectionEdge & {
+  __typename?: 'Bairro_imovelToImovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Imovel;
+};
+
+/** Page Info on the &quot;Bairro_imovelToImovelConnection&quot; */
+export type Bairro_ImovelToImovelConnectionPageInfo = ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Bairro_imovelToImovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Bairro_imovelToImovelConnection connection */
+export type Bairro_ImovelToImovelConnectionWhereArgs = {
+  /** The user that's connected as the author of the object. Use the userId for the author object. */
+  author?: InputMaybe<Scalars['Int']['input']>;
+  /** Find objects connected to author(s) in the array of author's userIds */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Find objects connected to the author by the author's nicename */
+  authorName?: InputMaybe<Scalars['String']['input']>;
+  /** Find objects NOT connected to author(s) in the array of author's userIds */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Bairro_ImovelToImovelConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Bairro_ImovelToImovelConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Bairro_ImovelToImovelConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Bairro_ImovelToImovelConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Bairro_ImovelToImovelConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Bairro_ImovelToImovelConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Bairro_ImovelToImovelConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Bairro_ImovelToImovelConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Bairro_imovel type and the Bairro_imovel type */
+export type Bairro_ImovelToParentBairro_ImovelConnectionEdge = BairroImovelConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'Bairro_imovelToParentBairro_imovelConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Bairro_Imovel;
+};
+
+/** Connection between the Bairro_imovel type and the Taxonomy type */
+export type Bairro_ImovelToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'Bairro_imovelToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
 /** The category type */
-export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'Category';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<CategoryToAncestorsCategoryConnection>;
   /**
@@ -565,6 +1106,7 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<CategoryToContentNodeConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -592,6 +1134,51 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type CategoryToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<CategoryToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<CategoryToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum CategoryToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type CategoryToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<CategoryToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum CategoryToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the Category type and the category type */
 export type CategoryToParentCategoryConnectionEdge = CategoryConnectionEdge & Edge & OneToOneConnection & {
@@ -663,6 +1250,7 @@ export type CategoryToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<CategoryToPostConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -703,6 +1291,51 @@ export type CategoryToPostConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CategoryToPostConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<CategoryToPostConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<CategoryToPostConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum CategoryToPostConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type CategoryToPostConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<CategoryToPostConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum CategoryToPostConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
 /** Connection between the Category type and the Taxonomy type */
 export type CategoryToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
   __typename?: 'CategoryToTaxonomyConnectionEdge';
@@ -712,9 +1345,550 @@ export type CategoryToTaxonomyConnectionEdge = Edge & OneToOneConnection & Taxon
   node: Taxonomy;
 };
 
+/** Edge between a Node and a connected Cidade_imovel */
+export type CidadeImovelConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected Cidade_imovel Node */
+  node: Cidade_Imovel;
+};
+
+/** The Cidade_imovel type */
+export type Cidade_Imovel = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
+  __typename?: 'Cidade_imovel';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
+  /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+  ancestors?: Maybe<Cidade_ImovelToAncestorsCidade_ImovelConnection>;
+  /** Connection between the Cidade_imovel type and its children Cidade_imovels. */
+  children?: Maybe<Cidade_ImovelToCidade_ImovelConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  cidade_imovelId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the Cidade_imovel type and the ContentNode type */
+  contentNodes?: Maybe<Cidade_ImovelToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Connection between the Cidade_imovel type and the Imovel type */
+  imoveis?: Maybe<Cidade_ImovelToImovelConnection>;
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Cidade_imovel type and its parent Cidade_imovel. */
+  parent?: Maybe<Cidade_ImovelToParentCidade_ImovelConnectionEdge>;
+  /** Database id of the parent node */
+  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** The globally unique identifier of the parent node. */
+  parentId?: Maybe<Scalars['ID']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Cidade_imovel type and the Taxonomy type */
+  taxonomy?: Maybe<Cidade_ImovelToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Cidade_ImovelToCidade_ImovelConnectionWhereArgs>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Cidade_ImovelToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Cidade_imovel type */
+export type Cidade_ImovelImoveisArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Cidade_ImovelToImovelConnectionWhereArgs>;
+};
+
+/** Page Info on the connected CidadeImovelConnectionEdge */
+export type Cidade_ImovelConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum Cidade_ImovelIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the Cidade_imovel type and the Cidade_imovel type */
+export type Cidade_ImovelToAncestorsCidade_ImovelConnection = Connection & {
+  __typename?: 'Cidade_imovelToAncestorsCidade_imovelConnection';
+  /** Edges for the Cidade_imovelToAncestorsCidade_imovelConnection connection */
+  edges: Array<Cidade_ImovelToAncestorsCidade_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Cidade_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Cidade_ImovelToAncestorsCidade_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Cidade_ImovelToAncestorsCidade_ImovelConnectionEdge = CidadeImovelConnectionEdge & Edge & {
+  __typename?: 'Cidade_imovelToAncestorsCidade_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Cidade_Imovel;
+};
+
+/** Page Info on the &quot;Cidade_imovelToAncestorsCidade_imovelConnection&quot; */
+export type Cidade_ImovelToAncestorsCidade_ImovelConnectionPageInfo = Cidade_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Cidade_imovelToAncestorsCidade_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the Cidade_imovel type and the Cidade_imovel type */
+export type Cidade_ImovelToCidade_ImovelConnection = Connection & {
+  __typename?: 'Cidade_imovelToCidade_imovelConnection';
+  /** Edges for the Cidade_imovelToCidade_imovelConnection connection */
+  edges: Array<Cidade_ImovelToCidade_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Cidade_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Cidade_ImovelToCidade_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Cidade_ImovelToCidade_ImovelConnectionEdge = CidadeImovelConnectionEdge & Edge & {
+  __typename?: 'Cidade_imovelToCidade_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Cidade_Imovel;
+};
+
+/** Page Info on the &quot;Cidade_imovelToCidade_imovelConnection&quot; */
+export type Cidade_ImovelToCidade_ImovelConnectionPageInfo = Cidade_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Cidade_imovelToCidade_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Cidade_imovelToCidade_imovelConnection connection */
+export type Cidade_ImovelToCidade_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Cidade_imovel type and the ContentNode type */
+export type Cidade_ImovelToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'Cidade_imovelToContentNodeConnection';
+  /** Edges for the Cidade_imovelToContentNodeConnection connection */
+  edges: Array<Cidade_ImovelToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: Cidade_ImovelToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Cidade_ImovelToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'Cidade_imovelToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;Cidade_imovelToContentNodeConnection&quot; */
+export type Cidade_ImovelToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Cidade_imovelToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Cidade_imovelToContentNodeConnection connection */
+export type Cidade_ImovelToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfCidadeImovelEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Cidade_ImovelToContentNodeConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Cidade_ImovelToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Cidade_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Cidade_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Cidade_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Cidade_ImovelToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Cidade_ImovelToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Cidade_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Cidade_imovel type and the Imovel type */
+export type Cidade_ImovelToImovelConnection = Connection & ImovelConnection & {
+  __typename?: 'Cidade_imovelToImovelConnection';
+  /** Edges for the Cidade_imovelToImovelConnection connection */
+  edges: Array<Cidade_ImovelToImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Cidade_ImovelToImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Cidade_ImovelToImovelConnectionEdge = Edge & ImovelConnectionEdge & {
+  __typename?: 'Cidade_imovelToImovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Imovel;
+};
+
+/** Page Info on the &quot;Cidade_imovelToImovelConnection&quot; */
+export type Cidade_ImovelToImovelConnectionPageInfo = ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Cidade_imovelToImovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Cidade_imovelToImovelConnection connection */
+export type Cidade_ImovelToImovelConnectionWhereArgs = {
+  /** The user that's connected as the author of the object. Use the userId for the author object. */
+  author?: InputMaybe<Scalars['Int']['input']>;
+  /** Find objects connected to author(s) in the array of author's userIds */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Find objects connected to the author by the author's nicename */
+  authorName?: InputMaybe<Scalars['String']['input']>;
+  /** Find objects NOT connected to author(s) in the array of author's userIds */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Cidade_ImovelToImovelConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Cidade_ImovelToImovelConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Cidade_ImovelToImovelConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Cidade_ImovelToImovelConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Cidade_ImovelToImovelConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Cidade_ImovelToImovelConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Cidade_ImovelToImovelConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Cidade_ImovelToImovelConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Cidade_imovel type and the Cidade_imovel type */
+export type Cidade_ImovelToParentCidade_ImovelConnectionEdge = CidadeImovelConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'Cidade_imovelToParentCidade_imovelConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Cidade_Imovel;
+};
+
+/** Connection between the Cidade_imovel type and the Taxonomy type */
+export type Cidade_ImovelToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'Cidade_imovelToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
 /** A Comment object */
-export type Comment = DatabaseIdentifier & Node & UniformResourceIdentifiable & {
+export type Comment = DatabaseIdentifier & Node & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'Comment';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** User agent used to post the comment. This field is equivalent to WP_Comment-&gt;comment_agent and the value matching the &quot;comment_agent&quot; column in SQL. */
   agent?: Maybe<Scalars['String']['output']>;
   /**
@@ -1147,6 +2321,8 @@ export type Connection = {
 
 /** Nodes used to manage content */
 export type ContentNode = {
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
   /** The name of the Content Type the node belongs to */
@@ -1368,6 +2544,8 @@ export type ContentNodeToEnqueuedStylesheetConnectionPageInfo = EnqueuedStyleshe
 
 /** The template assigned to a node of content */
 export type ContentTemplate = {
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
@@ -1561,6 +2739,7 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -1588,6 +2767,51 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ContentTypeToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum ContentTypeToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type ContentTypeToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<ContentTypeToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum ContentTypeToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the ContentType type and the Taxonomy type */
 export type ContentTypeToTaxonomyConnection = Connection & TaxonomyConnection & {
@@ -1624,10 +2848,22 @@ export type ContentTypeToTaxonomyConnectionPageInfo = PageInfo & TaxonomyConnect
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+/** Allowed Content Types of the BairroImovel taxonomy. */
+export enum ContentTypesOfBairroImovelEnum {
+  /** The Type of Content object */
+  Imoveis = 'IMOVEIS'
+}
+
 /** Allowed Content Types of the Category taxonomy. */
 export enum ContentTypesOfCategoryEnum {
   /** The Type of Content object */
   Post = 'POST'
+}
+
+/** Allowed Content Types of the CidadeImovel taxonomy. */
+export enum ContentTypesOfCidadeImovelEnum {
+  /** The Type of Content object */
+  Imoveis = 'IMOVEIS'
 }
 
 /** Allowed Content Types of the PostFormat taxonomy. */
@@ -1641,6 +2877,39 @@ export enum ContentTypesOfTagEnum {
   /** The Type of Content object */
   Post = 'POST'
 }
+
+/** Allowed Content Types of the TipoImovel taxonomy. */
+export enum ContentTypesOfTipoImovelEnum {
+  /** The Type of Content object */
+  Imoveis = 'IMOVEIS'
+}
+
+/** Input for the createBairro_imovel mutation. */
+export type CreateBairro_ImovelInput = {
+  /** The slug that the bairro_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the bairro_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the bairro_imovel object to mutate */
+  name: Scalars['String']['input'];
+  /** The database ID of the bairro_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the bairro_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createBairro_imovel mutation. */
+export type CreateBairro_ImovelPayload = {
+  __typename?: 'CreateBairro_imovelPayload';
+  /** The created bairro_imovel */
+  bairro_imovel?: Maybe<Bairro_Imovel>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
 
 /** Input for the createCategory mutation. */
 export type CreateCategoryInput = {
@@ -1665,6 +2934,33 @@ export type CreateCategoryPayload = {
   __typename?: 'CreateCategoryPayload';
   /** The created category */
   category?: Maybe<Category>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the createCidade_imovel mutation. */
+export type CreateCidade_ImovelInput = {
+  /** The slug that the cidade_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the cidade_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the cidade_imovel object to mutate */
+  name: Scalars['String']['input'];
+  /** The database ID of the cidade_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the cidade_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createCidade_imovel mutation. */
+export type CreateCidade_ImovelPayload = {
+  __typename?: 'CreateCidade_imovelPayload';
+  /** The created cidade_imovel */
+  cidade_imovel?: Maybe<Cidade_Imovel>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
@@ -1708,6 +3004,10 @@ export type CreateCommentPayload = {
 export type CreateImovelInput = {
   /** The userId to assign as the author of the object */
   authorId?: InputMaybe<Scalars['ID']['input']>;
+  /** Set connections between the Imovel and Bairro_imovels */
+  bairro_imovels?: InputMaybe<ImovelBairro_ImovelsInput>;
+  /** Set connections between the Imovel and Cidade_imovels */
+  cidade_imovels?: InputMaybe<ImovelCidade_ImovelsInput>;
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
@@ -1720,6 +3020,8 @@ export type CreateImovelInput = {
   slug?: InputMaybe<Scalars['String']['input']>;
   /** The status of the object */
   status?: InputMaybe<PostStatusEnum>;
+  /** Set connections between the Imovel and Tipo_imovels */
+  tipo_imovels?: InputMaybe<ImovelTipo_ImovelsInput>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1904,6 +3206,33 @@ export type CreateTagPayload = {
   tag?: Maybe<Tag>;
 };
 
+/** Input for the createTipo_imovel mutation. */
+export type CreateTipo_ImovelInput = {
+  /** The slug that the tipo_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the tipo_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the tipo_imovel object to mutate */
+  name: Scalars['String']['input'];
+  /** The database ID of the tipo_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the tipo_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createTipo_imovel mutation. */
+export type CreateTipo_ImovelPayload = {
+  __typename?: 'CreateTipo_imovelPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created tipo_imovel */
+  tipo_imovel?: Maybe<Tipo_Imovel>;
+};
+
 /** Input for the createUser mutation. */
 export type CreateUserInput = {
   /** User's AOL IM account. */
@@ -2000,10 +3329,31 @@ export type DateQueryInput = {
 };
 
 /** The template assigned to the node */
-export type DefaultTemplate = ContentTemplate & {
+export type DefaultTemplate = ContentTemplate & WithAcfAcfImoveis & {
   __typename?: 'DefaultTemplate';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the deleteBairro_imovel mutation. */
+export type DeleteBairro_ImovelInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Bairro_imovel to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteBairro_imovel mutation. */
+export type DeleteBairro_ImovelPayload = {
+  __typename?: 'DeleteBairro_imovelPayload';
+  /** The deleted term object */
+  bairro_imovel?: Maybe<Bairro_Imovel>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
 };
 
 /** Input for the deleteCategory mutation. */
@@ -2019,6 +3369,25 @@ export type DeleteCategoryPayload = {
   __typename?: 'DeleteCategoryPayload';
   /** The deleted term object */
   category?: Maybe<Category>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+};
+
+/** Input for the deleteCidade_imovel mutation. */
+export type DeleteCidade_ImovelInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Cidade_imovel to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteCidade_imovel mutation. */
+export type DeleteCidade_ImovelPayload = {
+  __typename?: 'DeleteCidade_imovelPayload';
+  /** The deleted term object */
+  cidade_imovel?: Maybe<Cidade_Imovel>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The ID of the deleted object */
@@ -2172,6 +3541,25 @@ export type DeleteTagPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The deleted term object */
   tag?: Maybe<Tag>;
+};
+
+/** Input for the deleteTipo_imovel mutation. */
+export type DeleteTipo_ImovelInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Tipo_imovel to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteTipo_imovel mutation. */
+export type DeleteTipo_ImovelPayload = {
+  __typename?: 'DeleteTipo_imovelPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  tipo_imovel?: Maybe<Tipo_Imovel>;
 };
 
 /** Input for the deleteUser mutation. */
@@ -2417,6 +3805,8 @@ export type GeneralSettings = {
 
 /** Content node with hierarchical (parent/child) relationships */
 export type HierarchicalContentNode = {
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
   /** Connection between the HierarchicalContentNode type and the ContentNode type */
@@ -2572,6 +3962,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -2599,6 +3990,51 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 export type HierarchicalContentNodeToContentNodeChildrenConnection = Connection & ContentNodeConnection & {
@@ -2647,6 +4083,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -2675,6 +4112,51 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 export type HierarchicalContentNodeToParentContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'HierarchicalContentNodeToParentContentNodeConnectionEdge';
@@ -2698,6 +4180,8 @@ export type HierarchicalNode = {
 
 /** Term node with hierarchical (parent/child) relationships */
 export type HierarchicalTermNode = {
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The number of objects connected to the object */
   count?: Maybe<Scalars['Int']['output']>;
   /** The unique identifier stored in the database */
@@ -2776,6 +4260,10 @@ export type Imovel = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   authorDatabaseId?: Maybe<Scalars['Int']['output']>;
   /** The globally unique identifier of the author of the node */
   authorId?: Maybe<Scalars['ID']['output']>;
+  /** Connection between the Imovel type and the Bairro_imovel type */
+  bairroImovels?: Maybe<ImovelToBairro_ImovelConnection>;
+  /** Connection between the Imovel type and the Cidade_imovel type */
+  cidadeImovels?: Maybe<ImovelToCidade_ImovelConnection>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
   /** The name of the Content Type the node belongs to */
@@ -2860,6 +4348,10 @@ export type Imovel = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   status?: Maybe<Scalars['String']['output']>;
   /** The template assigned to the node */
   template?: Maybe<ContentTemplate>;
+  /** Connection between the Imovel type and the TermNode type */
+  terms?: Maybe<ImovelToTermNodeConnection>;
+  /** Connection between the Imovel type and the Tipo_imovel type */
+  tipoImovels?: Maybe<ImovelToTipo_ImovelConnection>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
@@ -2873,6 +4365,26 @@ export type ImovelAncestorsArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Imovel type */
+export type ImovelBairroImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ImovelToBairro_ImovelConnectionWhereArgs>;
+};
+
+
+/** The Imovel type */
+export type ImovelCidadeImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ImovelToCidade_ImovelConnectionWhereArgs>;
 };
 
 
@@ -2905,8 +4417,68 @@ export type ImovelRevisionsArgs = {
 
 
 /** The Imovel type */
+export type ImovelTermsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ImovelToTermNodeConnectionWhereArgs>;
+};
+
+
+/** The Imovel type */
+export type ImovelTipoImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ImovelToTipo_ImovelConnectionWhereArgs>;
+};
+
+
+/** The Imovel type */
 export type ImovelTitleArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** Set relationships between the Imovel to Bairro_imovels */
+export type ImovelBairro_ImovelsInput = {
+  /** If true, this will append the Bairro_imovel to existing related Bairro_imovels. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ImovelBairro_ImovelsNodeInput>>>;
+};
+
+/** List of Bairro_imovels to connect the Imovel to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ImovelBairro_ImovelsNodeInput = {
+  /** The description of the Bairro_imovel. This field is used to set a description of the Bairro_imovel if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Bairro_imovel. If present, this will be used to connect to the Imovel. If no existing Bairro_imovel exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the Bairro_imovel. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the Bairro_imovel. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the Imovel to Cidade_imovels */
+export type ImovelCidade_ImovelsInput = {
+  /** If true, this will append the Cidade_imovel to existing related Cidade_imovels. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ImovelCidade_ImovelsNodeInput>>>;
+};
+
+/** List of Cidade_imovels to connect the Imovel to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ImovelCidade_ImovelsNodeInput = {
+  /** The description of the Cidade_imovel. This field is used to set a description of the Cidade_imovel if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Cidade_imovel. If present, this will be used to connect to the Imovel. If no existing Cidade_imovel exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the Cidade_imovel. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the Cidade_imovel. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Connection to Imovel Nodes */
@@ -2952,6 +4524,184 @@ export enum ImovelIdType {
   /** Identify a resource by the URI. */
   Uri = 'URI'
 }
+
+/** Set relationships between the Imovel to Tipo_imovels */
+export type ImovelTipo_ImovelsInput = {
+  /** If true, this will append the Tipo_imovel to existing related Tipo_imovels. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ImovelTipo_ImovelsNodeInput>>>;
+};
+
+/** List of Tipo_imovels to connect the Imovel to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ImovelTipo_ImovelsNodeInput = {
+  /** The description of the Tipo_imovel. This field is used to set a description of the Tipo_imovel if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Tipo_imovel. If present, this will be used to connect to the Imovel. If no existing Tipo_imovel exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the Tipo_imovel. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the Tipo_imovel. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the Imovel type and the Bairro_imovel type */
+export type ImovelToBairro_ImovelConnection = Connection & {
+  __typename?: 'ImovelToBairro_imovelConnection';
+  /** Edges for the ImovelToBairro_imovelConnection connection */
+  edges: Array<ImovelToBairro_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Bairro_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: ImovelToBairro_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type ImovelToBairro_ImovelConnectionEdge = BairroImovelConnectionEdge & Edge & {
+  __typename?: 'ImovelToBairro_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Bairro_Imovel;
+};
+
+/** Page Info on the &quot;ImovelToBairro_imovelConnection&quot; */
+export type ImovelToBairro_ImovelConnectionPageInfo = Bairro_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'ImovelToBairro_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the ImovelToBairro_imovelConnection connection */
+export type ImovelToBairro_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Imovel type and the Cidade_imovel type */
+export type ImovelToCidade_ImovelConnection = Connection & {
+  __typename?: 'ImovelToCidade_imovelConnection';
+  /** Edges for the ImovelToCidade_imovelConnection connection */
+  edges: Array<ImovelToCidade_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Cidade_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: ImovelToCidade_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type ImovelToCidade_ImovelConnectionEdge = CidadeImovelConnectionEdge & Edge & {
+  __typename?: 'ImovelToCidade_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Cidade_Imovel;
+};
+
+/** Page Info on the &quot;ImovelToCidade_imovelConnection&quot; */
+export type ImovelToCidade_ImovelConnectionPageInfo = Cidade_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'ImovelToCidade_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the ImovelToCidade_imovelConnection connection */
+export type ImovelToCidade_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 /** Connection between the Imovel type and the Imovel type */
 export type ImovelToImovelConnection = Connection & ImovelConnection & {
@@ -3068,6 +4818,7 @@ export type ImovelToRevisionConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<ImovelToRevisionConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -3096,6 +4847,211 @@ export type ImovelToRevisionConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ImovelToRevisionConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<ImovelToRevisionConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<ImovelToRevisionConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum ImovelToRevisionConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type ImovelToRevisionConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<ImovelToRevisionConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum ImovelToRevisionConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Imovel type and the TermNode type */
+export type ImovelToTermNodeConnection = Connection & TermNodeConnection & {
+  __typename?: 'ImovelToTermNodeConnection';
+  /** Edges for the ImovelToTermNodeConnection connection */
+  edges: Array<ImovelToTermNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<TermNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: ImovelToTermNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type ImovelToTermNodeConnectionEdge = Edge & TermNodeConnectionEdge & {
+  __typename?: 'ImovelToTermNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: TermNode;
+};
+
+/** Page Info on the &quot;ImovelToTermNodeConnection&quot; */
+export type ImovelToTermNodeConnectionPageInfo = PageInfo & TermNodeConnectionPageInfo & WpPageInfo & {
+  __typename?: 'ImovelToTermNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the ImovelToTermNodeConnection connection */
+export type ImovelToTermNodeConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** The Taxonomy to filter terms by */
+  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Imovel type and the Tipo_imovel type */
+export type ImovelToTipo_ImovelConnection = Connection & {
+  __typename?: 'ImovelToTipo_imovelConnection';
+  /** Edges for the ImovelToTipo_imovelConnection connection */
+  edges: Array<ImovelToTipo_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Tipo_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: ImovelToTipo_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type ImovelToTipo_ImovelConnectionEdge = Edge & TipoImovelConnectionEdge & {
+  __typename?: 'ImovelToTipo_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Tipo_Imovel;
+};
+
+/** Page Info on the &quot;ImovelToTipo_imovelConnection&quot; */
+export type ImovelToTipo_ImovelConnectionPageInfo = PageInfo & Tipo_ImovelConnectionPageInfo & WpPageInfo & {
+  __typename?: 'ImovelToTipo_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the ImovelToTipo_imovelConnection connection */
+export type ImovelToTipo_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** File details for a Media Item */
 export type MediaDetails = {
   __typename?: 'MediaDetails';
@@ -3121,8 +5077,10 @@ export type MediaDetailsSizesArgs = {
 };
 
 /** The mediaItem type */
-export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & Node & NodeWithAuthor & NodeWithComments & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable & {
+export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & Node & NodeWithAuthor & NodeWithComments & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'MediaItem';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Alternative text to display when resource is not displayed */
   altText?: Maybe<Scalars['String']['output']>;
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
@@ -3566,8 +5524,10 @@ export type MediaSize = {
 };
 
 /** Menus are the containers for navigation items. Menus can be assigned to menu locations, which are typically registered by the active theme. */
-export type Menu = DatabaseIdentifier & Node & {
+export type Menu = DatabaseIdentifier & Node & WithAcfAcfImoveis & {
   __typename?: 'Menu';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The number of items in the menu */
   count?: Maybe<Scalars['Int']['output']>;
   /** The unique identifier stored in the database */
@@ -3634,8 +5594,10 @@ export type MenuConnectionPageInfo = {
 };
 
 /** Navigation menu items are the individual items assigned to a menu. These are rendered as the links in a navigation menu. */
-export type MenuItem = DatabaseIdentifier & Node & {
+export type MenuItem = DatabaseIdentifier & Node & WithAcfAcfImoveis & {
   __typename?: 'MenuItem';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Connection between the MenuItem type and the MenuItem type */
   childItems?: Maybe<MenuItemToMenuItemConnection>;
   /** Connection from MenuItem to it&#039;s connected node */
@@ -3765,7 +5727,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | Imovel | Page | Post | Tag;
+export type MenuItemObjectUnion = Bairro_Imovel | Category | Cidade_Imovel | Imovel | Page | Post | Tag | Tipo_Imovel;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -4272,8 +6234,10 @@ export enum OrderEnum {
 }
 
 /** The page type */
-export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
+export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'Page';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
   /** Connection between the NodeWithAuthor type and the User type */
@@ -4670,6 +6634,7 @@ export type PageToRevisionConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<PageToRevisionConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -4697,6 +6662,51 @@ export type PageToRevisionConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PageToRevisionConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<PageToRevisionConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<PageToRevisionConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum PageToRevisionConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type PageToRevisionConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<PageToRevisionConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum PageToRevisionConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** An plugin object */
 export type Plugin = Node & {
@@ -4772,8 +6782,10 @@ export enum PluginStatusEnum {
 }
 
 /** The post type */
-export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & {
+export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'Post';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /**
    * The ancestors of the content node.
    * @deprecated This content type is not hierarchical and typically will not have ancestors
@@ -5059,8 +7071,10 @@ export type PostConnectionPageInfo = {
 };
 
 /** The postFormat type */
-export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceIdentifiable & {
+export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'PostFormat';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Connection between the PostFormat type and the ContentNode type */
   contentNodes?: Maybe<PostFormatToContentNodeConnection>;
   /** The number of objects connected to the object */
@@ -5243,6 +7257,7 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -5270,6 +7285,51 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostFormatToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum PostFormatToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type PostFormatToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<PostFormatToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum PostFormatToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the PostFormat type and the post type */
 export type PostFormatToPostConnection = Connection & PostConnection & {
@@ -5332,6 +7392,7 @@ export type PostFormatToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<PostFormatToPostConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -5371,6 +7432,51 @@ export type PostFormatToPostConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostFormatToPostConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<PostFormatToPostConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<PostFormatToPostConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum PostFormatToPostConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type PostFormatToPostConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<PostFormatToPostConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum PostFormatToPostConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the PostFormat type and the Taxonomy type */
 export type PostFormatToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
@@ -5889,6 +7995,7 @@ export type PostToRevisionConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<PostToRevisionConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -5928,6 +8035,51 @@ export type PostToRevisionConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostToRevisionConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<PostToRevisionConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<PostToRevisionConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum PostToRevisionConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type PostToRevisionConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<PostToRevisionConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum PostToRevisionConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the Post type and the tag type */
 export type PostToTagConnection = Connection & TagConnection & {
@@ -6265,8 +8417,12 @@ export type RestoreCommentPayload = {
 /** The root mutation */
 export type RootMutation = {
   __typename?: 'RootMutation';
+  /** The createBairro_imovel mutation */
+  createBairro_imovel?: Maybe<CreateBairro_ImovelPayload>;
   /** The createCategory mutation */
   createCategory?: Maybe<CreateCategoryPayload>;
+  /** The createCidade_imovel mutation */
+  createCidade_imovel?: Maybe<CreateCidade_ImovelPayload>;
   /** The createComment mutation */
   createComment?: Maybe<CreateCommentPayload>;
   /** The createImovel mutation */
@@ -6281,10 +8437,16 @@ export type RootMutation = {
   createPostFormat?: Maybe<CreatePostFormatPayload>;
   /** The createTag mutation */
   createTag?: Maybe<CreateTagPayload>;
+  /** The createTipo_imovel mutation */
+  createTipo_imovel?: Maybe<CreateTipo_ImovelPayload>;
   /** The createUser mutation */
   createUser?: Maybe<CreateUserPayload>;
+  /** The deleteBairro_imovel mutation */
+  deleteBairro_imovel?: Maybe<DeleteBairro_ImovelPayload>;
   /** The deleteCategory mutation */
   deleteCategory?: Maybe<DeleteCategoryPayload>;
+  /** The deleteCidade_imovel mutation */
+  deleteCidade_imovel?: Maybe<DeleteCidade_ImovelPayload>;
   /** The deleteComment mutation */
   deleteComment?: Maybe<DeleteCommentPayload>;
   /** The deleteImovel mutation */
@@ -6299,6 +8461,8 @@ export type RootMutation = {
   deletePostFormat?: Maybe<DeletePostFormatPayload>;
   /** The deleteTag mutation */
   deleteTag?: Maybe<DeleteTagPayload>;
+  /** The deleteTipo_imovel mutation */
+  deleteTipo_imovel?: Maybe<DeleteTipo_ImovelPayload>;
   /** The deleteUser mutation */
   deleteUser?: Maybe<DeleteUserPayload>;
   /** Increase the count. */
@@ -6311,8 +8475,12 @@ export type RootMutation = {
   restoreComment?: Maybe<RestoreCommentPayload>;
   /** Send password reset email to user */
   sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
+  /** The updateBairro_imovel mutation */
+  updateBairro_imovel?: Maybe<UpdateBairro_ImovelPayload>;
   /** The updateCategory mutation */
   updateCategory?: Maybe<UpdateCategoryPayload>;
+  /** The updateCidade_imovel mutation */
+  updateCidade_imovel?: Maybe<UpdateCidade_ImovelPayload>;
   /** The updateComment mutation */
   updateComment?: Maybe<UpdateCommentPayload>;
   /** The updateImovel mutation */
@@ -6329,14 +8497,28 @@ export type RootMutation = {
   updateSettings?: Maybe<UpdateSettingsPayload>;
   /** The updateTag mutation */
   updateTag?: Maybe<UpdateTagPayload>;
+  /** The updateTipo_imovel mutation */
+  updateTipo_imovel?: Maybe<UpdateTipo_ImovelPayload>;
   /** The updateUser mutation */
   updateUser?: Maybe<UpdateUserPayload>;
 };
 
 
 /** The root mutation */
+export type RootMutationCreateBairro_ImovelArgs = {
+  input: CreateBairro_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationCreateCategoryArgs = {
   input: CreateCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateCidade_ImovelArgs = {
+  input: CreateCidade_ImovelInput;
 };
 
 
@@ -6383,14 +8565,32 @@ export type RootMutationCreateTagArgs = {
 
 
 /** The root mutation */
+export type RootMutationCreateTipo_ImovelArgs = {
+  input: CreateTipo_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationCreateUserArgs = {
   input: CreateUserInput;
 };
 
 
 /** The root mutation */
+export type RootMutationDeleteBairro_ImovelArgs = {
+  input: DeleteBairro_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationDeleteCategoryArgs = {
   input: DeleteCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteCidade_ImovelArgs = {
+  input: DeleteCidade_ImovelInput;
 };
 
 
@@ -6437,6 +8637,12 @@ export type RootMutationDeleteTagArgs = {
 
 
 /** The root mutation */
+export type RootMutationDeleteTipo_ImovelArgs = {
+  input: DeleteTipo_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationDeleteUserArgs = {
   input: DeleteUserInput;
 };
@@ -6473,8 +8679,20 @@ export type RootMutationSendPasswordResetEmailArgs = {
 
 
 /** The root mutation */
+export type RootMutationUpdateBairro_ImovelArgs = {
+  input: UpdateBairro_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateCategoryArgs = {
   input: UpdateCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateCidade_ImovelArgs = {
+  input: UpdateCidade_ImovelInput;
 };
 
 
@@ -6527,6 +8745,12 @@ export type RootMutationUpdateTagArgs = {
 
 
 /** The root mutation */
+export type RootMutationUpdateTipo_ImovelArgs = {
+  input: UpdateTipo_ImovelInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateUserArgs = {
   input: UpdateUserInput;
 };
@@ -6536,10 +8760,18 @@ export type RootQuery = {
   __typename?: 'RootQuery';
   /** Entry point to get all settings for the site */
   allSettings?: Maybe<Settings>;
+  /** A 0bject */
+  bairroImovel?: Maybe<Bairro_Imovel>;
+  /** Connection between the RootQuery type and the Bairro_imovel type */
+  bairroImovels?: Maybe<RootQueryToBairro_ImovelConnection>;
   /** Connection between the RootQuery type and the category type */
   categories?: Maybe<RootQueryToCategoryConnection>;
   /** A 0bject */
   category?: Maybe<Category>;
+  /** A 0bject */
+  cidadeImovel?: Maybe<Cidade_Imovel>;
+  /** Connection between the RootQuery type and the Cidade_imovel type */
+  cidadeImovels?: Maybe<RootQueryToCidade_ImovelConnection>;
   /** Returns a Comment */
   comment?: Maybe<Comment>;
   /** Connection between the RootQuery type and the Comment type */
@@ -6636,6 +8868,10 @@ export type RootQuery = {
   theme?: Maybe<Theme>;
   /** Connection between the RootQuery type and the Theme type */
   themes?: Maybe<RootQueryToThemeConnection>;
+  /** A 0bject */
+  tipoImovel?: Maybe<Tipo_Imovel>;
+  /** Connection between the RootQuery type and the Tipo_imovel type */
+  tipoImovels?: Maybe<RootQueryToTipo_ImovelConnection>;
   /** Returns a user */
   user?: Maybe<User>;
   /** Returns a user role */
@@ -6648,6 +8884,23 @@ export type RootQuery = {
   viewer?: Maybe<User>;
   /** Fields of the &#039;WritingSettings&#039; settings group */
   writingSettings?: Maybe<WritingSettings>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryBairroImovelArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<Bairro_ImovelIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryBairroImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToBairro_ImovelConnectionWhereArgs>;
 };
 
 
@@ -6665,6 +8918,23 @@ export type RootQueryCategoriesArgs = {
 export type RootQueryCategoryArgs = {
   id: Scalars['ID']['input'];
   idType?: InputMaybe<CategoryIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryCidadeImovelArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<Cidade_ImovelIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryCidadeImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToCidade_ImovelConnectionWhereArgs>;
 };
 
 
@@ -7001,6 +9271,23 @@ export type RootQueryThemesArgs = {
 
 
 /** The root entry point into the Graph */
+export type RootQueryTipoImovelArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<Tipo_ImovelIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryTipoImovelsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToTipo_ImovelConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
 export type RootQueryUserArgs = {
   id: Scalars['ID']['input'];
   idType?: InputMaybe<UserNodeIdTypeEnum>;
@@ -7029,6 +9316,85 @@ export type RootQueryUsersArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToUserConnectionWhereArgs>;
+};
+
+/** Connection between the RootQuery type and the Bairro_imovel type */
+export type RootQueryToBairro_ImovelConnection = Connection & {
+  __typename?: 'RootQueryToBairro_imovelConnection';
+  /** Edges for the RootQueryToBairro_imovelConnection connection */
+  edges: Array<RootQueryToBairro_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Bairro_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToBairro_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToBairro_ImovelConnectionEdge = BairroImovelConnectionEdge & Edge & {
+  __typename?: 'RootQueryToBairro_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Bairro_Imovel;
+};
+
+/** Page Info on the &quot;RootQueryToBairro_imovelConnection&quot; */
+export type RootQueryToBairro_ImovelConnectionPageInfo = Bairro_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToBairro_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToBairro_imovelConnection connection */
+export type RootQueryToBairro_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Connection between the RootQuery type and the category type */
@@ -7068,6 +9434,85 @@ export type RootQueryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
 
 /** Arguments for filtering the RootQueryToCategoryConnection connection */
 export type RootQueryToCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the RootQuery type and the Cidade_imovel type */
+export type RootQueryToCidade_ImovelConnection = Connection & {
+  __typename?: 'RootQueryToCidade_imovelConnection';
+  /** Edges for the RootQueryToCidade_imovelConnection connection */
+  edges: Array<RootQueryToCidade_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Cidade_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToCidade_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToCidade_ImovelConnectionEdge = CidadeImovelConnectionEdge & Edge & {
+  __typename?: 'RootQueryToCidade_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Cidade_Imovel;
+};
+
+/** Page Info on the &quot;RootQueryToCidade_imovelConnection&quot; */
+export type RootQueryToCidade_ImovelConnectionPageInfo = Cidade_ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToCidade_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToCidade_imovelConnection connection */
+export type RootQueryToCidade_ImovelConnectionWhereArgs = {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
   cacheDomain?: InputMaybe<Scalars['String']['input']>;
   /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
@@ -7254,6 +9699,7 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -7283,6 +9729,51 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the ContentType type */
 export type RootQueryToContentTypeConnection = Connection & ContentTypeConnection & {
@@ -7442,6 +9933,7 @@ export type RootQueryToImovelConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToImovelConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -7471,6 +9963,51 @@ export type RootQueryToImovelConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToImovelConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToImovelConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToImovelConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToImovelConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToImovelConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToImovelConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToImovelConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the mediaItem type */
 export type RootQueryToMediaItemConnection = Connection & MediaItemConnection & {
@@ -7525,6 +10062,7 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -7554,6 +10092,51 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToMediaItemConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToMediaItemConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToMediaItemConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToMediaItemConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToMediaItemConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the Menu type */
 export type RootQueryToMenuConnection = Connection & MenuConnection & {
@@ -7700,6 +10283,7 @@ export type RootQueryToPageConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToPageConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -7729,6 +10313,51 @@ export type RootQueryToPageConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToPageConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToPageConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToPageConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToPageConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToPageConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToPageConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToPageConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the Plugin type */
 export type RootQueryToPluginConnection = Connection & PluginConnection & {
@@ -7836,6 +10465,7 @@ export type RootQueryToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToPostConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -7877,6 +10507,51 @@ export type RootQueryToPostConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToPostConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToPostConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToPostConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToPostConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToPostConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToPostConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToPostConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the postFormat type */
 export type RootQueryToPostFormatConnection = Connection & PostFormatConnection & {
@@ -8004,6 +10679,7 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8031,6 +10707,51 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToRevisionsConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum RootQueryToRevisionsConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type RootQueryToRevisionsConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<RootQueryToRevisionsConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum RootQueryToRevisionsConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the RootQuery type and the tag type */
 export type RootQueryToTagConnection = Connection & TagConnection & {
@@ -8262,6 +10983,85 @@ export type RootQueryToThemeConnectionPageInfo = PageInfo & ThemeConnectionPageI
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+/** Connection between the RootQuery type and the Tipo_imovel type */
+export type RootQueryToTipo_ImovelConnection = Connection & {
+  __typename?: 'RootQueryToTipo_imovelConnection';
+  /** Edges for the RootQueryToTipo_imovelConnection connection */
+  edges: Array<RootQueryToTipo_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Tipo_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToTipo_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToTipo_ImovelConnectionEdge = Edge & TipoImovelConnectionEdge & {
+  __typename?: 'RootQueryToTipo_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Tipo_Imovel;
+};
+
+/** Page Info on the &quot;RootQueryToTipo_imovelConnection&quot; */
+export type RootQueryToTipo_ImovelConnectionPageInfo = PageInfo & Tipo_ImovelConnectionPageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToTipo_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToTipo_imovelConnection connection */
+export type RootQueryToTipo_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** Connection between the RootQuery type and the User type */
 export type RootQueryToUserConnection = Connection & UserConnection & {
   __typename?: 'RootQueryToUserConnection';
@@ -8448,8 +11248,10 @@ export type Settings = {
 };
 
 /** The tag type */
-export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'Tag';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Connection between the Tag type and the ContentNode type */
   contentNodes?: Maybe<TagToContentNodeConnection>;
   /** The number of objects connected to the object */
@@ -8632,6 +11434,7 @@ export type TagToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<TagToContentNodeConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8659,6 +11462,51 @@ export type TagToContentNodeConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type TagToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<TagToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<TagToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum TagToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type TagToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<TagToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum TagToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the Tag type and the post type */
 export type TagToPostConnection = Connection & PostConnection & {
@@ -8721,6 +11569,7 @@ export type TagToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<TagToPostConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8760,6 +11609,51 @@ export type TagToPostConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type TagToPostConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<TagToPostConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<TagToPostConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum TagToPostConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type TagToPostConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<TagToPostConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum TagToPostConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the Tag type and the Taxonomy type */
 export type TagToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
@@ -8869,12 +11763,18 @@ export type TaxonomyConnectionPageInfo = {
 
 /** Allowed taxonomies */
 export enum TaxonomyEnum {
+  /** Taxonomy enum bairro_imovel */
+  BairroImovel = 'BAIRRO_IMOVEL',
   /** Taxonomy enum category */
   Category = 'CATEGORY',
+  /** Taxonomy enum cidade_imovel */
+  CidadeImovel = 'CIDADE_IMOVEL',
   /** Taxonomy enum post_format */
   Postformat = 'POSTFORMAT',
   /** Taxonomy enum post_tag */
-  Tag = 'TAG'
+  Tag = 'TAG',
+  /** Taxonomy enum tipo_imovel */
+  TipoImovel = 'TIPO_IMOVEL'
 }
 
 /** The Type of Identifier used to fetch a single Taxonomy node. To be used along with the "id" field. Default is "ID". */
@@ -8957,6 +11857,8 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 
 /** Terms are nodes within a Taxonomy, used to group and relate other nodes. */
 export type TermNode = {
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** The number of objects connected to the object */
   count?: Maybe<Scalars['Int']['output']>;
   /** Identifies the primary key from the database. */
@@ -9208,6 +12110,545 @@ export type ThemeConnectionPageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+/** Edge between a Node and a connected Tipo_imovel */
+export type TipoImovelConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected Tipo_imovel Node */
+  node: Tipo_Imovel;
+};
+
+/** The Tipo_imovel type */
+export type Tipo_Imovel = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & WithAcfAcfImoveis & {
+  __typename?: 'Tipo_imovel';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
+  /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+  ancestors?: Maybe<Tipo_ImovelToAncestorsTipo_ImovelConnection>;
+  /** Connection between the Tipo_imovel type and its children Tipo_imovels. */
+  children?: Maybe<Tipo_ImovelToTipo_ImovelConnection>;
+  /** Connection between the Tipo_imovel type and the ContentNode type */
+  contentNodes?: Maybe<Tipo_ImovelToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Connection between the Tipo_imovel type and the Imovel type */
+  imoveis?: Maybe<Tipo_ImovelToImovelConnection>;
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Tipo_imovel type and its parent Tipo_imovel. */
+  parent?: Maybe<Tipo_ImovelToParentTipo_ImovelConnectionEdge>;
+  /** Database id of the parent node */
+  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** The globally unique identifier of the parent node. */
+  parentId?: Maybe<Scalars['ID']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Tipo_imovel type and the Taxonomy type */
+  taxonomy?: Maybe<Tipo_ImovelToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  tipo_imovelId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Tipo_ImovelToTipo_ImovelConnectionWhereArgs>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Tipo_ImovelToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The Tipo_imovel type */
+export type Tipo_ImovelImoveisArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<Tipo_ImovelToImovelConnectionWhereArgs>;
+};
+
+/** Page Info on the connected TipoImovelConnectionEdge */
+export type Tipo_ImovelConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum Tipo_ImovelIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the Tipo_imovel type and the Tipo_imovel type */
+export type Tipo_ImovelToAncestorsTipo_ImovelConnection = Connection & {
+  __typename?: 'Tipo_imovelToAncestorsTipo_imovelConnection';
+  /** Edges for the Tipo_imovelToAncestorsTipo_imovelConnection connection */
+  edges: Array<Tipo_ImovelToAncestorsTipo_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Tipo_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Tipo_ImovelToAncestorsTipo_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Tipo_ImovelToAncestorsTipo_ImovelConnectionEdge = Edge & TipoImovelConnectionEdge & {
+  __typename?: 'Tipo_imovelToAncestorsTipo_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Tipo_Imovel;
+};
+
+/** Page Info on the &quot;Tipo_imovelToAncestorsTipo_imovelConnection&quot; */
+export type Tipo_ImovelToAncestorsTipo_ImovelConnectionPageInfo = PageInfo & Tipo_ImovelConnectionPageInfo & WpPageInfo & {
+  __typename?: 'Tipo_imovelToAncestorsTipo_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the Tipo_imovel type and the ContentNode type */
+export type Tipo_ImovelToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'Tipo_imovelToContentNodeConnection';
+  /** Edges for the Tipo_imovelToContentNodeConnection connection */
+  edges: Array<Tipo_ImovelToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: Tipo_ImovelToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Tipo_ImovelToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'Tipo_imovelToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;Tipo_imovelToContentNodeConnection&quot; */
+export type Tipo_ImovelToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Tipo_imovelToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Tipo_imovelToContentNodeConnection connection */
+export type Tipo_ImovelToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfTipoImovelEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Tipo_ImovelToContentNodeConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Tipo_ImovelToContentNodeConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Tipo_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Tipo_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Tipo_ImovelToContentNodeConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Tipo_ImovelToContentNodeConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Tipo_ImovelToContentNodeConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Tipo_ImovelToContentNodeConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Tipo_imovel type and the Imovel type */
+export type Tipo_ImovelToImovelConnection = Connection & ImovelConnection & {
+  __typename?: 'Tipo_imovelToImovelConnection';
+  /** Edges for the Tipo_imovelToImovelConnection connection */
+  edges: Array<Tipo_ImovelToImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Tipo_ImovelToImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Tipo_ImovelToImovelConnectionEdge = Edge & ImovelConnectionEdge & {
+  __typename?: 'Tipo_imovelToImovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Imovel;
+};
+
+/** Page Info on the &quot;Tipo_imovelToImovelConnection&quot; */
+export type Tipo_ImovelToImovelConnectionPageInfo = ImovelConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'Tipo_imovelToImovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Tipo_imovelToImovelConnection connection */
+export type Tipo_ImovelToImovelConnectionWhereArgs = {
+  /** The user that's connected as the author of the object. Use the userId for the author object. */
+  author?: InputMaybe<Scalars['Int']['input']>;
+  /** Find objects connected to author(s) in the array of author's userIds */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Find objects connected to the author by the author's nicename */
+  authorName?: InputMaybe<Scalars['String']['input']>;
+  /** Find objects NOT connected to author(s) in the array of author's userIds */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<Tipo_ImovelToImovelConnectionWhereArgsMetaQuery>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Tipo_ImovelToImovelConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<Tipo_ImovelToImovelConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<Tipo_ImovelToImovelConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum Tipo_ImovelToImovelConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type Tipo_ImovelToImovelConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<Tipo_ImovelToImovelConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum Tipo_ImovelToImovelConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
+
+/** Connection between the Tipo_imovel type and the Tipo_imovel type */
+export type Tipo_ImovelToParentTipo_ImovelConnectionEdge = Edge & OneToOneConnection & TipoImovelConnectionEdge & {
+  __typename?: 'Tipo_imovelToParentTipo_imovelConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Tipo_Imovel;
+};
+
+/** Connection between the Tipo_imovel type and the Taxonomy type */
+export type Tipo_ImovelToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'Tipo_imovelToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
+/** Connection between the Tipo_imovel type and the Tipo_imovel type */
+export type Tipo_ImovelToTipo_ImovelConnection = Connection & {
+  __typename?: 'Tipo_imovelToTipo_imovelConnection';
+  /** Edges for the Tipo_imovelToTipo_imovelConnection connection */
+  edges: Array<Tipo_ImovelToTipo_ImovelConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Tipo_Imovel>;
+  /** Information about pagination in a connection. */
+  pageInfo: Tipo_ImovelToTipo_ImovelConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type Tipo_ImovelToTipo_ImovelConnectionEdge = Edge & TipoImovelConnectionEdge & {
+  __typename?: 'Tipo_imovelToTipo_imovelConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Tipo_Imovel;
+};
+
+/** Page Info on the &quot;Tipo_imovelToTipo_imovelConnection&quot; */
+export type Tipo_ImovelToTipo_ImovelConnectionPageInfo = PageInfo & Tipo_ImovelConnectionPageInfo & WpPageInfo & {
+  __typename?: 'Tipo_imovelToTipo_imovelConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Get information about the offset pagination state in the current connection */
+  offsetPagination?: Maybe<OffsetPaginationPageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the Tipo_imovelToTipo_imovelConnection connection */
+export type Tipo_ImovelToTipo_ImovelConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** Any node that has a URI */
 export type UniformResourceIdentifiable = {
   /** The globally unique ID for the object */
@@ -9224,6 +12665,35 @@ export type UniformResourceIdentifiable = {
   isTermNode: Scalars['Boolean']['output'];
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the updateBairro_imovel mutation. */
+export type UpdateBairro_ImovelInput = {
+  /** The slug that the bairro_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the bairro_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Bairro_imovel object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the bairro_imovel object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The database ID of the bairro_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the bairro_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateBairro_imovel mutation. */
+export type UpdateBairro_ImovelPayload = {
+  __typename?: 'UpdateBairro_imovelPayload';
+  /** The created bairro_imovel */
+  bairro_imovel?: Maybe<Bairro_Imovel>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
 /** Input for the updateCategory mutation. */
@@ -9251,6 +12721,35 @@ export type UpdateCategoryPayload = {
   __typename?: 'UpdateCategoryPayload';
   /** The created category */
   category?: Maybe<Category>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the updateCidade_imovel mutation. */
+export type UpdateCidade_ImovelInput = {
+  /** The slug that the cidade_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the cidade_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Cidade_imovel object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the cidade_imovel object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The database ID of the cidade_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the cidade_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateCidade_imovel mutation. */
+export type UpdateCidade_ImovelPayload = {
+  __typename?: 'UpdateCidade_imovelPayload';
+  /** The created cidade_imovel */
+  cidade_imovel?: Maybe<Cidade_Imovel>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
@@ -9296,6 +12795,10 @@ export type UpdateCommentPayload = {
 export type UpdateImovelInput = {
   /** The userId to assign as the author of the object */
   authorId?: InputMaybe<Scalars['ID']['input']>;
+  /** Set connections between the Imovel and Bairro_imovels */
+  bairro_imovels?: InputMaybe<ImovelBairro_ImovelsInput>;
+  /** Set connections between the Imovel and Cidade_imovels */
+  cidade_imovels?: InputMaybe<ImovelCidade_ImovelsInput>;
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
@@ -9312,6 +12815,8 @@ export type UpdateImovelInput = {
   slug?: InputMaybe<Scalars['String']['input']>;
   /** The status of the object */
   status?: InputMaybe<PostStatusEnum>;
+  /** Set connections between the Imovel and Tipo_imovels */
+  tipo_imovels?: InputMaybe<ImovelTipo_ImovelsInput>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -9569,6 +13074,35 @@ export type UpdateTagPayload = {
   tag?: Maybe<Tag>;
 };
 
+/** Input for the updateTipo_imovel mutation. */
+export type UpdateTipo_ImovelInput = {
+  /** The slug that the tipo_imovel will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the tipo_imovel object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the Tipo_imovel object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the tipo_imovel object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The database ID of the tipo_imovel that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the tipo_imovel that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateTipo_imovel mutation. */
+export type UpdateTipo_ImovelPayload = {
+  __typename?: 'UpdateTipo_imovelPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created tipo_imovel */
+  tipo_imovel?: Maybe<Tipo_Imovel>;
+};
+
 /** Input for the updateUser mutation. */
 export type UpdateUserInput = {
   /** User's AOL IM account. */
@@ -9619,8 +13153,10 @@ export type UpdateUserPayload = {
 };
 
 /** A User object */
-export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & {
+export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & WithAcfAcfImoveis & {
   __typename?: 'User';
+  /** Fields of the AcfImoveis ACF Field Group */
+  acfImoveis?: Maybe<AcfImoveis>;
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   avatar?: Maybe<Avatar>;
   /** User metadata option name. Usually it will be &quot;wp_capabilities&quot;. */
@@ -10122,6 +13658,7 @@ export type UserToImovelConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<UserToImovelConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -10149,6 +13686,51 @@ export type UserToImovelConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToImovelConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<UserToImovelConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<UserToImovelConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum UserToImovelConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type UserToImovelConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<UserToImovelConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum UserToImovelConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the User type and the mediaItem type */
 export type UserToMediaItemConnection = Connection & MediaItemConnection & {
@@ -10203,6 +13785,7 @@ export type UserToMediaItemConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<UserToMediaItemConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -10230,6 +13813,51 @@ export type UserToMediaItemConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToMediaItemConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<UserToMediaItemConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<UserToMediaItemConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum UserToMediaItemConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type UserToMediaItemConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<UserToMediaItemConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum UserToMediaItemConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the User type and the page type */
 export type UserToPageConnection = Connection & PageConnection & {
@@ -10284,6 +13912,7 @@ export type UserToPageConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<UserToPageConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -10311,6 +13940,51 @@ export type UserToPageConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToPageConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<UserToPageConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<UserToPageConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum UserToPageConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type UserToPageConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<UserToPageConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum UserToPageConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the User type and the post type */
 export type UserToPostConnection = Connection & PostConnection & {
@@ -10373,6 +14047,7 @@ export type UserToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<UserToPostConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -10412,6 +14087,51 @@ export type UserToPostConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToPostConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<UserToPostConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<UserToPostConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum UserToPostConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type UserToPostConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<UserToPostConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum UserToPostConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the User type and the ContentNode type */
 export type UserToRevisionsConnection = Connection & ContentNodeConnection & {
@@ -10460,6 +14180,7 @@ export type UserToRevisionsConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  metaQuery?: InputMaybe<UserToRevisionsConnectionWhereArgsMetaQuery>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -10487,6 +14208,51 @@ export type UserToRevisionsConnectionWhereArgs = {
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToRevisionsConnectionWhereArgsMetaArray = {
+  /** Custom field value */
+  compare?: InputMaybe<UserToRevisionsConnectionWhereArgsMetaCompareEnum>;
+  /** Custom field key */
+  key?: InputMaybe<Scalars['String']['input']>;
+  /** Custom field value */
+  type?: InputMaybe<UserToRevisionsConnectionWhereArgsMetaTypeEnum>;
+  /** Custom field value */
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum UserToRevisionsConnectionWhereArgsMetaCompareEnum {
+  Between = 'BETWEEN',
+  EqualTo = 'EQUAL_TO',
+  Exists = 'EXISTS',
+  GreaterThan = 'GREATER_THAN',
+  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  In = 'IN',
+  LessThan = 'LESS_THAN',
+  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  Like = 'LIKE',
+  NotBetween = 'NOT_BETWEEN',
+  NotEqualTo = 'NOT_EQUAL_TO',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN',
+  NotLike = 'NOT_LIKE'
+}
+
+export type UserToRevisionsConnectionWhereArgsMetaQuery = {
+  metaArray?: InputMaybe<Array<InputMaybe<UserToRevisionsConnectionWhereArgsMetaArray>>>;
+  relation?: InputMaybe<RelationEnum>;
+};
+
+export enum UserToRevisionsConnectionWhereArgsMetaTypeEnum {
+  Binary = 'BINARY',
+  Char = 'CHAR',
+  Date = 'DATE',
+  Datetime = 'DATETIME',
+  Decimal = 'DECIMAL',
+  Numeric = 'NUMERIC',
+  Signed = 'SIGNED',
+  Time = 'TIME',
+  Unsigned = 'UNSIGNED'
+}
 
 /** Connection between the User type and the UserRole type */
 export type UserToUserRoleConnection = Connection & UserRoleConnection & {
@@ -10596,12 +14362,25 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type GetImoveisQueryVariables = Exact<{
+export type GetDynamicImoveisQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
+  precoMin?: InputMaybe<Scalars['String']['input']>;
+  precoMax?: InputMaybe<Scalars['String']['input']>;
+  quartosMin?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
+  cidade?: InputMaybe<Scalars['String']['input']>;
+  bairro?: InputMaybe<Scalars['String']['input']>;
+  tipoImovel?: InputMaybe<Scalars['String']['input']>;
+  tipoNegocio?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type GetImoveisQuery = { __typename?: 'RootQuery', imoveis?: { __typename?: 'RootQueryToImovelConnection', nodes: Array<{ __typename?: 'Imovel', id: string, title?: string | null, slug?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, acfImoveis?: { __typename?: 'AcfImoveis', areaConstruida?: number | null, areaTotal?: number | null, bairro?: string | null, banheiros?: number | null, caracteristicas?: Array<string | null> | null, cep?: string | null, cidade?: string | null, condominio?: number | null, destaque?: boolean | null, endereco?: string | null, iptu?: number | null, preco?: number | null, quartos?: number | null, statusImovel?: Array<string | null> | null, suites?: number | null, tipoImovel?: Array<string | null> | null, tipoNegocio?: Array<string | null> | null, vagasGaragem?: number | null, videoYoutube?: string | null, galeriaFotos?: { __typename?: 'AcfMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null }> } | null } | null }> } | null };
+export type GetDynamicImoveisQuery = { __typename?: 'RootQuery', imoveis?: { __typename?: 'RootQueryToImovelConnection', nodes: Array<{ __typename?: 'Imovel', id: string, title?: string | null, slug?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, acfImoveis?: { __typename?: 'AcfImoveis', areaConstruida?: number | null, vagasGaragem?: number | null, referenciaImovel?: string | null, preco?: number | null, quartos?: number | null, statusImovel?: Array<string | null> | null, bairro?: string | null, cidade?: string | null, condominio?: number | null, caracteristicas?: Array<string | null> | null, tipoImovel?: Array<string | null> | null, tipoNegocio?: Array<string | null> | null, destaque?: boolean | null, banheiros?: number | null, areaTotal?: number | null } | null }> } | null };
+
+export type GetFiltersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFiltersQuery = { __typename?: 'RootQuery', cidadeImovels?: { __typename?: 'RootQueryToCidade_imovelConnection', edges: Array<{ __typename?: 'RootQueryToCidade_imovelConnectionEdge', node: { __typename?: 'Cidade_imovel', id: string, name?: string | null } }> } | null };
 
 export type GetImovelBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -10611,5 +14390,6 @@ export type GetImovelBySlugQueryVariables = Exact<{
 export type GetImovelBySlugQuery = { __typename?: 'RootQuery', imovelBy?: { __typename?: 'Imovel', id: string, title?: string | null, slug?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, acfImoveis?: { __typename?: 'AcfImoveis', areaConstruida?: number | null, areaTotal?: number | null, bairro?: string | null, banheiros?: number | null, caracteristicas?: Array<string | null> | null, cep?: string | null, cidade?: string | null, condominio?: number | null, destaque?: boolean | null, endereco?: string | null, iptu?: number | null, preco?: number | null, quartos?: number | null, statusImovel?: Array<string | null> | null, suites?: number | null, tipoImovel?: Array<string | null> | null, tipoNegocio?: Array<string | null> | null, vagasGaragem?: number | null, videoYoutube?: string | null, galeriaFotos?: { __typename?: 'AcfMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null }> } | null } | null } | null };
 
 
-export const GetImoveisDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetImoveis"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"6"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imoveis"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acfImoveis"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"galeriaFotos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mediaItemUrl"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"areaConstruida"}},{"kind":"Field","name":{"kind":"Name","value":"areaTotal"}},{"kind":"Field","name":{"kind":"Name","value":"bairro"}},{"kind":"Field","name":{"kind":"Name","value":"banheiros"}},{"kind":"Field","name":{"kind":"Name","value":"caracteristicas"}},{"kind":"Field","name":{"kind":"Name","value":"cep"}},{"kind":"Field","name":{"kind":"Name","value":"cidade"}},{"kind":"Field","name":{"kind":"Name","value":"condominio"}},{"kind":"Field","name":{"kind":"Name","value":"destaque"}},{"kind":"Field","name":{"kind":"Name","value":"endereco"}},{"kind":"Field","name":{"kind":"Name","value":"iptu"}},{"kind":"Field","name":{"kind":"Name","value":"preco"}},{"kind":"Field","name":{"kind":"Name","value":"quartos"}},{"kind":"Field","name":{"kind":"Name","value":"statusImovel"}},{"kind":"Field","name":{"kind":"Name","value":"suites"}},{"kind":"Field","name":{"kind":"Name","value":"tipoImovel"}},{"kind":"Field","name":{"kind":"Name","value":"tipoNegocio"}},{"kind":"Field","name":{"kind":"Name","value":"vagasGaragem"}},{"kind":"Field","name":{"kind":"Name","value":"videoYoutube"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetImoveisQuery, GetImoveisQueryVariables>;
+export const GetDynamicImoveisDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetDynamicImoveis"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"precoMin"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"precoMax"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"quartosMin"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"status"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"cidade"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bairro"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tipoImovel"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tipoNegocio"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imoveis"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"metaQuery"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"relation"},"value":{"kind":"EnumValue","value":"AND"}},{"kind":"ObjectField","name":{"kind":"Name","value":"metaArray"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"preco","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"precoMin"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"GREATER_THAN_OR_EQUAL_TO"}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"NUMERIC"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"preco","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"precoMax"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"LESS_THAN_OR_EQUAL_TO"}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"NUMERIC"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"quartos","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"quartosMin"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"GREATER_THAN_OR_EQUAL_TO"}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"NUMERIC"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"status_imovel","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"status"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"EQUAL_TO"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"cidade","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"cidade"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"EQUAL_TO"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"bairro","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bairro"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"EQUAL_TO"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"tipo_imovel","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tipoImovel"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"EQUAL_TO"}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"key"},"value":{"kind":"StringValue","value":"tipo_negocio","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tipoNegocio"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"compare"},"value":{"kind":"EnumValue","value":"EQUAL_TO"}}]}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acfImoveis"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"areaConstruida"}},{"kind":"Field","name":{"kind":"Name","value":"vagasGaragem"}},{"kind":"Field","name":{"kind":"Name","value":"referenciaImovel"}},{"kind":"Field","name":{"kind":"Name","value":"preco"}},{"kind":"Field","name":{"kind":"Name","value":"quartos"}},{"kind":"Field","name":{"kind":"Name","value":"statusImovel"}},{"kind":"Field","name":{"kind":"Name","value":"bairro"}},{"kind":"Field","name":{"kind":"Name","value":"cidade"}},{"kind":"Field","name":{"kind":"Name","value":"condominio"}},{"kind":"Field","name":{"kind":"Name","value":"caracteristicas"}},{"kind":"Field","name":{"kind":"Name","value":"tipoImovel"}},{"kind":"Field","name":{"kind":"Name","value":"tipoNegocio"}},{"kind":"Field","name":{"kind":"Name","value":"destaque"}},{"kind":"Field","name":{"kind":"Name","value":"banheiros"}},{"kind":"Field","name":{"kind":"Name","value":"areaTotal"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetDynamicImoveisQuery, GetDynamicImoveisQueryVariables>;
+export const GetFiltersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetFilters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cidadeImovels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetFiltersQuery, GetFiltersQueryVariables>;
 export const GetImovelBySlugDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetImovelBySlug"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imovelBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acfImoveis"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"galeriaFotos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mediaItemUrl"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"areaConstruida"}},{"kind":"Field","name":{"kind":"Name","value":"areaTotal"}},{"kind":"Field","name":{"kind":"Name","value":"bairro"}},{"kind":"Field","name":{"kind":"Name","value":"banheiros"}},{"kind":"Field","name":{"kind":"Name","value":"caracteristicas"}},{"kind":"Field","name":{"kind":"Name","value":"cep"}},{"kind":"Field","name":{"kind":"Name","value":"cidade"}},{"kind":"Field","name":{"kind":"Name","value":"condominio"}},{"kind":"Field","name":{"kind":"Name","value":"destaque"}},{"kind":"Field","name":{"kind":"Name","value":"endereco"}},{"kind":"Field","name":{"kind":"Name","value":"iptu"}},{"kind":"Field","name":{"kind":"Name","value":"preco"}},{"kind":"Field","name":{"kind":"Name","value":"quartos"}},{"kind":"Field","name":{"kind":"Name","value":"statusImovel"}},{"kind":"Field","name":{"kind":"Name","value":"suites"}},{"kind":"Field","name":{"kind":"Name","value":"tipoImovel"}},{"kind":"Field","name":{"kind":"Name","value":"tipoNegocio"}},{"kind":"Field","name":{"kind":"Name","value":"vagasGaragem"}},{"kind":"Field","name":{"kind":"Name","value":"videoYoutube"}}]}}]}}]}}]} as unknown as DocumentNode<GetImovelBySlugQuery, GetImovelBySlugQueryVariables>;

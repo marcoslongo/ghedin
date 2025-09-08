@@ -1,0 +1,10 @@
+query GetFilters {
+  cidadeImovels {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}

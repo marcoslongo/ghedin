@@ -5,12 +5,12 @@ import Link from "next/link";
 import { MapPin, Bed, Bath, Car, Maximize } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { GetImoveisQuery } from "@/src/generated/graphql";
 import { formatPrice } from "../utils/formatPrice";
 import { FavoritoButton } from "./button-favorito";
+import { GetDynamicImoveisQuery } from "../generated/graphql";
 
 interface ImovelCardProps {
-  imovel: NonNullable<GetImoveisQuery["imoveis"]>["nodes"][number];
+  imovel: NonNullable<GetDynamicImoveisQuery["imoveis"]>["nodes"][number];
 }
 
 export function ImovelCard({ imovel }: ImovelCardProps) {

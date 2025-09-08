@@ -1,65 +1,74 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import type React from "react"
 
-import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Search, Filter } from "lucide-react"
+import { GetFiltersQuery } from "../generated/graphql"
 
-interface FiltrosImoveisProps {
-  onFiltrar: (filtros: {
-    tipoNegocio?: string
-    tipoImovel?: string
-    cidade?: string
-    precoMin?: number
-    precoMax?: number
-    quartos?: number
-  }) => void
+interface FiltrosProps {
+  filtro: GetFiltersQuery;
+  currentFilters: {
+    precoMin?: string;
+    precoMax?: string;
+    quartosMin?: string;
+    status?: string;
+    cidade?: string;
+    bairro?: string;
+    tipoImovel?: string;
+    tipoNegocio?: string;
+  };
 }
 
-export function FiltrosImoveis({ onFiltrar }: FiltrosImoveisProps) {
-  const [filtros, setFiltros] = useState({
-    tipoNegocio: "",
-    tipoImovel: "",
-    cidade: "",
-    precoMin: "",
-    precoMax: "",
-    quartos: "",
+export function FiltrosImoveis({ filtro, currentFilters }: FiltrosProps) {
+  const router = useRouter()
+
+  const [values, setValues] = useState({
+    precoMin: currentFilters.precoMin ?? "",
+    precoMax: currentFilters.precoMax ?? "",
+    quartosMin: currentFilters.quartosMin ?? "",
+    status: currentFilters.status ?? "",
+    cidade: currentFilters.cidade ?? "",
+    bairro: currentFilters.bairro ?? "",
+    tipoImovel: currentFilters.tipoImovel ?? "",
+    tipoNegocio: currentFilters.tipoNegocio ?? "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const filtrosLimpos = {
-      ...(filtros.tipoNegocio && { tipoNegocio: filtros.tipoNegocio }),
-      ...(filtros.tipoImovel && { tipoImovel: filtros.tipoImovel }),
-      ...(filtros.cidade && { cidade: filtros.cidade }),
-      ...(filtros.precoMin && { precoMin: Number(filtros.precoMin) }),
-      ...(filtros.precoMax && { precoMax: Number(filtros.precoMax) }),
-      ...(filtros.quartos && { quartos: Number(filtros.quartos) }),
-    }
-
-    onFiltrar(filtrosLimpos)
+  function updateField(field: string, value: string) {
+    setValues((prev) => ({ ...prev, [field]: value }))
   }
 
-  const limparFiltros = () => {
-    setFiltros({
-      tipoNegocio: "",
-      tipoImovel: "",
-      cidade: "",
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    Object.entries(values).forEach(([key, val]) => {
+      if (val) params.set(key, val)
+    })
+    router.push(`/imoveis?${params.toString()}`)
+  }
+
+  function handleClear() {
+    setValues({
       precoMin: "",
       precoMax: "",
-      quartos: "",
+      quartosMin: "",
+      status: "",
+      cidade: "",
+      bairro: "",
+      tipoImovel: "",
+      tipoNegocio: "",
     })
-    onFiltrar({})
+    router.push("/imoveis")
   }
 
   return (
-    <Card>
+    <Card className="w-full pt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Filter className="h-5 w-5" />
@@ -67,31 +76,32 @@ export function FiltrosImoveis({ onFiltrar }: FiltrosImoveisProps) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="tipoNegocio">Tipo de Negócio</Label>
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="tipoNegocio">Tipo de Negócio</Label>
               <Select
-                value={filtros.tipoNegocio}
-                onValueChange={(value) => setFiltros((prev) => ({ ...prev, tipoNegocio: value }))}
+                value={values.tipoNegocio}
+                onValueChange={(v) => updateField("tipoNegocio", v)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Selecione..." />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="venda">Venda</SelectItem>
                   <SelectItem value="aluguel">Aluguel</SelectItem>
+                  <SelectItem value="temporada">Temporada</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            <div>
-              <Label htmlFor="tipoImovel">Tipo de Imóvel</Label>
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="tipoImovel">Tipo de Imóvel</Label>
               <Select
-                value={filtros.tipoImovel}
-                onValueChange={(value) => setFiltros((prev) => ({ ...prev, tipoImovel: value }))}
+                value={values.tipoImovel}
+                onValueChange={(v) => updateField("tipoImovel", v)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Selecione..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -103,23 +113,30 @@ export function FiltrosImoveis({ onFiltrar }: FiltrosImoveisProps) {
               </Select>
             </div>
 
-            <div>
-              <Label htmlFor="cidade">Cidade</Label>
-              <Input
-                id="cidade"
-                value={filtros.cidade}
-                onChange={(e) => setFiltros((prev) => ({ ...prev, cidade: e.target.value }))}
-                placeholder="Digite a cidade..."
-              />
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="cidade">Cidade</Label>
+              <Select
+                value={values.cidade}
+                onValueChange={(v) => updateField("cidade", v)}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Qualquer" />
+                </SelectTrigger>
+                <SelectContent>
+                  {filtro.cidadeImovels?.edges.map((city) =>
+                    <SelectItem value={city.node.name!} key={city.node.id}>{city.node.name}</SelectItem>
+                  )}
+                </SelectContent>
+              </Select>
             </div>
 
-            <div>
-              <Label htmlFor="quartos">Mín. Quartos</Label>
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="quartos">Mín. Quartos</Label>
               <Select
-                value={filtros.quartos}
-                onValueChange={(value) => setFiltros((prev) => ({ ...prev, quartos: value }))}
+                value={values.quartosMin}
+                onValueChange={(v) => updateField("quartosMin", v)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Qualquer" />
                 </SelectTrigger>
                 <SelectContent>
@@ -131,25 +148,27 @@ export function FiltrosImoveis({ onFiltrar }: FiltrosImoveisProps) {
               </Select>
             </div>
 
-            <div>
-              <Label htmlFor="precoMin">Preço Mínimo</Label>
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="precoMin">Preço Mínimo</Label>
               <Input
                 id="precoMin"
                 type="number"
-                value={filtros.precoMin}
-                onChange={(e) => setFiltros((prev) => ({ ...prev, precoMin: e.target.value }))}
+                value={values.precoMin}
+                onChange={(e) => updateField("precoMin", e.target.value)}
                 placeholder="R$ 0"
+                className="w-full"
               />
             </div>
 
-            <div>
-              <Label htmlFor="precoMax">Preço Máximo</Label>
+            <div className="w-full">
+              <Label className="mb-1.5" htmlFor="precoMax">Preço Máximo</Label>
               <Input
                 id="precoMax"
                 type="number"
-                value={filtros.precoMax}
-                onChange={(e) => setFiltros((prev) => ({ ...prev, precoMax: e.target.value }))}
+                value={values.precoMax}
+                onChange={(e) => updateField("precoMax", e.target.value)}
                 placeholder="R$ 999.999"
+                className="w-full"
               />
             </div>
           </div>
@@ -159,7 +178,7 @@ export function FiltrosImoveis({ onFiltrar }: FiltrosImoveisProps) {
               <Search className="h-4 w-4 mr-2" />
               Buscar
             </Button>
-            <Button type="button" variant="outline" onClick={limparFiltros}>
+            <Button type="button" variant="outline" onClick={handleClear}>
               Limpar
             </Button>
           </div>
