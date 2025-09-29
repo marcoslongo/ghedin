@@ -1,4 +1,6 @@
+import { Button } from "@/src/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Avaliation() {
   return (
@@ -26,6 +28,13 @@ export function Avaliation() {
                   <h3 className="font-bold text-2xl text-[#483b35]">Anúncie seu imóvel</h3>
                   <p className="text-md text-[#9a8167] font-semibold">Cadastre seu imóvel que em breve <br /> entraremos em contato.</p>
                 </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
+                  <Link href="/imoveis" className="shadow-md">
+                    <Button size="lg" className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center">
+                      Acesse
+                    </Button>
+                  </Link>
+                </div>
               </div>
               <div className="flex flex-col justify-center bg-white rounded-2xl p-4 pb-8">
                 <div className="flex justify-center mt-[-70px]">
@@ -41,6 +50,13 @@ export function Avaliation() {
                 <div className="text-center flex flex-col gap-1">
                   <h3 className="font-bold text-2xl text-[#483b35]">Avaliamos seu imóvel</h3>
                   <p className="text-md text-[#9a8167] font-semibold">Cadastre seu imóvel que em breve <br /> entraremos em contato.</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
+                  <Link href="/imoveis" className="shadow-md">
+                    <Button size="lg" className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center">
+                      Acesse
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
