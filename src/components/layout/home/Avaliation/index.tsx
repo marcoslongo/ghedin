@@ -11,7 +11,7 @@ export function Avaliation() {
       <div className="container px-4 mx-auto">
         <div className="flex justify-between flex-wrap">
           <motion.div
-            className="text-white w-[33%] flex flex-col gap-2"
+            className="text-white w-full md:w-[33%] mb-28 md:mb-0 flex flex-col gap-2"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -26,7 +26,7 @@ export function Avaliation() {
           </motion.div>
 
           <motion.div
-            className="w-[66%]"
+            className="w-full md:w-[66%]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -59,11 +59,11 @@ export function Avaliation() {
                     Cadastre seu imóvel que em breve <br /> entraremos em contato.
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
-                  <Link href="/imoveis" className="shadow-md">
+                <div className="flex flex-row gap-4 justify-center mt-2">
+                  <Link href="/imoveis">
                     <Button
                       size="lg"
-                      className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center"
+                      className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center shadow-md"
                     >
                       Acesse
                     </Button>
@@ -94,11 +94,11 @@ export function Avaliation() {
                     Cadastre seu imóvel que em breve <br /> entraremos em contato.
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
-                  <Link href="/imoveis" className="shadow-md">
+                <div className="flex flex-row gap-4 justify-center mt-2">
+                  <Link href="/imoveis">
                     <Button
                       size="lg"
-                      className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center"
+                      className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center shadow-md"
                     >
                       Acesse
                     </Button>

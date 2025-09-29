@@ -155,7 +155,7 @@ export function Banner({ filtro }: BannerProps) {
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
         >
           <Link href="/imoveis">
-            <Button size="lg" className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer">
+            <Button size="lg" className="text-md px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer">
               <House />
               Ver Todos os Imóveis
             </Button>

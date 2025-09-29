@@ -12,6 +12,7 @@ import {
 import { GetDynamicImoveisQuery } from "@/src/generated/graphql";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { House } from "lucide-react";
 
 interface HighlightsProps {
   content: GetDynamicImoveisQuery;
@@ -96,9 +97,10 @@ export function Highlights({ content }: HighlightsProps) {
                 <Link href="/imoveis">
                   <Button
                     size="lg"
-                    className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer"
+                    className="text-md px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer"
                     tabIndex={-1}
                   >
+                    <House />
                     Ver Todos os Imóveis
                   </Button>
                 </Link>
