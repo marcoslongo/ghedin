@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Avaliation() {
   return (
     <section className="bg-[#483b35] pt-24 pb-20">
-      <div className="container mx-auto">
+      <div className="container px-4 mx-auto">
         <div className="flex justify-between flex-wrap">
           <div className="text-white w-[33%] flex flex-col gap-2">
             <h2 className="text-4xl font-bold">O <span className="text-[#9a8167]">MELHOR</span> <br /> <span className="text-[#9a8167]">ATENDIMENTO</span> E <span className="text-[#9a8167]">PROFISSIONALISMO</span></h2>

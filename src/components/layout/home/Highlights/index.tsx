@@ -35,57 +35,58 @@ export function Highlights({ content }: HighlightsProps) {
             oportunidades exclusivas.
           </p>
         </div>
+        <div className="px-10">
+          {destaqueNodes.length > 0 ? (
+            <>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                  slidesToScroll: 1,
+                }}
+                className="w-full"
+              >
+                <CarouselContent>
+                  {destaqueNodes.map((imovel) => (
+                    <CarouselItem
+                      key={imovel.id}
+                      className="basis-full md:basis-1/3"
+                    >
+                      <ImovelCard
+                        imovel={{
+                          ...imovel,
+                          title: imovel.title ?? "",
+                          slug: imovel.slug ?? "",
+                        }}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
 
-        {destaqueNodes.length > 0 ? (
-          <>
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-                slidesToScroll: 1,
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {destaqueNodes.map((imovel) => (
-                  <CarouselItem
-                    key={imovel.id}
-                    className="basis-full md:basis-1/3 px-2"
+                <CarouselPrevious className="left-[-40px] cursor-pointer" />
+                <CarouselNext className="right-[-40px] cursor-pointer" />
+              </Carousel>
+
+              <div className="text-center mt-8">
+                <Link href="/imoveis">
+                  <Button
+                    size="lg"
+                    className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer"
+                    tabIndex={-1}
                   >
-                    <ImovelCard
-                      imovel={{
-                        ...imovel,
-                        title: imovel.title ?? "",
-                        slug: imovel.slug ?? "",
-                      }}
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-
-              <CarouselPrevious className="left-[-40px] cursor-pointer" />
-              <CarouselNext className="right-[-40px] cursor-pointer" />
-            </Carousel>
-
-            <div className="text-center mt-8">
-              <Link href="/imoveis">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer"
-                  tabIndex={-1}
-                >
-                  Ver Todos os Imóveis
-                </Button>
-              </Link>
+                    Ver Todos os Imóveis
+                  </Button>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">
+                Nenhum imóvel em destaque no momento.
+              </p>
             </div>
-          </>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">
-              Nenhum imóvel em destaque no momento.
-            </p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
