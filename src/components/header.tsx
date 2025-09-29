@@ -1,7 +1,7 @@
 'use client'
 import React from "react"
 import Link from "next/link"
-import { Search, Phone, Menu, Heart } from "lucide-react"
+import { Search, Menu, Heart } from "lucide-react"
 import Image from "next/image"
 import { FaWhatsapp } from "react-icons/fa"
 import { Button } from "./ui/button"
@@ -11,7 +11,6 @@ export function Header() {
     <header className="w-full absolute top-0 z-50 bg-transparent transition-all duration-300">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/">
             <div className="overflow-hidden transition-all duration-500 ease-in-out w-[125px] h-[100px]">
               <Image
@@ -24,7 +23,6 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Links principais */}
           <div className="hidden md:flex items-center gap-6">
             <Link href="/imoveis" className="text-[#483b35] transition border-b-2 border-transparent hover:border-[#483b35]">
               Imóveis
@@ -37,7 +35,6 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Ações */}
           <div className="flex items-center gap-3">
             <Link href="/imoveis">
               <Button
@@ -65,7 +62,7 @@ export function Header() {
             <Link href="/imoveis">
               <Button className="cursor-pointer bg-[#483b35] hover:bg-[#9a8167]" size="sm" tabIndex={-1}>
                 <FaWhatsapp className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">Fale com um consultor</span>
+                <span className="hidden sm:inline">Fale com um corretor</span>
               </Button>
             </Link>
             <Button variant="ghost" size="sm" className="md:hidden">
