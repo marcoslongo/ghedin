@@ -37,13 +37,12 @@ export function Banner({ filtro }: BannerProps) {
 
   return (
     <section className="bg-gradient-to-r text-white py-48 relative">
-      <div className="container mx-auto px-4 text-center relative z-10 space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-[#483b35]">
+      <div className="container mx-auto px-4 text-center relative z-10">
+        <h1 className="text-4xl md:text-6xl font-bold mb-20 text-[#483b35]">
           Encontre o Imóvel <br /> dos <span className="text-[#9a8167]">Seus Sonhos</span>
         </h1>
 
-        <form onSubmit={handleSubmit} className="bg-white/90 text-[#483b35] p-6 rounded-2xl shadow-lg max-w-5xl mx-auto space-y-4">
-          {/* Primeira linha de filtros */}
+        <form onSubmit={handleSubmit} className="bg-white/90 text-[#483b35] p-6 rounded-2xl shadow-lg max-w-5xl mx-auto space-y-4 mb-3.5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="w-full">
               <Select value={tipoNegocio} onValueChange={setTipoNegocio}>
@@ -90,7 +89,6 @@ export function Banner({ filtro }: BannerProps) {
             </div>
           </div>
 
-          {/* Segunda linha de filtros */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="w-full">
               <Select value={quartosMin} onValueChange={setQuartosMin}>
@@ -140,7 +138,7 @@ export function Banner({ filtro }: BannerProps) {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/imoveis">
-            <Button size="lg" className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167]">
+            <Button size="lg" className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer">
               <House />
               Ver Todos os Imóveis
             </Button>

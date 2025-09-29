@@ -16,23 +16,8 @@ type SearchParams = {
   tipoNegocio?: string;
 };
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const filters = {
-    precoMin: searchParams.precoMin,
-    precoMax: searchParams.precoMax,
-    quartosMin: searchParams.quartosMin,
-    status: searchParams.status,
-    cidade: searchParams.cidade,
-    bairro: searchParams.bairro,
-    tipoImovel: searchParams.tipoImovel,
-    tipoNegocio: searchParams.tipoNegocio,
-  };
+export default async function HomePage() {
 
-  // Buscar dados necessários
   const filterOptions = await getFilters();
   const imoveisDestaque = await getDynamicImoveis({ first: 10 });
   const lancamentos = await getDynamicImoveis({ first: 6 });

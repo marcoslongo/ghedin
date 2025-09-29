@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export function Avaliation() {
   return (
-    <section className="bg-[#483b35] py-14">
+    <section className="bg-[#483b35] pt-24 pb-20">
       <div className="container mx-auto">
         <div className="flex justify-between">
           <div className="text-white max-w-[33%] flex flex-col gap-2">
@@ -9,13 +11,37 @@ export function Avaliation() {
           </div>
           <div>
             <div className="grid grid-cols-2 gap-5">
-              <div>
-                <h3>Anúncie seu imóvel</h3>
-                <p>Cadastre seu imóvel que em breve entraremos em contato.</p>
+              <div className="flex flex-col justify-center bg-white rounded-2xl p-4 pb-8">
+                <div className="flex justify-center mt-[-70px]">
+                  <div className="bg-white px-3 rounded-full flex border-8 border-[#ccc]">
+                    <Image
+                      width={96}
+                      height={116}
+                      alt=""
+                      src={'/assets/images/casa.png'}
+                    />
+                  </div>
+                </div>
+                <div className="text-center flex flex-col gap-1">
+                  <h3 className="font-bold text-2xl text-[#483b35]">Anúncie seu imóvel</h3>
+                  <p className="text-md text-[#9a8167] font-semibold">Cadastre seu imóvel que em breve <br /> entraremos em contato.</p>
+                </div>
               </div>
-              <div>
-                <h3>Avaliamos seu imóvel</h3>
-                <p>Cadastre seu imóvel que em breve entraremos em contato.</p>
+              <div className="flex flex-col justify-center bg-white rounded-2xl p-4 pb-8">
+                <div className="flex justify-center mt-[-70px]">
+                  <div className="bg-white px-3 rounded-full flex border-8 border-[#ccc]">
+                    <Image
+                      width={96}
+                      height={116}
+                      alt=""
+                      src={'/assets/images/busca.png'}
+                    />
+                  </div>
+                </div>
+                <div className="text-center flex flex-col gap-1">
+                  <h3 className="font-bold text-2xl text-[#483b35]">Avaliamos seu imóvel</h3>
+                  <p className="text-md text-[#9a8167] font-semibold">Cadastre seu imóvel que em breve entraremos em contato.</p>
+                </div>
               </div>
             </div>
           </div>
