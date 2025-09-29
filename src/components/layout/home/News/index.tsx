@@ -2,10 +2,16 @@
 
 import { ImovelCard } from "@/src/components/imovel-card";
 import { Button } from "@/src/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/src/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/src/components/ui/carousel";
 import { GetDynamicImoveisQuery } from "@/src/generated/graphql";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 
 interface NewsProps {
   content: GetDynamicImoveisQuery;
@@ -13,17 +19,25 @@ interface NewsProps {
 
 export function News({ content }: NewsProps) {
   const nodes = content.imoveis?.nodes ?? [];
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#483b35]">
             Lançamentos
           </h2>
           <p className="text-xl text-[#9a8167] max-w-2xl mx-auto">
             Confira os últimos lançamentos
           </p>
-        </div>
+        </motion.div>
+
         <div className="px-10">
           {nodes.length > 0 ? (
             <>
@@ -36,18 +50,29 @@ export function News({ content }: NewsProps) {
                 className="w-full"
               >
                 <CarouselContent>
-                  {nodes.map((imovel) => (
+                  {nodes.map((imovel, index) => (
                     <CarouselItem
                       key={imovel.id}
                       className="basis-full md:basis-1/3 px-2"
                     >
-                      <ImovelCard
-                        imovel={{
-                          ...imovel,
-                          title: imovel.title ?? "",
-                          slug: imovel.slug ?? "",
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.5,
+                          ease: "easeOut",
+                          delay: index * 0.1,
                         }}
-                      />
+                      >
+                        <ImovelCard
+                          imovel={{
+                            ...imovel,
+                            title: imovel.title ?? "",
+                            slug: imovel.slug ?? "",
+                          }}
+                        />
+                      </motion.div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -56,7 +81,13 @@ export function News({ content }: NewsProps) {
                 <CarouselNext className="right-[-40px] cursor-pointer" />
               </Carousel>
 
-              <div className="text-center mt-8">
+              <motion.div
+                className="text-center mt-8"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+              >
                 <Link href="/imoveis">
                   <Button
                     size="lg"
@@ -66,7 +97,7 @@ export function News({ content }: NewsProps) {
                     Ver Todos os Imóveis
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             </>
           ) : (
             <div className="text-center py-12">
