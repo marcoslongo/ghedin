@@ -1,16 +1,19 @@
 
 import { Banner } from "../components/layout/home/Banner"
-import { Imoveis } from "../components/layout/home/Imoveis";
+import { Highlights } from "../components/layout/home/Highlights";
+import { News } from "../components/layout/home/News";
 import { getDynamicImoveis } from "../services/GetDynamicImoveis";
 
 export default async function HomePage() {
-  const imoveisDestaque = await getDynamicImoveis({ first: 6 });
+  const imoveisDestaque = await getDynamicImoveis({ first: 10 });
+  const lancamentos = await getDynamicImoveis({ first: 6 });
 
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         <Banner />
-        <Imoveis content={imoveisDestaque} />
+        <News content={lancamentos} />
+        <Highlights content={imoveisDestaque} />
       </main>
     </div>
   )
