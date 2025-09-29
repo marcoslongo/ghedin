@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Button } from "@/src/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { Input } from "@/src/components/ui/input"
@@ -36,13 +37,24 @@ export function Banner({ filtro }: BannerProps) {
   }
 
   return (
-    <section className="bg-gradient-to-r text-white py-48 relative">
+    <section className="bg-gradient-to-r text-white py-48 relative overflow-hidden">
       <div className="container mx-auto px-4 text-center relative z-10">
-        <h1 className="text-4xl md:text-6xl font-bold mb-20 text-[#483b35]">
+        <motion.h1 
+          className="text-4xl md:text-6xl font-bold mb-20 text-[#483b35]"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           Encontre o Imóvel <br /> dos <span className="text-[#9a8167]">Seus Sonhos</span>
-        </h1>
+        </motion.h1>
 
-        <form onSubmit={handleSubmit} className="bg-white/90 text-[#483b35] p-6 rounded-2xl shadow-lg max-w-5xl mx-auto space-y-4 mb-3.5">
+        <motion.form 
+          onSubmit={handleSubmit} 
+          className="bg-white/90 text-[#483b35] p-6 rounded-2xl shadow-lg max-w-5xl mx-auto space-y-4 mb-3.5"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="w-full">
               <Select value={tipoNegocio} onValueChange={setTipoNegocio}>
@@ -134,24 +146,41 @@ export function Banner({ filtro }: BannerProps) {
               </Button>
             </div>
           </div>
-        </form>
+        </motion.form>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+        >
           <Link href="/imoveis">
             <Button size="lg" className="text-lg px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer">
               <House />
               Ver Todos os Imóveis
             </Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
 
-      <Image
-        src={"/assets/images/bg-banner.webp"}
-        alt=""
-        fill
-        className="object-cover"
-      />
+      <motion.div
+        className="absolute inset-0"
+        animate={{
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Image
+          src={"/assets/images/bg-banner.webp"}
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </motion.div>
     </section>
   )
 }
