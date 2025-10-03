@@ -33,22 +33,6 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="text-2xl mb-2">Sobre o imóvel</CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  {acf?.sobreOImoveil && (
-                    <div className="prose max-w-none text-muted-foreground mb-4">
-                      <div dangerouslySetInnerHTML={{ __html: acf.sobreOImoveil }} />
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-              <Card className="pt-6">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
                       <CardTitle className="text-2xl mb-2">{imovel.title}</CardTitle>
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <MapPin className="h-4 w-4" />
@@ -103,6 +87,22 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                       </div>
                     )}
                   </div>
+                </CardContent>
+              </Card>
+              <Card className="pt-6">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <CardTitle className="text-2xl mb-2">Sobre o imóvel</CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {acf?.sobreOImoveil && (
+                    <div className="prose max-w-none text-muted-foreground mb-4">
+                      <div dangerouslySetInnerHTML={{ __html: acf.sobreOImoveil }} />
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
