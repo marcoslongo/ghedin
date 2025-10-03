@@ -6,6 +6,7 @@ import { Footer } from "../components/footer"
 import { FavoritesProvider } from "../context/FavoritesContext"
 import { Toaster } from "../components/ui/sonner"
 import { TooltipProvider } from "../components/ui/tooltip"
+import { FaWhatsapp } from "react-icons/fa"
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -34,6 +35,14 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <Toaster position="top-center" />
+            <a
+              href="https://wa.me/5546999370870"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all z-50"
+            >
+              <FaWhatsapp className="h-6 w-6" />
+            </a>
           </TooltipProvider>
         </FavoritesProvider>
       </body>
