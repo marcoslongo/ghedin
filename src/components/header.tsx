@@ -59,12 +59,6 @@ export function Header() {
               </Button>
             </Link>
 
-            <Link href="/imoveis">
-              <Button className="cursor-pointer bg-[#483b35] hover:bg-[#9a8167]" size="sm" tabIndex={-1}>
-                <FaWhatsapp className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">Fale com um corretor</span>
-              </Button>
-            </Link>
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="h-4 w-4" />
             </Button>
