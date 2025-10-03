@@ -5,13 +5,10 @@ export default function Loading() {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 pt-40">
         <div className="container mx-auto px-4 py-8">
-          {/* Hero Skeleton */}
           <section className="text-center mb-12">
             <Skeleton className="h-12 w-96 mx-auto mb-4" />
             <Skeleton className="h-6 w-full max-w-2xl mx-auto" />
           </section>
-
-          {/* Posts Grid Skeleton */}
           <section>
             <Skeleton className="h-8 w-48 mb-6" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
