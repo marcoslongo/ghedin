@@ -18,6 +18,8 @@ export const query = graphql(`query GetImovelBySlug($slug: String!) {
           mediaItemUrl
         }
       }
+      sobreOImoveil
+      testada
       areaConstruida
       areaTotal
       bairro

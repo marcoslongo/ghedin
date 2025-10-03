@@ -29,7 +29,22 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                   <Badge variant="secondary" className="capitalize">{arrayToString(acf?.tipoNegocio)}</Badge>
                 </div>
               </div>
-
+              <Card className="pt-6">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <CardTitle className="text-2xl mb-2">Sobre o imóvel</CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {acf?.sobreOImoveil && (
+                    <div className="prose max-w-none text-muted-foreground mb-4">
+                      <div dangerouslySetInnerHTML={{ __html: acf.sobreOImoveil }} />
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
               <Card className="pt-6">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -79,6 +94,12 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                       <div className="flex items-center gap-2">
                         <Maximize className="h-5 w-5 text-muted-foreground" />
                         <span>{acf?.areaTotal}m² total</span>
+                      </div>
+                    )}
+                    {acf?.testada! > 0 && (
+                      <div className="flex items-center gap-2">
+                        <Maximize className="h-5 w-5 text-muted-foreground" />
+                        <span>{acf?.testada}m área testada</span>
                       </div>
                     )}
                   </div>
