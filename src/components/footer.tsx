@@ -9,18 +9,19 @@ export function Footer() {
             <div className="space-y-2 text-sm text-white">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                <span>Rua das Flores, 123 - Centro</span>
+                <span>Realeza e região</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>(11) 99999-9999</span>
+                <span>(46) 99937-0870</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>contato@ghedinimoveis.com.br</span>
+                <span>ghedin.imoveis@gmail.com</span>
               </div>
             </div>
           </div>
+
           <div>
             <h3 className="font-semibold mb-4 text-white">Links Rápidos</h3>
             <ul className="space-y-2 text-sm text-white">
