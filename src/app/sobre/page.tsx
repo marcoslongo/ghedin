@@ -7,7 +7,7 @@ export default function Sobre() {
     <div className="flex-1 pt-40">
       <div className="container mx-auto px-4 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-          Sobre a Ghedin
+          Sobre a nós
         </h1>
       </div>
 
