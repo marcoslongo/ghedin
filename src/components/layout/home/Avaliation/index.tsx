@@ -60,7 +60,7 @@ export function Avaliation() {
                   </p>
                 </div>
                 <div className="flex flex-row gap-4 justify-center mt-2">
-                  <Link href="https://wa.me/5546999370870?text=Ol%C3%A1%21%20Gostaria%20de%20cadastrar%20meu%20im%C3%B3vel.%20">
+                  <Link href="https://wa.me/5546999370870?text=Ol%C3%A1%21%20Gostaria%20de%20cadastrar%20meu%20im%C3%B3vel.%20" target="_blank">
                     <Button
                       size="lg"
                       className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center shadow-md"
@@ -95,7 +95,7 @@ export function Avaliation() {
                   </p>
                 </div>
                 <div className="flex flex-row gap-4 justify-center mt-2">
-                  <Link href="https://wa.me/5546999370870?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o.%20">
+                  <Link href="https://wa.me/5546999370870?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o.%20" target="_blank">
                     <Button
                       size="lg"
                       className="text-sm px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer flex items-center justify-center shadow-md"
