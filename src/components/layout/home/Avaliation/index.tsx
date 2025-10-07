@@ -35,9 +35,9 @@ export function Avaliation() {
               visible: { transition: { staggerChildren: 0.2 } },
             }}
           >
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <motion.div
-                className="flex flex-col justify-center bg-white rounded-2xl p-4 pb-8"
+                className="flex flex-col justify-center bg-white rounded-2xl p-4 pb-8 mb-20 md:mb-0"
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
