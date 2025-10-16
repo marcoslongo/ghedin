@@ -80,10 +80,16 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
                         <span>{acf?.areaTotal}m² total</span>
                       </div>
                     )}
+                    {acf?.areaConstruida! > 0 && (
+                      <div className="flex items-center gap-2">
+                        <Maximize className="h-5 w-5 text-muted-foreground" />
+                        <span>Área construída: {acf?.areaConstruida}m²</span>
+                      </div>
+                    )}
                     {acf?.testada! > 0 && (
                       <div className="flex items-center gap-2">
                         <Maximize className="h-5 w-5 text-muted-foreground" />
-                        <span>{acf?.testada}m área testada</span>
+                        <span>Área testada: {acf?.testada}m</span>
                       </div>
                     )}
                   </div>
