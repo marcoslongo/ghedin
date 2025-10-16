@@ -1,5 +1,6 @@
 query GetDynamicImoveis(
-  $first: Int
+  $offset: Int
+  $size: Int
   $precoMin: String
   $precoMax: String
   $quartosMin: String
@@ -10,8 +11,8 @@ query GetDynamicImoveis(
   $tipoNegocio: String
 ) {
   imoveis(
-    first: $first
     where: {
+      offsetPagination: { offset: $offset, size: $size }
       metaQuery: {
         relation: AND
         metaArray: [
@@ -53,6 +54,12 @@ query GetDynamicImoveis(
         destaque
         banheiros
         areaTotal
+      }
+    }
+    pageInfo {
+      offsetPagination {
+        total
+        hasMore
       }
     }
   }
