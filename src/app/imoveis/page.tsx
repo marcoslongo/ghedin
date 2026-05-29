@@ -53,7 +53,7 @@ export default async function ImoveisPage({
 
   return (
     <div className="min-h-screen bg-[#F8F6F3]">
-      <div className="bg-[#483B35] pt-28 pb-12">
+      <div className="bg-[#483B35] pt-32 pb-12">
         <div className="container mx-auto px-6">
           <p className="text-[#9A8167] text-xs font-medium tracking-[0.3em] uppercase mb-3">
             Portfólio
