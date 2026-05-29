@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { graphql } from "../generated";
 import { urqlClient } from "../lib/urql-client";
 
@@ -55,15 +56,15 @@ type ImoveisFilters = {
   tipoNegocio?: string;
 };
 
-export async function getDynamicImoveis(filters: ImoveisFilters = {}) {
+async function fetchDynamicImoveis(filters: ImoveisFilters) {
   const cleanFilters = Object.fromEntries(
-    Object.entries(filters).filter(([_, value]) => value !== undefined && value !== '')
+    Object.entries(filters).filter(([_, value]) => value !== undefined && value !== "")
   );
 
   const { data } = await urqlClient.query(query, {
     size: 6,
     offset: 0,
-    ...cleanFilters
+    ...cleanFilters,
   }).toPromise();
 
   if (!data) {
@@ -71,4 +72,16 @@ export async function getDynamicImoveis(filters: ImoveisFilters = {}) {
   }
 
   return data;
+}
+
+export async function getDynamicImoveis(filters: ImoveisFilters = {}) {
+  const cacheKey = JSON.stringify(filters);
+
+  const cached = unstable_cache(
+    () => fetchDynamicImoveis(filters),
+    ["imoveis", cacheKey],
+    { tags: ["imovel"], revalidate: 3600 }
+  );
+
+  return cached();
 }

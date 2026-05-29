@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { graphql } from "../generated";
 import { urqlClient } from "../lib/urql-client";
 
@@ -44,11 +45,19 @@ export const query = graphql(`query GetImovelBySlug($slug: String!) {
 }`);
 
 export async function getImovelBySlug(slug: string) {
-  const { data } = await urqlClient.query(query, { slug }).toPromise();
+  const cached = unstable_cache(
+    async () => {
+      const { data } = await urqlClient.query(query, { slug }).toPromise();
 
-  if (!data) {
-    throw new Error("Página não encontrada");
-  }
+      if (!data) {
+        throw new Error("Página não encontrada");
+      }
 
-  return data;
+      return data;
+    },
+    ["imovel-slug", slug],
+    { tags: ["imovel"], revalidate: 3600 }
+  );
+
+  return cached();
 }
