@@ -36,7 +36,7 @@ export function Banner({ filtro }: BannerProps) {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden pb-16 md:pb-0">
       <motion.div
         className="absolute inset-0"
         animate={{ scale: [1, 1.06, 1] }}
@@ -54,7 +54,7 @@ export function Banner({ filtro }: BannerProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/70" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#483B35]/40 via-transparent to-transparent" />
 
-      <div className="container mx-auto px-6 relative z-10 pt-20">
+      <div className="container mx-auto px-6 relative z-10 pt-28 md:pt-32 pb-8 md:pb-0">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -64,11 +64,11 @@ export function Banner({ filtro }: BannerProps) {
             <p className="text-[#9A8167] text-sm font-medium tracking-[0.35em] uppercase mb-6">
               Ghedin Imóveis · Realeza e Região
             </p>
-            <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-8">
+            <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-4 md:mb-8">
               Encontre o Imóvel{" "}
               <span className="italic text-[#C4A882]">dos Seus Sonhos</span>
             </h1>
-            <p className="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+            <p className="text-white/75 text-base md:text-xl max-w-2xl mx-auto mb-6 md:mb-12 font-light leading-relaxed">
               Mais de 8 anos conectando famílias aos melhores imóveis da região com expertise, transparência e cuidado.
             </p>
           </motion.div>
@@ -192,14 +192,15 @@ export function Banner({ filtro }: BannerProps) {
           </motion.div>
         </div>
 
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="h-6 w-6 text-white/50" />
-        </motion.div>
       </div>
+
+      <motion.div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:block"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <ChevronDown className="h-6 w-6 text-white/50" />
+      </motion.div>
     </section>
   )
 }

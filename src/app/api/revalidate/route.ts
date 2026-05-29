@@ -6,6 +6,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { secret, tag } = body;
 
+    console.log("SECRET ENV:", JSON.stringify(process.env.REVALIDATE_SECRET));
+    console.log("SECRET REQ:", JSON.stringify(secret));
+
     if (!secret || secret !== process.env.REVALIDATE_SECRET) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
