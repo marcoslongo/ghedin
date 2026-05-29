@@ -42,7 +42,7 @@ export default function Contato() {
 
   return (
     <div className="min-h-screen bg-[#F8F6F3]">
-      <div className="bg-[#483B35] pt-28 pb-16">
+      <div className="bg-[#483B35] pt-32 pb-16">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
