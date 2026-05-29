@@ -5,10 +5,9 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Button } from "@/src/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { Input } from "@/src/components/ui/input"
-import { House, Search } from "lucide-react"
+import { Search, ChevronDown } from "lucide-react"
 import { GetFiltersQuery } from "@/src/generated/graphql"
 
 interface BannerProps {
@@ -37,57 +36,90 @@ export function Banner({ filtro }: BannerProps) {
   }
 
   return (
-    <section className="bg-gradient-to-r text-white py-48 relative overflow-hidden">
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <motion.h1 
-          className="text-4xl md:text-6xl font-bold mb-20 text-[#483b35]"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          Encontre o Imóvel <br /> dos <span className="text-[#9a8167]">Seus Sonhos</span>
-        </motion.h1>
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <motion.div
+        className="absolute inset-0"
+        animate={{ scale: [1, 1.06, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image
+          src="/assets/images/bg-banner.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
+      </motion.div>
 
-        <motion.form 
-          onSubmit={handleSubmit} 
-          className="bg-white/90 text-[#483b35] p-6 rounded-2xl shadow-lg max-w-5xl mx-auto space-y-4 mb-3.5"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="w-full">
-              <Select value={tipoNegocio} onValueChange={setTipoNegocio}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Tipo de Negócio" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="venda">Venda</SelectItem>
-                  <SelectItem value="aluguel">Aluguel</SelectItem>
-                  <SelectItem value="temporada">Temporada</SelectItem>
-                </SelectContent>
-              </Select>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#483B35]/40 via-transparent to-transparent" />
+
+      <div className="container mx-auto px-6 relative z-10 pt-20">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <p className="text-[#9A8167] text-sm font-medium tracking-[0.35em] uppercase mb-6">
+              Ghedin Imóveis · Realeza e Região
+            </p>
+            <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-8">
+              Encontre o Imóvel{" "}
+              <span className="italic text-[#C4A882]">dos Seus Sonhos</span>
+            </h1>
+            <p className="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+              Mais de 8 anos conectando famílias aos melhores imóveis da região com expertise, transparência e cuidado.
+            </p>
+          </motion.div>
+
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl"
+          >
+            <div className="flex gap-1 mb-5 bg-white/10 rounded-xl p-1 w-fit mx-auto">
+              {[
+                { value: "venda", label: "Comprar" },
+                { value: "aluguel", label: "Alugar" },
+                { value: "temporada", label: "Temporada" },
+              ].map((tab) => (
+                <button
+                  key={tab.value}
+                  type="button"
+                  onClick={() => setTipoNegocio(tipoNegocio === tab.value ? "" : tab.value)}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    tipoNegocio === tab.value
+                      ? "bg-white text-[#483B35] shadow-sm"
+                      : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
 
-            <div className="w-full">
-              <Select value={tipoImovel} onValueChange={setTipoImovel}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Tipo de Imóvel" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="casa">Casa</SelectItem>
-                  <SelectItem value="apartamento">Apartamento</SelectItem>
-                  <SelectItem value="terreno">Terreno</SelectItem>
-                  <SelectItem value="comercial">Comercial</SelectItem>
-                  <SelectItem value="chacara">Chácara</SelectItem>
-                  <SelectItem value="cobertura">Cobertura</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+              <div className="[&_button]:bg-white/90 [&_button]:text-[#483B35] [&_button]:border-white/30 [&_button:hover]:bg-white [&_[role=option]]:text-[#483B35]">
+                <Select value={tipoImovel} onValueChange={setTipoImovel}>
+                  <SelectTrigger className="w-full bg-white/90 border-white/30 text-[#483B35] h-12 rounded-xl">
+                    <SelectValue placeholder="Tipo de imóvel" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="casa">Casa</SelectItem>
+                    <SelectItem value="apartamento">Apartamento</SelectItem>
+                    <SelectItem value="terreno">Terreno</SelectItem>
+                    <SelectItem value="comercial">Comercial</SelectItem>
+                    <SelectItem value="chacara">Chácara</SelectItem>
+                    <SelectItem value="cobertura">Cobertura</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div className="w-full">
               <Select value={cidade} onValueChange={setCidade}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-white/90 border-white/30 text-[#483B35] h-12 rounded-xl">
                   <SelectValue placeholder="Cidade" />
                 </SelectTrigger>
                 <SelectContent>
@@ -98,13 +130,9 @@ export function Banner({ filtro }: BannerProps) {
                   ))}
                 </SelectContent>
               </Select>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="w-full">
               <Select value={quartosMin} onValueChange={setQuartosMin}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-white/90 border-white/30 text-[#483B35] h-12 rounded-xl">
                   <SelectValue placeholder="Quartos" />
                 </SelectTrigger>
                 <SelectContent>
@@ -114,73 +142,64 @@ export function Banner({ filtro }: BannerProps) {
                   <SelectItem value="4">4+ Quartos</SelectItem>
                 </SelectContent>
               </Select>
+
+              <button
+                type="submit"
+                className="h-12 px-6 bg-[#9A8167] hover:bg-[#483B35] text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
+              >
+                <Search className="h-4 w-4" />
+                Buscar Imóveis
+              </button>
             </div>
 
-            <div className="w-full">
+            <div className="grid grid-cols-2 gap-3">
               <Input
                 type="number"
-                placeholder="Preço Mín."
+                placeholder="Preço mínimo (R$)"
                 value={precoMin}
                 onChange={(e) => setPrecoMin(e.target.value)}
-                className="w-full text-[#483b35]"
+                className="bg-white/90 border-white/30 text-[#483B35] h-10 rounded-xl placeholder:text-[#483B35]/50 text-sm"
               />
-            </div>
-
-            <div className="w-full">
               <Input
                 type="number"
-                placeholder="Preço Máx."
+                placeholder="Preço máximo (R$)"
                 value={precoMax}
                 onChange={(e) => setPrecoMax(e.target.value)}
-                className="w-full text-[#483b35]"
+                className="bg-white/90 border-white/30 text-[#483B35] h-10 rounded-xl placeholder:text-[#483B35]/50 text-sm"
               />
             </div>
+          </motion.form>
 
-            <div className="w-full">
-              <Button 
-                type="submit" 
-                className="bg-[#483b35] hover:bg-[#9a8167] w-full cursor-pointer h-10"
-              >
-                <Search className="mr-2 h-4 w-4" />
-                Buscar
-              </Button>
-            </div>
-          </div>
-        </motion.form>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link href="/imoveis">
+              <button className="px-8 py-3.5 border-2 border-white/50 text-white font-medium rounded-full hover:bg-white hover:text-[#483B35] transition-all duration-300 text-sm tracking-wide">
+                Ver Todos os Imóveis
+              </button>
+            </Link>
+            <a
+              href="https://wa.me/5546999370870"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 bg-[#9A8167] hover:bg-[#483B35] text-white font-medium rounded-full transition-all duration-300 text-sm tracking-wide"
+            >
+              Falar com Especialista
+            </a>
+          </motion.div>
+        </div>
 
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Link href="/imoveis">
-            <Button size="lg" className="text-md px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer">
-              <House />
-              Ver Todos os Imóveis
-            </Button>
-          </Link>
+          <ChevronDown className="h-6 w-6 text-white/50" />
         </motion.div>
       </div>
-
-      <motion.div
-        className="absolute inset-0"
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Image
-          src={"/assets/images/bg-banner.webp"}
-          alt=""
-          fill
-          className="object-cover"
-        />
-      </motion.div>
     </section>
   )
 }

@@ -8,7 +8,7 @@ interface SearchParams {
   [key: string]: string | string[] | undefined;
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 9;
 
 export default async function ImoveisPage({
   searchParams,
@@ -16,7 +16,6 @@ export default async function ImoveisPage({
   searchParams: SearchParams;
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   const filters = {
@@ -36,30 +35,44 @@ export default async function ImoveisPage({
   const filterOptions = await getFilters();
 
   const totalItems = data.imoveis?.pageInfo?.offsetPagination?.total || 0;
-  const hasMore = data.imoveis?.pageInfo?.offsetPagination?.hasMore || false;
 
   const searchParamsForPagination = Object.fromEntries(
     Object.entries(searchParams)
-      .filter(([key]) => key !== 'page')
+      .filter(([key]) => key !== "page")
       .map(([key, value]) => [key, String(value)])
   );
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-1 pt-40">
-        <div className="container mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-              Todos os Imóveis
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Encontre o imóvel perfeito para você. Use os filtros para refinar
-              sua busca.
-            </p>
-          </div>
+  const activeFiltersCount = [
+    searchParams.tipoNegocio,
+    searchParams.tipoImovel,
+    searchParams.cidade,
+    searchParams.quartosMin,
+    searchParams.precoMin,
+    searchParams.precoMax,
+  ].filter(Boolean).length;
 
-          <div className="flex flex-wrap">
-            <div className="w-full lg:w-1/4">
+  return (
+    <div className="min-h-screen bg-[#F8F6F3]">
+      <div className="bg-[#483B35] pt-28 pb-12">
+        <div className="container mx-auto px-6">
+          <p className="text-[#9A8167] text-xs font-medium tracking-[0.3em] uppercase mb-3">
+            Portfólio
+          </p>
+          <h1 className="font-playfair text-3xl md:text-4xl text-white mb-2">
+            Todos os Imóveis
+          </h1>
+          <p className="text-white/60 text-sm">
+            {totalItems > 0
+              ? `${totalItems} imóvel${totalItems !== 1 ? "s" : ""} encontrado${totalItems !== 1 ? "s" : ""}${activeFiltersCount > 0 ? ` com ${activeFiltersCount} filtro${activeFiltersCount > 1 ? "s" : ""}` : ""}`
+              : "Nenhum imóvel encontrado com os filtros selecionados"}
+          </p>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 py-10">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <aside className="w-full lg:w-72 flex-shrink-0">
+            <div className="lg:sticky lg:top-24">
               <FiltrosImoveis
                 filtro={filterOptions}
                 currentFilters={{
@@ -74,41 +87,49 @@ export default async function ImoveisPage({
                 }}
               />
             </div>
+          </aside>
 
-            <div className="w-full pl-4 lg:w-3/4">
-              {data.imoveis?.nodes && data.imoveis.nodes.length > 0 ? (
-                <>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    {data.imoveis.nodes.map((imovel) => (
-                      <ImovelCard
-                        key={imovel.id}
-                        imovel={{
-                          id: imovel.id,
-                          title: imovel.title ?? "",
-                          slug: imovel.slug ?? "",
-                          featuredImage: imovel.featuredImage,
-                          acfImoveis: imovel.acfImoveis ?? {},
-                        }}
-                      />
-                    ))}
-                  </div>
+          <main className="flex-1 min-w-0">
+            {data.imoveis?.nodes && data.imoveis.nodes.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+                  {data.imoveis.nodes.map((imovel) => (
+                    <ImovelCard
+                      key={imovel.id}
+                      imovel={{
+                        id: imovel.id,
+                        title: imovel.title ?? "",
+                        slug: imovel.slug ?? "",
+                        featuredImage: imovel.featuredImage,
+                        acfImoveis: imovel.acfImoveis ?? {},
+                      }}
+                    />
+                  ))}
+                </div>
 
-                  <PaginacaoImoveis
-                    currentPage={currentPage}
-                    totalItems={totalItems}
-                    itemsPerPage={ITEMS_PER_PAGE}
-                    searchParams={searchParamsForPagination}
-                  />
-                </>
-              ) : (
-                <p className="text-center text-muted-foreground">
-                  Não encontramos imóveis com os parâmetros filtrados
+                <PaginacaoImoveis
+                  currentPage={currentPage}
+                  totalItems={totalItems}
+                  itemsPerPage={ITEMS_PER_PAGE}
+                  searchParams={searchParamsForPagination}
+                />
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-16 h-16 rounded-full bg-[#9A8167]/15 flex items-center justify-center mb-6">
+                  <span className="text-2xl">🏠</span>
+                </div>
+                <h3 className="font-playfair text-xl text-[#483B35] mb-2">
+                  Nenhum imóvel encontrado
+                </h3>
+                <p className="text-[#483B35]/55 text-sm max-w-xs">
+                  Tente ajustar os filtros para encontrar mais opções disponíveis.
                 </p>
-              )}
-            </div>
-          </div>
+              </div>
+            )}
+          </main>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

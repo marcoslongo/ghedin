@@ -4,12 +4,11 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import type React from "react"
 
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { Search, Filter } from "lucide-react"
+import { Search, SlidersHorizontal, X } from "lucide-react"
 import { GetFiltersQuery } from "../generated/graphql"
 
 interface FiltrosProps {
@@ -67,123 +66,141 @@ export function FiltrosImoveis({ filtro, currentFilters }: FiltrosProps) {
     router.push("/imoveis")
   }
 
+  const hasFilters = Object.values(values).some(Boolean)
+
   return (
-    <Card className="w-full pt-6">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Filter className="h-5 w-5" />
-          Filtrar Imóveis
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="tipoNegocio">Tipo de Negócio</Label>
-              <Select
-                value={values.tipoNegocio}
-                onValueChange={(v) => updateField("tipoNegocio", v)}
+    <div className="bg-white rounded-2xl border border-[#9A8167]/15 overflow-hidden shadow-sm">
+      <div className="bg-[#483B35] px-5 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-2 text-white">
+          <SlidersHorizontal className="h-4 w-4" />
+          <span className="font-semibold text-sm">Filtrar Imóveis</span>
+        </div>
+        {hasFilters && (
+          <button
+            onClick={handleClear}
+            className="text-white/60 hover:text-white text-xs flex items-center gap-1 transition-colors"
+          >
+            <X className="h-3 w-3" />
+            Limpar
+          </button>
+        )}
+      </div>
+
+      <form className="p-5 space-y-5" onSubmit={handleSubmit}>
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Tipo de Negócio
+          </Label>
+          <div className="grid grid-cols-3 gap-1.5">
+            {[
+              { value: "venda", label: "Venda" },
+              { value: "aluguel", label: "Aluguel" },
+              { value: "temporada", label: "Temporada" },
+            ].map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => updateField("tipoNegocio", values.tipoNegocio === opt.value ? "" : opt.value)}
+                className={`py-2 text-xs font-medium rounded-lg border transition-all duration-200 ${
+                  values.tipoNegocio === opt.value
+                    ? "bg-[#483B35] border-[#483B35] text-white"
+                    : "border-[#9A8167]/25 text-[#483B35]/70 hover:border-[#9A8167] hover:text-[#483B35]"
+                }`}
               >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecione..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="venda">Venda</SelectItem>
-                  <SelectItem value="aluguel">Aluguel</SelectItem>
-                  <SelectItem value="temporada">Temporada</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="tipoImovel">Tipo de Imóvel</Label>
-              <Select
-                value={values.tipoImovel}
-                onValueChange={(v) => updateField("tipoImovel", v)}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecione..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="apartamento">Apartamento</SelectItem>
-                  <SelectItem value="casa">Casa</SelectItem>
-                  <SelectItem value="terreno">Terreno</SelectItem>
-                  <SelectItem value="comercial">Comercial</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="cidade">Cidade</Label>
-              <Select
-                value={values.cidade}
-                onValueChange={(v) => updateField("cidade", v)}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Qualquer" />
-                </SelectTrigger>
-                <SelectContent>
-                  {filtro.cidadeImovels?.edges.map((city) =>
-                    <SelectItem value={city.node.name!} key={city.node.id}>{city.node.name}</SelectItem>
-                  )}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="quartos">Mín. Quartos</Label>
-              <Select
-                value={values.quartosMin}
-                onValueChange={(v) => updateField("quartosMin", v)}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Qualquer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1+</SelectItem>
-                  <SelectItem value="2">2+</SelectItem>
-                  <SelectItem value="3">3+</SelectItem>
-                  <SelectItem value="4">4+</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="precoMin">Preço Mínimo</Label>
-              <Input
-                id="precoMin"
-                type="number"
-                value={values.precoMin}
-                onChange={(e) => updateField("precoMin", e.target.value)}
-                placeholder="R$ 0"
-                className="w-full"
-              />
-            </div>
-
-            <div className="w-full">
-              <Label className="mb-1.5" htmlFor="precoMax">Preço Máximo</Label>
-              <Input
-                id="precoMax"
-                type="number"
-                value={values.precoMax}
-                onChange={(e) => updateField("precoMax", e.target.value)}
-                placeholder="R$ 999.999"
-                className="w-full"
-              />
-            </div>
+                {opt.label}
+              </button>
+            ))}
           </div>
+        </div>
 
-          <div className="flex gap-2">
-            <Button type="submit" className="flex-1">
-              <Search className="h-4 w-4 mr-2" />
-              Buscar
-            </Button>
-            <Button type="button" variant="outline" onClick={handleClear}>
-              Limpar
-            </Button>
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Tipo de Imóvel
+          </Label>
+          <Select value={values.tipoImovel} onValueChange={(v) => updateField("tipoImovel", v)}>
+            <SelectTrigger className="border-[#9A8167]/25 text-[#483B35] focus:ring-[#9A8167]/30 rounded-xl h-10">
+              <SelectValue placeholder="Todos os tipos" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="apartamento">Apartamento</SelectItem>
+              <SelectItem value="casa">Casa</SelectItem>
+              <SelectItem value="terreno">Terreno</SelectItem>
+              <SelectItem value="comercial">Comercial</SelectItem>
+              <SelectItem value="chacara">Chácara</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Cidade
+          </Label>
+          <Select value={values.cidade} onValueChange={(v) => updateField("cidade", v)}>
+            <SelectTrigger className="border-[#9A8167]/25 text-[#483B35] focus:ring-[#9A8167]/30 rounded-xl h-10">
+              <SelectValue placeholder="Qualquer cidade" />
+            </SelectTrigger>
+            <SelectContent>
+              {filtro.cidadeImovels?.edges.map((city) => (
+                <SelectItem value={city.node.name!} key={city.node.id}>
+                  {city.node.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Mín. Quartos
+          </Label>
+          <div className="grid grid-cols-4 gap-1.5">
+            {["1", "2", "3", "4"].map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => updateField("quartosMin", values.quartosMin === q ? "" : q)}
+                className={`py-2 text-xs font-medium rounded-lg border transition-all duration-200 ${
+                  values.quartosMin === q
+                    ? "bg-[#9A8167] border-[#9A8167] text-white"
+                    : "border-[#9A8167]/25 text-[#483B35]/70 hover:border-[#9A8167]"
+                }`}
+              >
+                {q}+
+              </button>
+            ))}
           </div>
-        </form>
-      </CardContent>
-    </Card>
+        </div>
+
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Faixa de Preço
+          </Label>
+          <div className="space-y-2">
+            <Input
+              type="number"
+              value={values.precoMin}
+              onChange={(e) => updateField("precoMin", e.target.value)}
+              placeholder="Mínimo (R$)"
+              className="border-[#9A8167]/25 text-[#483B35] focus-visible:ring-[#9A8167]/30 rounded-xl h-10 text-sm"
+            />
+            <Input
+              type="number"
+              value={values.precoMax}
+              onChange={(e) => updateField("precoMax", e.target.value)}
+              placeholder="Máximo (R$)"
+              className="border-[#9A8167]/25 text-[#483B35] focus-visible:ring-[#9A8167]/30 rounded-xl h-10 text-sm"
+            />
+          </div>
+        </div>
+
+        <Button
+          type="submit"
+          className="w-full bg-[#483B35] hover:bg-[#9A8167] text-white rounded-xl h-11 font-medium transition-all duration-300"
+        >
+          <Search className="h-4 w-4 mr-2" />
+          Buscar Imóveis
+        </Button>
+      </form>
+    </div>
   )
 }

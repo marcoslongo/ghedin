@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans } from "next/font/google"
+import { Plus_Jakarta_Sans, Montserrat } from "next/font/google"
 import "./globals.css"
 import { Header } from "../components/header"
 import { Footer } from "../components/footer"
@@ -12,6 +12,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700", "800"],
+  variable: "--font-playfair",
 })
 
 export const metadata: Metadata = {
@@ -27,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={plusJakarta.variable}>
+    <html lang="pt-BR" className={`${plusJakarta.variable} ${montserrat.variable}`}>
       <body className="antialiased flex flex-col min-h-screen font-sans">
         <FavoritesProvider>
           <TooltipProvider>
@@ -39,7 +46,7 @@ export default function RootLayout({
               href="https://wa.me/5546999370870"
               target="_blank"
               rel="noopener noreferrer"
-              className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all z-50"
+              className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all z-50 hover:scale-110 duration-300"
             >
               <FaWhatsapp className="h-6 w-6" />
             </a>

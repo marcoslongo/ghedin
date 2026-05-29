@@ -1,7 +1,6 @@
 "use client";
 
 import { ImovelCard } from "@/src/components/imovel-card";
-import { Button } from "@/src/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -12,7 +11,7 @@ import {
 import { GetDynamicImoveisQuery } from "@/src/generated/graphql";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { House } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface HighlightsProps {
   content: GetDynamicImoveisQuery;
@@ -25,94 +24,66 @@ export function Highlights({ content }: HighlightsProps) {
     (imovel) => imovel.acfImoveis?.destaque === true
   );
 
+  if (destaqueNodes.length === 0) return null;
+
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-[#F8F6F3]">
+      <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between mb-14"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#483b35]">
-            Imóveis em Destaque
-          </h2>
-          <p className="text-xl text-[#9a8167] max-w-2xl mx-auto">
-            Selecionamos os melhores imóveis para você. Confira nossas
-            oportunidades exclusivas.
-          </p>
+          <div>
+            <p className="text-[#9A8167] text-xs font-medium tracking-[0.3em] uppercase mb-3">
+              Seleção Especial
+            </p>
+            <h2 className="font-playfair text-3xl md:text-4xl text-[#483B35]">
+              Imóveis em Destaque
+            </h2>
+          </div>
+          <Link
+            href="/imoveis"
+            className="mt-4 md:mt-0 flex items-center gap-2 text-[#9A8167] hover:text-[#483B35] text-sm font-medium transition-colors group"
+          >
+            Explorar portfólio completo
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </motion.div>
 
-        <div className="px-10">
-          {destaqueNodes.length > 0 ? (
-            <>
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                  slidesToScroll: 1,
-                }}
-                className="w-full"
-              >
-                <CarouselContent>
-                  {destaqueNodes.map((imovel, index) => (
-                    <CarouselItem
-                      key={imovel.id}
-                      className="basis-full md:basis-1/3 px-2"
-                    >
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.5,
-                          ease: "easeOut",
-                          delay: index * 0.1,
-                        }}
-                      >
-                        <ImovelCard
-                          imovel={{
-                            ...imovel,
-                            title: imovel.title ?? "",
-                            slug: imovel.slug ?? "",
-                          }}
-                        />
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-
-                <CarouselPrevious className="left-[-40px] cursor-pointer" />
-                <CarouselNext className="right-[-40px] cursor-pointer" />
-              </Carousel>
-
-              <motion.div
-                className="text-center mt-8"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-              >
-                <Link href="/imoveis">
-                  <Button
-                    size="lg"
-                    className="text-md px-8 bg-[#483b35] hover:bg-[#9a8167] cursor-pointer"
-                    tabIndex={-1}
+        <div className="relative px-8">
+          <Carousel
+            opts={{ align: "start", loop: true, slidesToScroll: 1 }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {destaqueNodes.map((imovel, index) => (
+                <CarouselItem
+                  key={imovel.id}
+                  className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
                   >
-                    <House />
-                    Ver Todos os Imóveis
-                  </Button>
-                </Link>
-              </motion.div>
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
-                Nenhum imóvel em destaque no momento.
-              </p>
-            </div>
-          )}
+                    <ImovelCard
+                      imovel={{
+                        ...imovel,
+                        title: imovel.title ?? "",
+                        slug: imovel.slug ?? "",
+                      }}
+                    />
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 border-[#483B35]/20 hover:bg-[#483B35] hover:text-white hover:border-[#483B35] transition-all" />
+            <CarouselNext className="right-0 border-[#483B35]/20 hover:bg-[#483B35] hover:text-white hover:border-[#483B35] transition-all" />
+          </Carousel>
         </div>
       </div>
     </section>
