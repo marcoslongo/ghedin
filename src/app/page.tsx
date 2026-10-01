@@ -5,13 +5,13 @@ import { News } from "../components/layout/home/News";
 // import { Stats } from "../components/layout/home/Stats";
 // import { Testimonials } from "../components/layout/home/Testimonials";
 import { CtaSection } from "../components/layout/home/CtaSection";
+import { LocalSeo } from "../components/layout/home/LocalSeo";
 import { getDynamicImoveis } from "../services/GetDynamicImoveis";
 import { getFilters } from "../services/GetFilters";
-import { pageMetadata } from "../lib/seo";
+import { HOME_DESCRIPTION, pageMetadata } from "../lib/seo";
 
 export const metadata = pageMetadata({
-  description:
-    "Casas, apartamentos e terrenos à venda e para alugar em Realeza - PR e região. Avaliação de imóveis e atendimento personalizado com a Ghedin Imóveis.",
+  description: HOME_DESCRIPTION,
   path: "/",
 });
 
@@ -29,6 +29,7 @@ export default async function HomePage() {
         <Avaliation />
         <Highlights content={imoveisDestaque} />
         {/* <Testimonials /> */}
+        <LocalSeo />
         <CtaSection />
       </div>
     </div>

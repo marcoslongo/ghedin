@@ -40,7 +40,7 @@ export default function Sobre() {
             transition={{ duration: 0.7 }}
           >
             <p className="text-[#9A8167] text-xs font-medium tracking-[0.3em] uppercase mb-4">
-              Conheça quem cuida do seu imóvel
+              Imobiliária em Realeza - PR
             </p>
             <h1 className="font-playfair text-4xl md:text-5xl text-white">
               Sobre a Ghedin Imóveis

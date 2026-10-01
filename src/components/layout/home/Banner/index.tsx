@@ -65,16 +65,16 @@ export function Banner({ filtro }: BannerProps) {
           transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-2xl"
         >
-          <p className="flex items-center gap-4 text-[#C4A882] text-xs md:text-sm font-medium tracking-[0.35em] uppercase mb-6">
+          <h1 className="font-sans flex items-center gap-4 text-[#C4A882] text-xs md:text-sm font-medium tracking-[0.35em] uppercase mb-6">
             <span className="hidden sm:block w-14 h-px bg-[#C4A882]" />
             <span>
-              Ghedin Imóveis <span className="mx-2 text-[#C4A882]/60">|</span> Realeza e Região
+              Ghedin Imóveis <span className="mx-2 text-[#C4A882]/60">|</span> Imobiliária em Realeza - PR
             </span>
-          </p>
-          <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold leading-[1.05] mb-6">
+          </h1>
+          <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold leading-[1.05] mb-6">
             Encontre o imóvel{" "}
             <span className="block italic text-[#D9B98C]">dos seus sonhos</span>
-          </h1>
+          </h2>
           <p className="text-white/85 text-base md:text-xl max-w-xl mb-8 md:mb-12 font-light leading-relaxed">
             Mais de 8 anos conectando famílias aos melhores imóveis da região, com transparência, confiança e conhecimento local.
           </p>

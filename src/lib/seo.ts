@@ -15,7 +15,14 @@ export const BUSINESS = {
     postalCode: "85770-000",
     addressCountry: "BR",
   },
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=R.+Romano+Zanchet,+3188+-+Centro,+Realeza+-+PR,+85770-000",
+  areaServed: ["Realeza", "Dois Vizinhos", "Salto do Lontra", "Verê"],
 }
+
+export const HOME_TITLE = "Imobiliária em Realeza - PR | Ghedin Imóveis"
+export const HOME_DESCRIPTION =
+  "Ghedin Imóveis, imobiliária em Realeza - PR: casas, apartamentos e terrenos à venda e para alugar em Realeza e região. Avaliação de imóveis e atendimento personalizado."
 
 type PageMetadataInput = {
   title?: string
@@ -27,7 +34,7 @@ type PageMetadataInput = {
 }
 
 export function pageMetadata({ title, description, path, image, imageAlt, noindex }: PageMetadataInput): Metadata {
-  const ogTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Imobiliária em Realeza - PR`
+  const ogTitle = title ? `${title} | ${SITE_NAME}` : HOME_TITLE
   const images = image
     ? [{ url: image, alt: imageAlt ?? ogTitle }]
     : [{ url: DEFAULT_OG_IMAGE, width: 2048, height: 768, alt: SITE_NAME }]
@@ -74,13 +81,21 @@ export function realEstateAgentJsonLd() {
     "@type": "RealEstateAgent",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: ["Ghedin Imobiliária", "Ghedin Corretora de Imóveis", "Imobiliária Ghedin Realeza"],
+    description: HOME_DESCRIPTION,
     url: SITE_URL,
+    hasMap: BUSINESS.mapUrl,
     logo: `${SITE_URL}/assets/images/ghedin.webp`,
     image: DEFAULT_OG_IMAGE,
     telephone: BUSINESS.phone,
     email: BUSINESS.email,
     address: { "@type": "PostalAddress", ...BUSINESS.address },
-    areaServed: { "@type": "City", name: "Realeza" },
+    areaServed: BUSINESS.areaServed.map((name) => ({
+      "@type": "City",
+      name,
+      containedInPlace: { "@type": "State", name: "Paraná" },
+    })),
+    knowsAbout: ["Compra de imóveis", "Venda de imóveis", "Locação de imóveis", "Avaliação de imóveis"],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

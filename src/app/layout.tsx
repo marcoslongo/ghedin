@@ -8,7 +8,7 @@ import { Toaster } from "../components/ui/sonner"
 import { TooltipProvider } from "../components/ui/tooltip"
 import { FaWhatsapp } from "react-icons/fa"
 import { JsonLd } from "../components/JsonLd"
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, realEstateAgentJsonLd } from "../lib/seo"
+import { DEFAULT_OG_IMAGE, HOME_DESCRIPTION, HOME_TITLE, SITE_NAME, SITE_URL, realEstateAgentJsonLd } from "../lib/seo"
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -23,30 +23,26 @@ const montserrat = Montserrat({
   variable: "--font-playfair",
 })
 
-const defaultTitle = "Ghedin Imóveis | Imobiliária em Realeza - PR"
-const defaultDescription =
-  "Casas, apartamentos e terrenos à venda e para alugar em Realeza - PR e região. Avaliação de imóveis e atendimento personalizado com a Ghedin Imóveis."
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: defaultTitle,
+    default: HOME_TITLE,
     template: "%s | Ghedin Imóveis",
   },
-  description: defaultDescription,
+  description: HOME_DESCRIPTION,
   applicationName: SITE_NAME,
   openGraph: {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
-    title: defaultTitle,
-    description: defaultDescription,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [{ url: DEFAULT_OG_IMAGE, width: 2048, height: 768, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultTitle,
-    description: defaultDescription,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE],
   },
   robots: {

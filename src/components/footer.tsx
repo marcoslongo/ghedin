@@ -8,8 +8,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="lg:col-span-2">
             <p className="text-white/70 text-sm leading-relaxed max-w-xs mb-6">
-              Especialistas em negócios imobiliários com mais de 8 anos de experiência.
-              Encontre o imóvel ideal com segurança, transparência e profissionalismo.
+              Imobiliária em Realeza - PR com mais de 8 anos de experiência em compra,
+              venda, locação e avaliação de imóveis em Realeza e região.
             </p>
             <div className="space-y-3">
               <a
