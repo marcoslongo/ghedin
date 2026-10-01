@@ -1,7 +1,7 @@
 import { FiltrosImoveis } from "@/src/components/filtros-imoveis";
 import { ImovelCard } from "@/src/components/imovel-card";
 import { PaginacaoImoveis } from "@/src/components/layout/imoveis/PaginacaoImoveis";
-import { getDynamicImoveis } from "@/src/services/GetDynamicImoveis";
+import { getDynamicImoveis, getImoveisOrdenados, type OrdemImoveis } from "@/src/services/GetDynamicImoveis";
 import { getFilters } from "@/src/services/GetFilters";
 import { pageMetadata } from "@/src/lib/seo";
 import type { Metadata } from "next";
@@ -12,7 +12,9 @@ interface SearchParams {
 
 const ITEMS_PER_PAGE = 9;
 
-const FILTER_KEYS = ["precoMin", "precoMax", "quartosMin", "status", "cidade", "bairro", "tipoImovel", "tipoNegocio"];
+const FILTER_KEYS = ["precoMin", "precoMax", "quartosMin", "status", "cidade", "bairro", "tipoImovel", "tipoNegocio", "ordem"];
+
+const ORDENS: OrdemImoveis[] = ["preco_asc", "preco_desc"];
 
 export function generateMetadata({ searchParams }: { searchParams: SearchParams }): Metadata {
   const currentPage = Number(searchParams.page) || 1;
@@ -49,7 +51,10 @@ export default async function ImoveisPage({
     tipoNegocio: searchParams.tipoNegocio as string,
   };
 
-  const data = await getDynamicImoveis(filters);
+  const ordem = ORDENS.find((o) => o === searchParams.ordem);
+  const data = ordem
+    ? await getImoveisOrdenados(filters, ordem)
+    : await getDynamicImoveis(filters);
   const filterOptions = await getFilters();
 
   const totalItems = data.imoveis?.pageInfo?.offsetPagination?.total || 0;
@@ -102,6 +107,7 @@ export default async function ImoveisPage({
                   bairro: searchParams.bairro as string,
                   tipoImovel: searchParams.tipoImovel as string,
                   tipoNegocio: searchParams.tipoNegocio as string,
+                  ordem: ordem ?? "",
                 }}
               />
             </div>

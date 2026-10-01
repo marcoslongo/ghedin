@@ -8,7 +8,7 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { Search, SlidersHorizontal, X } from "lucide-react"
+import { ArrowUpDown, Search, SlidersHorizontal, X } from "lucide-react"
 import { GetFiltersQuery } from "../generated/graphql"
 
 interface FiltrosProps {
@@ -22,6 +22,7 @@ interface FiltrosProps {
     bairro?: string;
     tipoImovel?: string;
     tipoNegocio?: string;
+    ordem?: string;
   };
 }
 
@@ -37,19 +38,30 @@ export function FiltrosImoveis({ filtro, currentFilters }: FiltrosProps) {
     bairro: currentFilters.bairro ?? "",
     tipoImovel: currentFilters.tipoImovel ?? "",
     tipoNegocio: currentFilters.tipoNegocio ?? "",
+    ordem: currentFilters.ordem ?? "",
   })
 
   function updateField(field: string, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  function applyFilters(next: typeof values) {
     const params = new URLSearchParams()
-    Object.entries(values).forEach(([key, val]) => {
+    Object.entries(next).forEach(([key, val]) => {
       if (val) params.set(key, val)
     })
     router.push(`/imoveis?${params.toString()}`)
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    applyFilters(values)
+  }
+
+  function handleOrdem(ordem: string) {
+    const next = { ...values, ordem: ordem === "recentes" ? "" : ordem }
+    setValues(next)
+    applyFilters(next)
   }
 
   function handleClear() {
@@ -62,6 +74,7 @@ export function FiltrosImoveis({ filtro, currentFilters }: FiltrosProps) {
       bairro: "",
       tipoImovel: "",
       tipoNegocio: "",
+      ordem: "",
     })
     router.push("/imoveis")
   }
@@ -87,6 +100,25 @@ export function FiltrosImoveis({ filtro, currentFilters }: FiltrosProps) {
       </div>
 
       <form className="p-5 space-y-5" onSubmit={handleSubmit}>
+        <div>
+          <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
+            Ordenar por
+          </Label>
+          <Select value={values.ordem || "recentes"} onValueChange={handleOrdem}>
+            <SelectTrigger className="border-[#9A8167]/25 text-[#483B35] focus:ring-[#9A8167]/30 rounded-xl h-10">
+              <span className="flex items-center gap-2">
+                <ArrowUpDown className="h-4 w-4 text-[#9A8167]" />
+                <SelectValue />
+              </span>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recentes">Mais recentes</SelectItem>
+              <SelectItem value="preco_asc">Menor preço</SelectItem>
+              <SelectItem value="preco_desc">Maior preço</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         <div>
           <Label className="text-[#483B35]/70 text-xs font-semibold uppercase tracking-wider mb-2 block">
             Tipo de Negócio

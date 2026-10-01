@@ -86,3 +86,49 @@ export async function getDynamicImoveis(filters: ImoveisFilters = {}) {
 
   return cached();
 }
+
+export type OrdemImoveis = "preco_asc" | "preco_desc";
+
+const PAGE_SIZE_CMS = 100;
+
+// O WPGraphQL não ordena por campos do ACF, então buscamos todos os imóveis
+// que passam nos filtros, ordenamos pelo preço e paginamos aqui.
+export async function getImoveisOrdenados(
+  filters: ImoveisFilters,
+  ordem: OrdemImoveis
+) {
+  const { offset = 0, size = 6, ...rest } = filters;
+
+  const primeiraPagina = await getDynamicImoveis({ ...rest, offset: 0, size: PAGE_SIZE_CMS });
+  const nodes = [...(primeiraPagina.imoveis?.nodes ?? [])];
+  const total = primeiraPagina.imoveis?.pageInfo?.offsetPagination?.total ?? nodes.length;
+
+  for (let next = PAGE_SIZE_CMS; next < total; next += PAGE_SIZE_CMS) {
+    const pagina = await getDynamicImoveis({ ...rest, offset: next, size: PAGE_SIZE_CMS });
+    nodes.push(...(pagina.imoveis?.nodes ?? []));
+  }
+
+  const direcao = ordem === "preco_asc" ? 1 : -1;
+  nodes.sort((a, b) => {
+    const precoA = Number(a.acfImoveis?.preco) || 0;
+    const precoB = Number(b.acfImoveis?.preco) || 0;
+    if (!precoA || !precoB) return precoA ? -1 : precoB ? 1 : 0;
+    return (precoA - precoB) * direcao;
+  });
+
+  return {
+    ...primeiraPagina,
+    imoveis: primeiraPagina.imoveis && {
+      ...primeiraPagina.imoveis,
+      nodes: nodes.slice(offset, offset + size),
+      pageInfo: {
+        ...primeiraPagina.imoveis.pageInfo,
+        offsetPagination: {
+          ...primeiraPagina.imoveis.pageInfo?.offsetPagination,
+          total,
+          hasMore: offset + size < total,
+        },
+      },
+    },
+  };
+}
