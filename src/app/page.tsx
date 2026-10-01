@@ -17,8 +17,8 @@ export const metadata = pageMetadata({
 
 export default async function HomePage() {
   const filterOptions = await getFilters();
-  const imoveisDestaque = await getDynamicImoveis({ first: 10 });
-  const lancamentos = await getDynamicImoveis({ first: 9 });
+  const imoveisDestaque = await getDynamicImoveis({ destaque: "1", size: 12 });
+  const lancamentos = await getDynamicImoveis({ size: 6 });
 
   return (
     <div className="min-h-screen flex flex-col">

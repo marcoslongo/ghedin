@@ -14,7 +14,7 @@ export const query = graphql(`query GetImovelBySlug($slug: String!) {
       }
     }
     acfImoveis {
-      galeriaFotos {
+      galeriaFotos(first: 100) {
         nodes {
           mediaItemUrl
         }

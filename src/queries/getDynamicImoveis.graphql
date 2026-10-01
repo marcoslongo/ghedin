@@ -9,6 +9,7 @@ query GetDynamicImoveis(
   $bairro: String
   $tipoImovel: String
   $tipoNegocio: String
+  $destaque: String
 ) {
   imoveis(
     where: {
@@ -24,6 +25,7 @@ query GetDynamicImoveis(
           { key: "bairro", value: $bairro, compare: EQUAL_TO }
           { key: "tipo_imovel", value: $tipoImovel, compare: EQUAL_TO }
           { key: "tipo_negocio", value: $tipoNegocio, compare: EQUAL_TO }
+          { key: "destaque", value: $destaque, compare: EQUAL_TO }
         ]
       }
     }

@@ -81,7 +81,7 @@ export default async function ImoveisPage({
           </h1>
           <p className="text-white/60 text-sm">
             {totalItems > 0
-              ? `${totalItems} imóvel${totalItems !== 1 ? "s" : ""} encontrado${totalItems !== 1 ? "s" : ""}${activeFiltersCount > 0 ? ` com ${activeFiltersCount} filtro${activeFiltersCount > 1 ? "s" : ""}` : ""}`
+              ? `${totalItems} ${totalItems !== 1 ? "imóveis" : "imóvel"} encontrado${totalItems !== 1 ? "s" : ""}${activeFiltersCount > 0 ? ` com ${activeFiltersCount} filtro${activeFiltersCount > 1 ? "s" : ""}` : ""}`
               : "Nenhum imóvel encontrado com os filtros selecionados"}
           </p>
         </div>

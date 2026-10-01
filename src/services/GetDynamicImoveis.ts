@@ -2,9 +2,9 @@ import { unstable_cache } from "next/cache";
 import { graphql } from "../generated";
 import { urqlClient } from "../lib/urql-client";
 
-export const query = graphql(`query GetDynamicImoveis($offset: Int, $size: Int, $precoMin: String, $precoMax: String, $quartosMin: String, $status: String, $cidade: String, $bairro: String, $tipoImovel: String, $tipoNegocio: String) {
+export const query = graphql(`query GetDynamicImoveis($offset: Int, $size: Int, $precoMin: String, $precoMax: String, $quartosMin: String, $status: String, $cidade: String, $bairro: String, $tipoImovel: String, $tipoNegocio: String, $destaque: String) {
   imoveis(
-    where: {offsetPagination: {offset: $offset, size: $size}, metaQuery: {relation: AND, metaArray: [{key: "preco", value: $precoMin, compare: GREATER_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "preco", value: $precoMax, compare: LESS_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "quartos", value: $quartosMin, compare: GREATER_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "status_imovel", value: $status, compare: EQUAL_TO}, {key: "cidade", value: $cidade, compare: EQUAL_TO}, {key: "bairro", value: $bairro, compare: EQUAL_TO}, {key: "tipo_imovel", value: $tipoImovel, compare: EQUAL_TO}, {key: "tipo_negocio", value: $tipoNegocio, compare: EQUAL_TO}]}}
+    where: {offsetPagination: {offset: $offset, size: $size}, metaQuery: {relation: AND, metaArray: [{key: "preco", value: $precoMin, compare: GREATER_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "preco", value: $precoMax, compare: LESS_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "quartos", value: $quartosMin, compare: GREATER_THAN_OR_EQUAL_TO, type: NUMERIC}, {key: "status_imovel", value: $status, compare: EQUAL_TO}, {key: "cidade", value: $cidade, compare: EQUAL_TO}, {key: "bairro", value: $bairro, compare: EQUAL_TO}, {key: "tipo_imovel", value: $tipoImovel, compare: EQUAL_TO}, {key: "tipo_negocio", value: $tipoNegocio, compare: EQUAL_TO}, {key: "destaque", value: $destaque, compare: EQUAL_TO}]}}
   ) {
     nodes {
       id
@@ -54,6 +54,7 @@ type ImoveisFilters = {
   bairro?: string;
   tipoImovel?: string;
   tipoNegocio?: string;
+  destaque?: string;
 };
 
 async function fetchDynamicImoveis(filters: ImoveisFilters) {
