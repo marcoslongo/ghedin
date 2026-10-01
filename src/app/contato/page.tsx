@@ -21,9 +21,9 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    title: "Região de Atendimento",
-    value: "Realeza e região",
-    href: null,
+    title: "Endereço",
+    value: "R. Romano Zanchet, 3188 - Centro, Realeza - PR, 85770-000",
+    href: "https://www.google.com/maps/search/?api=1&query=R.+Romano+Zanchet,+3188+-+Centro,+Realeza+-+PR,+85770-000",
   },
   {
     icon: Clock,

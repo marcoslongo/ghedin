@@ -36,7 +36,7 @@ export function Footer() {
                 <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
                   <MapPin className="h-3.5 w-3.5" />
                 </div>
-                Realeza e região
+                R. Romano Zanchet, 3188 - Centro, Realeza - PR, 85770-000
               </div>
             </div>
           </div>
