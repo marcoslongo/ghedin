@@ -3,12 +3,30 @@ import { ImovelCard } from "@/src/components/imovel-card";
 import { PaginacaoImoveis } from "@/src/components/layout/imoveis/PaginacaoImoveis";
 import { getDynamicImoveis } from "@/src/services/GetDynamicImoveis";
 import { getFilters } from "@/src/services/GetFilters";
+import { pageMetadata } from "@/src/lib/seo";
+import type { Metadata } from "next";
 
 interface SearchParams {
   [key: string]: string | string[] | undefined;
 }
 
 const ITEMS_PER_PAGE = 9;
+
+const FILTER_KEYS = ["precoMin", "precoMax", "quartosMin", "status", "cidade", "bairro", "tipoImovel", "tipoNegocio"];
+
+export function generateMetadata({ searchParams }: { searchParams: SearchParams }): Metadata {
+  const currentPage = Number(searchParams.page) || 1;
+  const hasFilters = FILTER_KEYS.some((key) => searchParams[key]);
+  const path = currentPage > 1 && !hasFilters ? `/imoveis?page=${currentPage}` : "/imoveis";
+
+  return pageMetadata({
+    title: `Imóveis à venda e para alugar em Realeza - PR${currentPage > 1 ? ` - Página ${currentPage}` : ""}`,
+    description:
+      "Confira casas, apartamentos, terrenos e imóveis comerciais à venda e para alugar em Realeza - PR e região. Filtre por cidade, tipo, quartos e preço.",
+    path,
+    noindex: hasFilters,
+  });
+}
 
 export default async function ImoveisPage({
   searchParams,
@@ -89,7 +107,7 @@ export default async function ImoveisPage({
             </div>
           </aside>
 
-          <main className="flex-1 min-w-0">
+          <section className="flex-1 min-w-0" aria-label="Lista de imóveis">
             {data.imoveis?.nodes && data.imoveis.nodes.length > 0 ? (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
@@ -127,7 +145,7 @@ export default async function ImoveisPage({
                 </p>
               </div>
             )}
-          </main>
+          </section>
         </div>
       </div>
     </div>

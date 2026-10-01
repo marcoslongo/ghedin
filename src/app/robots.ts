@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next"
+import { SITE_URL } from "@/src/lib/seo"
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/favoritos"],
+      disallow: ["/api/"],
     },
-    sitemap: "https://www.ghedinimoveis.com.br/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

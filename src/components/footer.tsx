@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react"
+import { Phone, Mail, MapPin, Instagram } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -87,15 +87,10 @@ export function Footer() {
                   href="https://www.instagram.com/ghedin.imoveis/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram da Ghedin Imóveis (@ghedin.imoveis)"
                   className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#9A8167] hover:text-[#9A8167] transition-all duration-200"
                 >
                   <Instagram className="h-4 w-4" />
-                </a>
-                <a
-                  href="#"
-                  className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#9A8167] hover:text-[#9A8167] transition-all duration-200"
-                >
-                  <Facebook className="h-4 w-4" />
                 </a>
               </div>
             </div>

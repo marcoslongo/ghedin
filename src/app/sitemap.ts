@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next"
 import { executeQuery } from "@/src/lib/urql-client"
-
-const SITE_URL = "https://www.ghedinimoveis.com.br"
+import { SITE_URL } from "@/src/lib/seo"
 
 export const revalidate = 3600
 

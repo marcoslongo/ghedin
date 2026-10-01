@@ -17,9 +17,10 @@ interface GalleryContentProps {
     mediaItemUrl?: string | null
     __typename?: string | null
   }[]
+  title?: string
 }
 
-export default function GalleryContent({ images }: GalleryContentProps) {
+export default function GalleryContent({ images, title = "Imóvel" }: GalleryContentProps) {
   const [selectedImage, setSelectedImage] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
@@ -63,7 +64,7 @@ export default function GalleryContent({ images }: GalleryContentProps) {
                 >
                   <Image
                     src={image.mediaItemUrl}
-                    alt={`Imagem do imóvel ${index + 1}`}
+                    alt={`${title} - foto ${index + 1}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 80vw"
@@ -97,7 +98,7 @@ export default function GalleryContent({ images }: GalleryContentProps) {
                     >
                       <Image
                         src={image.mediaItemUrl}
-                        alt={`Miniatura ${index + 1}`}
+                        alt={`${title} - miniatura ${index + 1}`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 80px, 100px"
@@ -143,7 +144,7 @@ export default function GalleryContent({ images }: GalleryContentProps) {
           <div className="relative w-full h-full max-w-5xl max-h-[80vh] flex items-center justify-center">
             <Image
               src={validImages[selectedImage].mediaItemUrl}
-              alt={`Imagem do imóvel ${selectedImage + 1}`}
+              alt={`${title} - foto ${selectedImage + 1}`}
               fill
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 80vw"

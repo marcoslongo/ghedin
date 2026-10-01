@@ -76,7 +76,7 @@ export default function ImovelClient({ imovel }: { imovel: any }) {
               transition={{ duration: 0.5 }}
               className="rounded-2xl overflow-hidden shadow-sm"
             >
-              <GalleryContent images={galery?.nodes || []} />
+              <GalleryContent images={galery?.nodes || []} title={imovel.title} />
             </motion.div>
 
             {specs.length > 0 && (

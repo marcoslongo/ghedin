@@ -69,6 +69,7 @@ export function Header() {
 
               <button
                 onClick={() => setIsOpen(true)}
+                aria-label="Abrir menu"
                 className="md:hidden p-2 rounded-lg text-[#483B35] hover:bg-[#F0EAE2] transition-colors"
               >
                 <Menu className="h-5 w-5" />
@@ -105,6 +106,7 @@ export function Header() {
                 />
                 <button
                   onClick={() => setIsOpen(false)}
+                  aria-label="Fechar menu"
                   className="p-2 text-[#483B35] hover:bg-[#F0EAE2] rounded-lg transition-colors"
                 >
                   <X className="h-5 w-5" />
