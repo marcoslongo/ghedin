@@ -9,7 +9,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <p className="text-white/70 text-sm leading-relaxed max-w-xs mb-6">
               Imobiliária em Realeza - PR com mais de 8 anos de experiência em compra,
-              venda, locação e avaliação de imóveis em Realeza e região.
+              venda, locação e avaliação de imóveis em Realeza, Dois Vizinhos e região.
             </p>
             <div className="space-y-3">
               <a

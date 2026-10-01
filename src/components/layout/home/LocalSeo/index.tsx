@@ -12,7 +12,7 @@ const faq = [
   {
     question: "Quais cidades a imobiliária atende?",
     answer:
-      "Atendemos Realeza e região, com imóveis também em Dois Vizinhos, Salto do Lontra e Verê, no Sudoeste do Paraná.",
+      "Atendemos Realeza, Dois Vizinhos e região, no Sudoeste do Paraná.",
   },
   {
     question: "A Ghedin Imóveis faz avaliação de imóveis?",
@@ -75,7 +75,7 @@ export function LocalSeo() {
                 quem vai comprar com financiamento.
               </p>
               <p>
-                Atendemos {BUSINESS.areaServed.slice(0, -1).join(", ")} e {BUSINESS.areaServed.at(-1)}.
+                Atendemos Realeza, Dois Vizinhos e região.
               </p>
             </div>
 
