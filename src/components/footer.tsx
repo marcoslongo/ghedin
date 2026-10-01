@@ -84,7 +84,7 @@ export function Footer() {
               <h4 className="text-white/50 text-xs uppercase tracking-widest mb-3">Siga-nos</h4>
               <div className="flex gap-3">
                 <a
-                  href="https://www.instagram.com/ghedinimoveis/"
+                  href="https://www.instagram.com/ghedin.imoveis/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#9A8167] hover:text-[#9A8167] transition-all duration-200"
