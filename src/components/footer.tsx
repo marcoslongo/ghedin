@@ -99,10 +99,21 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
-            © 2025 Ghedin Imóveis. Todos os direitos reservados.
+            © {new Date().getFullYear()} Ghedin Imóveis. Todos os direitos reservados.
           </p>
           <p className="text-white/30 text-xs">
             CRECI · Ana Mattei Ghedin · Corretora de Imóveis
+          </p>
+          <p className="text-white/40 text-xs">
+            Desenvolvido por{" "}
+            <a
+              href="https://noxus-labs.com.br/"
+              target="_blank"
+              rel="noopener"
+              className="text-white/60 hover:text-[#9A8167] transition-colors"
+            >
+              Noxus Labs
+            </a>
           </p>
         </div>
       </div>
